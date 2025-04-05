@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Desktop from "./components/desktop/Desktop/Desktop";
-import StartPage from "./components/startPage";
 import { useAppStore, useAudioStore } from "./store";
 import { PLAYLIST_DATA } from "./constants/musicData";
 import styles from "./App.module.scss";
@@ -39,7 +38,8 @@ const App = () => {
 
   return (
     <div className={styles.app}>
-      {isInitialized ? <Desktop /> : <StartPage />}
+      {/* {isInitialized ? <Desktop /> : <StartPage />} */}
+      <Desktop />
     </div>
   );
 };

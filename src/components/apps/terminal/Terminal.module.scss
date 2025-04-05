@@ -1,6 +1,7 @@
-// src/components/apps/terminal/Terminal.module.scss
+// components/apps/terminal/Terminal.module.scss
 @import "../../../styles/variables.scss";
 @import "../../../styles/mixins.scss";
+@import "../../../styles/effects.scss";
 
 .terminal {
   width: 100%;
@@ -8,13 +9,14 @@
   display: flex;
   flex-direction: column;
   background-color: #000000;
-  color: $hacker-green;
-  font-family: $font-mono;
+  color: $vapor-cyan;
+  font-family: $font-vcr;
   font-size: 14px;
   overflow: hidden;
   position: relative;
   line-height: 1.4;
 
+  // Subtle scanline effect
   &::before {
     content: "";
     position: absolute;
@@ -37,27 +39,28 @@
 
 .terminalHeader {
   height: 28px;
-  background-color: #101010;
+  background-color: $vapor-dark-purple;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
-  border-bottom: 1px solid rgba($hacker-green, 0.5);
+  border-bottom: 1px solid $vapor-neon-pink;
 
   .headerText {
     font-weight: bold;
     letter-spacing: 1px;
-    text-shadow: 0 0 5px rgba($hacker-green, 0.7);
+    text-shadow: 0 0 5px rgba($vapor-cyan, 0.7);
+    color: $vapor-neon-pink;
   }
 
   .statusIndicator {
     font-size: 12px;
     padding: 2px 6px;
-    background-color: rgba($hacker-green, 0.2);
-    border: 1px solid $hacker-green;
+    background-color: rgba($vapor-neon-pink, 0.2);
+    border: 1px solid $vapor-neon-pink;
     border-radius: 2px;
-    color: $hacker-green;
-    text-shadow: 0 0 3px $hacker-green;
+    color: $vapor-neon-pink;
+    text-shadow: 0 0 3px $vapor-neon-pink;
   }
 }
 
@@ -76,12 +79,12 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: rgba($hacker-green, 0.5);
+    background: rgba($vapor-neon-pink, 0.5);
     border-radius: 0;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: $hacker-green;
+    background: $vapor-neon-pink;
   }
 }
 
@@ -92,7 +95,7 @@
   opacity: 0.9;
 
   &.system {
-    color: #00ccff;
+    color: $vapor-neon-pink;
     opacity: 0.8;
   }
 
@@ -102,7 +105,7 @@
   }
 
   &.output {
-    color: $hacker-green;
+    color: $vapor-cyan;
   }
 
   // Animation for each new line
@@ -113,12 +116,12 @@
   display: flex;
   align-items: center;
   padding: 6px 10px;
-  background-color: rgba(0, 20, 0, 0.4);
-  border-top: 1px solid rgba($hacker-green, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
+  border-top: 1px solid rgba($vapor-neon-pink, 0.3);
 }
 
 .prompt {
-  color: $hacker-green;
+  color: $vapor-neon-pink;
   margin-right: 5px;
   white-space: nowrap;
 
@@ -128,7 +131,7 @@
     display: inline-block;
     width: 8px;
     height: 15px;
-    background-color: $hacker-green;
+    background-color: $vapor-neon-pink;
     margin-left: 3px;
     animation: blink 1s step-end infinite;
   }
@@ -139,29 +142,13 @@
   background: transparent;
   border: none;
   color: #ffffff;
-  font-family: $font-mono;
+  font-family: $font-vcr;
   font-size: 14px;
   padding: 4px 0;
 
   &:focus {
     outline: none;
   }
-}
-
-// Handle password cracking feedback
-.correctPosition {
-  color: #00ff00;
-  text-shadow: 0 0 5px rgba(0, 255, 0, 0.7);
-}
-
-.correctChar {
-  color: #ffff00;
-  text-shadow: 0 0 5px rgba(255, 255, 0, 0.7);
-}
-
-.incorrectChar {
-  color: #ff3333;
-  text-shadow: 0 0 5px rgba(255, 51, 51, 0.7);
 }
 
 // Animations
@@ -181,28 +168,5 @@
   }
   to {
     opacity: 0.9;
-  }
-}
-
-// Glitch animation on important messages
-.glitch {
-  animation: glitch 0.3s ease forwards;
-}
-
-@keyframes glitch {
-  0% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-2px);
-  }
-  50% {
-    transform: translateX(2px);
-  }
-  75% {
-    transform: translateX(-1px);
-  }
-  100% {
-    transform: translateX(0);
   }
 }

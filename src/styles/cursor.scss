@@ -1,0 +1,126 @@
+/* styles/cursor.scss */
+/* Custom cursor styles for Vaporwave OS */
+
+/* 
+ * This file defines custom cursors for the Vaporwave OS theme
+ * It will be imported in the global.scss file
+ */
+
+/* Base cursor styles */
+body {
+  /* Default cursor - a retro pointer */
+  cursor: url("/assets/cursors/default.png"), auto;
+}
+
+/* Text cursor for text inputs and content */
+input,
+textarea,
+[contenteditable="true"] {
+  cursor: url("/assets/cursors/text.png"), text;
+}
+
+/* Clickable elements cursor */
+button,
+a,
+.clickable,
+[role="button"],
+.desktopIcon,
+.window-control,
+.window-titlebar {
+  cursor: url("/assets/cursors/pointer.png"), pointer;
+}
+
+/* Move cursor for draggable elements */
+.draggable,
+.window-titlebar,
+[draggable="true"] {
+  cursor: url("/assets/cursors/move.png"), move;
+}
+
+/* Resize cursors for window edges */
+.resize-handle-e,
+.resize-handle-w {
+  cursor: url("/assets/cursors/ew-resize.png"), ew-resize;
+}
+
+.resize-handle-n,
+.resize-handle-s {
+  cursor: url("/assets/cursors/ns-resize.png"), ns-resize;
+}
+
+.resize-handle-ne,
+.resize-handle-sw {
+  cursor: url("/assets/cursors/nesw-resize.png"), nesw-resize;
+}
+
+.resize-handle-nw,
+.resize-handle-se {
+  cursor: url("/assets/cursors/nwse-resize.png"), nwse-resize;
+}
+
+/* Special cursors */
+.not-allowed {
+  cursor: url("/assets/cursors/not-allowed.png"), not-allowed;
+}
+
+.help {
+  cursor: url("/assets/cursors/help.png"), help;
+}
+
+/* 
+ * Fallback cursor definitions in case custom cursors fail to load 
+ * These use standard CSS cursors
+ */
+body.no-custom-cursors {
+  cursor: default;
+
+  input,
+  textarea,
+  [contenteditable="true"] {
+    cursor: text;
+  }
+
+  button,
+  a,
+  .clickable,
+  [role="button"],
+  .desktopIcon,
+  .window-control,
+  .window-titlebar {
+    cursor: pointer;
+  }
+
+  .draggable,
+  .window-titlebar,
+  [draggable="true"] {
+    cursor: move;
+  }
+
+  .resize-handle-e,
+  .resize-handle-w {
+    cursor: ew-resize;
+  }
+
+  .resize-handle-n,
+  .resize-handle-s {
+    cursor: ns-resize;
+  }
+
+  .resize-handle-ne,
+  .resize-handle-sw {
+    cursor: nesw-resize;
+  }
+
+  .resize-handle-nw,
+  .resize-handle-se {
+    cursor: nwse-resize;
+  }
+
+  .not-allowed {
+    cursor: not-allowed;
+  }
+
+  .help {
+    cursor: help;
+  }
+}

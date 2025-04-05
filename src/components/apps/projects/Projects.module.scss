@@ -1,0 +1,325 @@
+// components/apps/projects/Projects.module.scss
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+@import "../../../styles/effects.scss";
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f0f0;
+  color: #333;
+  position: relative;
+  overflow: hidden;
+}
+
+.fileExplorerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: $vapor-dark-purple;
+  border-bottom: 2px solid $vapor-neon-pink;
+}
+
+.navigationControls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: rgba($vapor-dark-blue, 0.5);
+  border: 1px solid $vapor-neon-pink;
+  border-radius: 3px;
+  color: $vapor-text-light;
+  cursor: pointer;
+  transition: all $transition-standard ease;
+
+  &:hover:not(:disabled) {
+    background-color: rgba($vapor-dark-blue, 0.8);
+    box-shadow: 0 0 8px rgba($vapor-neon-pink, 0.6);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.pathDisplay {
+  color: $vapor-text-light;
+  font-family: $font-vcr;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba($vapor-text-light, 0.5);
+  padding: 4px 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba($vapor-neon-pink, 0.3);
+}
+
+.searchContainer {
+  position: relative;
+  width: 250px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 6px 32px 6px 10px;
+  background-color: rgba($vapor-dark-blue, 0.4);
+  border: 1px solid $vapor-neon-pink;
+  border-radius: 3px;
+  color: $vapor-text-light;
+  font-family: $font-vcr;
+  font-size: 14px;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba($vapor-neon-pink, 0.6);
+  }
+
+  &::placeholder {
+    color: rgba($vapor-text-light, 0.6);
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $vapor-neon-pink;
+  opacity: 0.8;
+}
+
+.viewControls {
+  display: flex;
+  gap: 5px;
+}
+
+.viewButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: rgba($vapor-dark-blue, 0.5);
+  border: 1px solid $vapor-neon-pink;
+  border-radius: 3px;
+  color: $vapor-text-light;
+  cursor: pointer;
+  transition: all $transition-standard ease;
+
+  &:hover {
+    background-color: rgba($vapor-dark-blue, 0.8);
+    box-shadow: 0 0 8px rgba($vapor-neon-pink, 0.6);
+  }
+
+  &.active {
+    background-color: rgba($vapor-neon-pink, 0.3);
+    box-shadow: 0 0 10px rgba($vapor-neon-pink, 0.7);
+  }
+}
+
+.fileExplorerContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+
+  // Custom scrollbar
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #e0e0e0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $vapor-neon-pink;
+    border-radius: 4px;
+  }
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+
+  &.listView {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.projectItem {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all $transition-standard ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-color: $vapor-neon-pink;
+  }
+
+  // List view styling
+  .listView & {
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    height: auto;
+    gap: 15px;
+  }
+}
+
+.projectIcon {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  color: $vapor-neon-pink;
+
+  .listView & {
+    height: 40px;
+    width: 40px;
+    min-width: 40px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+  }
+}
+
+.projectInfo {
+  padding: 10px;
+  flex: 1;
+
+  .listView & {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+}
+
+.projectName {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+
+  .listView & {
+    margin-bottom: 0;
+    font-size: 16px;
+  }
+}
+
+.projectFileName {
+  font-size: 12px;
+  color: #666;
+  font-family: $font-vcr;
+  margin-bottom: 5px;
+
+  .listView & {
+    margin-bottom: 0;
+  }
+}
+
+.projectDescription {
+  font-size: 13px;
+  margin-bottom: 8px;
+  color: #555;
+  line-height: 1.4;
+}
+
+.projectTechnologies {
+  font-size: 12px;
+  color: $vapor-neon-pink;
+  margin-bottom: 5px;
+}
+
+.projectDate {
+  font-size: 11px;
+  color: #999;
+  font-style: italic;
+}
+
+.projectLinks {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.projectLink {
+  color: $vapor-dark-purple;
+  padding: 5px;
+  border-radius: 4px;
+  transition: all $transition-standard ease;
+
+  &:hover {
+    color: $vapor-neon-pink;
+    transform: scale(1.1);
+  }
+}
+
+.noResults {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 15px;
+  color: #777;
+}
+
+.noResultsIcon {
+  color: #999;
+}
+
+.clearSearchButton {
+  padding: 8px 15px;
+  background-color: $vapor-dark-purple;
+  color: $vapor-text-light;
+  border: 1px solid $vapor-neon-pink;
+  border-radius: 4px;
+  font-family: $font-vcr;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all $transition-standard ease;
+
+  &:hover {
+    background-color: $vapor-neon-pink;
+    box-shadow: 0 0 10px rgba($vapor-neon-pink, 0.5);
+  }
+}
+
+.fileExplorerStatus {
+  padding: 8px 15px;
+  background-color: #e0e0e0;
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  font-family: $font-vcr;
+  font-size: 12px;
+  color: #666;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

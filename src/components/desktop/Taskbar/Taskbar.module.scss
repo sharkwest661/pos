@@ -1,3 +1,4 @@
+// components/desktop/Taskbar/Taskbar.module.scss
 @import "../../../styles/variables.scss";
 @import "../../../styles/mixins.scss";
 
@@ -7,12 +8,12 @@
   left: 0;
   right: 0;
   height: 48px;
-  background-color: $cyber-dark-purple;
-  border-top: 1px solid $cyber-neon-pink;
+  background: linear-gradient(90deg, $vapor-dark-blue, $vapor-dark-purple);
+  border-top: 2px solid $vapor-neon-pink;
   display: flex;
   align-items: center;
   padding: 0 8px;
-  z-index: 9000;
+  z-index: 9000; // Above windows and desktop
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
 }
@@ -23,15 +24,15 @@
   padding: 0 12px;
   height: 36px;
   margin-right: 8px;
-  background-color: rgba($cyber-dark-blue, 0.7);
-  border: 1px solid $cyber-neon-pink;
+  background-color: rgba($vapor-dark-purple, 0.7);
+  border: 1px solid $vapor-neon-pink;
   border-radius: 2px;
   cursor: pointer;
   transition: all $transition-standard ease;
 
   &:hover {
-    background-color: $cyber-dark-blue;
-    box-shadow: $cyber-glow-pink;
+    background-color: $vapor-dark-blue;
+    box-shadow: $vapor-glow-pink;
   }
 
   &:active {
@@ -42,17 +43,17 @@
 .startIcon {
   width: 20px;
   height: 20px;
-  background: linear-gradient(135deg, $cyber-neon-pink, $cyber-cyan);
+  background: linear-gradient(135deg, $vapor-neon-pink, $vapor-cyan);
   border-radius: 2px;
   margin-right: 8px;
-  box-shadow: 0 0 5px rgba($cyber-neon-pink, 0.5);
+  box-shadow: 0 0 5px rgba($vapor-neon-pink, 0.5);
 }
 
 .startText {
-  font-family: $font-mono;
+  font-family: $font-vcr;
   font-size: 14px;
   font-weight: 700;
-  color: $cyber-text-light;
+  color: $vapor-text-light;
   letter-spacing: 0.05em;
 }
 
@@ -82,17 +83,17 @@
   height: 36px;
   margin: 0 4px;
   padding: 0 12px;
-  background-color: rgba($cyber-dark-blue, 0.4);
+  background-color: rgba($vapor-dark-blue, 0.4);
   border: 1px solid transparent;
   border-radius: 2px;
-  color: $cyber-text-light;
+  color: $vapor-text-light;
   cursor: pointer;
   transition: all $transition-standard ease;
   overflow: hidden;
 
   &:hover {
-    background-color: rgba($cyber-dark-blue, 0.7);
-    border-color: rgba($cyber-neon-pink, 0.5);
+    background-color: rgba($vapor-dark-blue, 0.7);
+    border-color: rgba($vapor-neon-pink, 0.5);
   }
 
   &:active {
@@ -100,19 +101,19 @@
   }
 
   &.active {
-    background-color: rgba($cyber-dark-blue, 0.7);
-    border-color: $cyber-neon-pink;
-    color: $cyber-neon-pink;
-    box-shadow: 0 0 5px rgba($cyber-neon-pink, 0.5);
+    background-color: rgba($vapor-dark-blue, 0.7);
+    border-color: $vapor-neon-pink;
+    color: $vapor-neon-pink;
+    box-shadow: 0 0 5px rgba($vapor-neon-pink, 0.5);
   }
 
   &.minimized {
-    background-color: rgba($cyber-dark-blue, 0.3);
-    border-color: rgba($cyber-electric-blue, 0.4);
+    background-color: rgba($vapor-dark-blue, 0.3);
+    border-color: rgba($vapor-electric-blue, 0.4);
     opacity: 0.8;
 
     .windowTitle {
-      color: rgba($cyber-text-light, 0.6);
+      color: rgba($vapor-text-light, 0.6);
     }
 
     // Add minimize indicator
@@ -124,16 +125,16 @@
       transform: translateX(-50%);
       width: 20px;
       height: 2px;
-      background-color: $cyber-electric-blue;
+      background-color: $vapor-electric-blue;
       border-radius: 1px;
     }
 
     &:hover {
       opacity: 1;
-      border-color: $cyber-electric-blue;
+      border-color: $vapor-electric-blue;
 
       .windowTitle {
-        color: $cyber-text-light;
+        color: $vapor-text-light;
       }
     }
   }
@@ -144,7 +145,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-family: $font-mono;
+  font-family: $font-vcr;
   font-size: 13px;
   text-align: left;
 }
@@ -154,13 +155,13 @@
   align-items: center;
   height: 100%;
   padding-left: 8px;
-  border-left: 1px solid rgba($cyber-neon-pink, 0.3);
+  border-left: 1px solid rgba($vapor-neon-pink, 0.3);
 }
 
 .clock {
-  font-family: $font-mono;
+  font-family: $font-vcr;
   font-size: 14px;
-  color: $cyber-text-light;
+  color: $vapor-text-light;
   padding: 0 10px;
-  text-shadow: 0 0 5px rgba($cyber-text-light, 0.5);
+  text-shadow: 0 0 5px rgba($vapor-text-light, 0.5);
 }

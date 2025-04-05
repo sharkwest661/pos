@@ -1,20 +1,24 @@
+// components/ui/Window/Window.module.scss
 @import "../../../styles/variables.scss";
 @import "../../../styles/mixins.scss";
+@import "../../../styles/effects.scss";
 
 .window {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  background-color: $cyber-dark-blue;
-  border: 1px solid $cyber-neon-pink;
-  border-radius: 2px;
-  color: $cyber-text-light;
+  background-color: rgba($vapor-dark-purple, 0.8);
+  border: 2px solid $vapor-neon-pink;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba($vapor-neon-pink, 0.5),
+    0 0 30px rgba($vapor-cyan, 0.3);
+  backdrop-filter: blur(5px);
   overflow: hidden;
   transition: box-shadow $transition-slow ease, opacity $transition-slow ease;
 
   &.active {
     opacity: 1;
-    box-shadow: $cyber-glow-pink;
+    box-shadow: 0 0 20px rgba($vapor-neon-pink, 0.8),
+      0 0 40px rgba($vapor-cyan, 0.4);
   }
 
   &:not(.active) {
@@ -28,75 +32,70 @@
     cursor: grabbing !important;
     user-select: none !important;
   }
-
-  &.darkHacker {
-    background-color: $hacker-bg;
-    border: 1px solid $hacker-green;
-
-    &.active {
-      box-shadow: $cyber-glow-green;
-    }
-  }
 }
 
 .titleBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: $cyber-dark-purple;
-  border-bottom: 1px solid $cyber-neon-pink;
-  padding: 0.2rem 0.5rem;
+  background: linear-gradient(90deg, $vapor-neon-pink, $vapor-cyan);
+  padding: 5px 10px;
   cursor: move;
-
-  &.darkHacker {
-    background-color: $hacker-panel;
-    border-bottom: 1px solid $hacker-green;
-  }
 }
 
 .title {
-  font-family: $font-mono;
-  font-size: 0.875rem;
+  font-family: $font-vcr;
+  font-size: 18px;
   font-weight: 700;
-  color: $cyber-neon-pink;
+  color: white;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-
-  &.active {
-    text-shadow: 0 0 5px rgba($cyber-neon-pink, 0.7);
-  }
-
-  &.darkHacker {
-    color: $hacker-green;
-
-    &.active {
-      text-shadow: 0 0 5px rgba($hacker-green, 0.7);
-    }
-  }
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .windowControls {
   display: flex;
-  gap: 8px;
+  gap: 5px;
+}
+
+.window-button {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
 }
 
 .closeButton {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: $cyber-warning-red;
-  border: none;
-  transition: transform $transition-standard ease,
-    box-shadow $transition-standard ease;
-  cursor: pointer;
+  @extend .window-button;
+  background-color: #ff5f5f;
 
   &:hover {
+    background-color: lighten(#ff5f5f, 10%);
     transform: scale(1.1);
-    box-shadow: 0 0 8px rgba($cyber-warning-red, 0.8);
   }
+}
 
-  &:active {
-    transform: scale(0.95);
+.minimizeButton {
+  @extend .window-button;
+  background-color: #ffbe5f;
+
+  &:hover {
+    background-color: lighten(#ffbe5f, 10%);
+    transform: scale(1.1);
+  }
+}
+
+.maximizeButton {
+  @extend .window-button;
+  background-color: #5fff5f;
+
+  &:hover {
+    background-color: lighten(#5fff5f, 10%);
+    transform: scale(1.1);
   }
 }
 
@@ -104,7 +103,7 @@
   flex: 1;
   overflow: auto;
   position: relative;
-  background-color: $cyber-dark-blue;
+  background-color: rgba($vapor-dark-purple, 0.6);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -128,49 +127,46 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color: $cyber-text-light;
-      font-family: $font-mono;
-      font-size: 0.875rem;
+      color: $vapor-text-light;
+      font-family: $font-vcr;
+      font-size: 18px;
       z-index: 51;
       opacity: 0.8;
       pointer-events: none;
     }
   }
-
-  &.darkHacker {
-    background-color: $hacker-bg;
-  }
 }
 
-.minimizeButton {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: $cyber-electric-blue;
-  border: none;
-  transition: transform $transition-standard ease,
-    box-shadow $transition-standard ease;
-  cursor: pointer;
-  position: relative;
+// For canvas-based window rendering (required in the spec)
+.canvasWindow {
+  position: absolute;
+  // Canvas window properties are mostly handled through JavaScript
+  // This is just the container style
+}
 
-  &::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 10px;
-    height: 2px;
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 1px;
+// Custom scrollbar for window content
+.content {
+  scrollbar-width: thin;
+  scrollbar-color: $vapor-neon-pink rgba($vapor-dark-purple, 0.4);
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
   }
 
-  &:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 8px rgba($cyber-electric-blue, 0.8);
+  &::-webkit-scrollbar-track {
+    background: rgba($vapor-dark-purple, 0.4);
+    border-radius: 4px;
   }
 
-  &:active {
-    transform: scale(0.95);
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, $vapor-neon-pink, $vapor-cyan);
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba($vapor-neon-pink, 0.5);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: $vapor-neon-pink;
+    box-shadow: 0 0 8px rgba($vapor-neon-pink, 0.7);
   }
 }

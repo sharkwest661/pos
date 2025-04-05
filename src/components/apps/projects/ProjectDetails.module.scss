@@ -1,0 +1,245 @@
+// components/apps/projects/ProjectDetails.module.scss
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+@import "../../../styles/effects.scss";
+
+.projectDetails {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  animation: fadeIn 0.3s ease;
+}
+
+.detailsHeader {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid $vapor-neon-pink;
+}
+
+.projectTitle {
+  font-size: 24px;
+  color: $vapor-dark-purple;
+  margin-bottom: 5px;
+}
+
+.projectCategory {
+  font-size: 14px;
+  color: $vapor-neon-pink;
+  font-style: italic;
+  font-family: $font-vcr;
+}
+
+.detailsContent {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+
+  // Custom scrollbar
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #e0e0e0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $vapor-neon-pink;
+    border-radius: 4px;
+  }
+}
+
+.projectThumbnail {
+  float: right;
+  margin: 0 0 20px 20px;
+  width: 200px;
+  height: 150px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.thumbnailPlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    45deg,
+    $vapor-dark-purple,
+    darken($vapor-dark-purple, 15%)
+  );
+  color: $vapor-text-light;
+  font-size: 48px;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.detailsSection {
+  margin-bottom: 25px;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  color: $vapor-dark-purple;
+  margin-bottom: 12px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+.projectDescription {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+.projectMetadata {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.metadataItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #666;
+
+  svg {
+    color: $vapor-neon-pink;
+  }
+}
+
+.technologiesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.technologyTag {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  font-size: 13px;
+  color: $vapor-dark-purple;
+
+  svg {
+    color: $vapor-neon-pink;
+  }
+
+  &:hover {
+    background-color: #e8e8e8;
+    transform: translateY(-2px);
+  }
+}
+
+.featuresList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 10px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #444;
+
+  svg {
+    color: $vapor-neon-pink;
+    flex-shrink: 0;
+  }
+}
+
+.longDescription {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #444;
+
+  p {
+    margin-bottom: 12px;
+
+    &:empty {
+      display: none;
+    }
+  }
+}
+
+.projectLinks {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.projectLink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 15px;
+  background-color: $vapor-dark-purple;
+  color: $vapor-text-light;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: all $transition-standard ease;
+
+  &:hover {
+    background-color: darken($vapor-dark-purple, 5%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.detailsFooter {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #ddd;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 15px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #444;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all $transition-standard ease;
+
+  &:hover {
+    background-color: #e6e6e6;
+    border-color: $vapor-neon-pink;
+    color: $vapor-dark-purple;
+
+    svg {
+      color: $vapor-neon-pink;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

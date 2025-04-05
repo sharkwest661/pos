@@ -1,17 +1,16 @@
-// components/desktop/Desktop/Desktop.jsx
+// components/desktop/Desktop/Desktop.jsx (updated)
 import React, { useState, useEffect } from "react";
 import {
   Music,
-  Globe,
-  Database,
-  Mail,
   FileText,
   Folder,
   Terminal,
+  Mail,
   Clipboard,
-  Search,
   FileQuestion,
   FileLock,
+  FolderOpen,
+  FileText2,
 } from "lucide-react";
 import {
   useWindowsStore,
@@ -21,14 +20,15 @@ import {
 } from "../../../store";
 import { Window } from "../../ui";
 import { Scanlines, CRTEffect } from "../../effects/Scanlines";
-import MusicPlayer from "../../apps/musicPlayer/MusicPlayer";
+import MusicPlayer from "../../apps/musicPlayer";
 import Notepad from "../../apps/notepad/Notepad";
 import TerminalApp from "../../apps/terminal";
 import Taskbar from "../Taskbar";
-import DarkWebBrowser from "../../apps/darkWeb";
-import EvidenceBoard from "../../apps/evidenceBoard";
-import DatabaseSearch from "../../apps/database";
-import SearchEngine from "../../apps/searchEngine";
+import MyProfile from "../../apps/profile";
+import Resume from "../../apps/resume";
+import Contact from "../../apps/contact";
+import Projects from "../../apps/projects";
+import Notes from "../../apps/notes";
 import TextViewer from "../../apps/textViewer";
 import styles from "./Desktop.module.scss";
 
@@ -37,84 +37,57 @@ const APP_COMPONENTS = {
   [APP_TYPES.MUSIC_PLAYER]: MusicPlayer,
   [APP_TYPES.NOTEPAD]: Notepad,
   [APP_TYPES.TERMINAL_APP]: TerminalApp,
-  [APP_TYPES.DARK_WEB]: DarkWebBrowser,
-  [APP_TYPES.EVIDENCE_BOARD]: EvidenceBoard,
-  [APP_TYPES.DATABASE]: DatabaseSearch,
-  [APP_TYPES.SEARCH_ENGINE]: SearchEngine,
   [APP_TYPES.TEXT_VIEWER]: TextViewer,
+  [APP_TYPES.MY_PROFILE]: MyProfile,
+  [APP_TYPES.RESUME]: Resume,
+  [APP_TYPES.CONTACT]: Contact,
+  [APP_TYPES.PROJECTS]: Projects,
+  [APP_TYPES.NOTES]: Notes,
 };
 
 // Desktop app definitions
 const desktopApps = [
-  // Text files with special handling
   {
-    id: "readme-file",
-    title: "README.txt",
-    icon: <FileQuestion size={24} />,
-    appType: APP_TYPES.TEXT_VIEWER,
-    props: { fileId: "readme" },
-  },
-  {
-    id: "darkweb-file",
-    title: "DarkWeb_Access.txt",
-    icon: <FileLock size={24} />,
-    appType: APP_TYPES.TEXT_VIEWER,
-    props: { fileId: "access-instructions" },
-  },
-  // Regular applications
-  {
-    id: "music-player",
-    title: "Music",
-    icon: <Music size={24} />,
-    appType: APP_TYPES.MUSIC_PLAYER,
-  },
-  {
-    id: "dark-web",
-    title: "Dark Web",
-    icon: <Globe size={24} />,
-    appType: APP_TYPES.DARK_WEB,
-  },
-  {
-    id: "database",
-    title: "Database",
-    icon: <Database size={24} />,
-    appType: APP_TYPES.DATABASE,
-  },
-  {
-    id: "search-engine",
-    title: "Search",
-    icon: <Search size={24} />,
-    appType: APP_TYPES.SEARCH_ENGINE,
-  },
-  {
-    id: "email",
-    title: "Email",
-    icon: <Mail size={24} />,
-    appType: APP_TYPES.EMAIL,
-  },
-  {
-    id: "notepad",
-    title: "Notepad",
+    id: "my-profile",
+    title: "MyProfile.html",
     icon: <FileText size={24} />,
-    appType: APP_TYPES.NOTEPAD,
+    appType: APP_TYPES.MY_PROFILE,
   },
   {
-    id: "file-explorer",
-    title: "Files",
-    icon: <Folder size={24} />,
-    appType: APP_TYPES.FILE_EXPLORER,
+    id: "projects",
+    title: "Projects",
+    icon: <FolderOpen size={24} />,
+    appType: APP_TYPES.PROJECTS,
+  },
+  {
+    id: "resume",
+    title: "Resume.doc",
+    icon: <FileText2 size={24} />,
+    appType: APP_TYPES.RESUME,
   },
   {
     id: "terminal",
-    title: "Terminal",
+    title: "Terminal.bat",
     icon: <Terminal size={24} />,
     appType: APP_TYPES.TERMINAL_APP,
   },
   {
-    id: "evidence",
-    title: "Evidence",
-    icon: <Clipboard size={24} />,
-    appType: APP_TYPES.EVIDENCE_BOARD,
+    id: "contact",
+    title: "Contact.msg",
+    icon: <Mail size={24} />,
+    appType: APP_TYPES.CONTACT,
+  },
+  {
+    id: "music-player",
+    title: "WavePlayer.wav",
+    icon: <Music size={24} />,
+    appType: APP_TYPES.MUSIC_PLAYER,
+  },
+  {
+    id: "notes",
+    title: "Notes.txt",
+    icon: <FileText size={24} />,
+    appType: APP_TYPES.NOTES,
   },
 ];
 
@@ -126,9 +99,6 @@ const Desktop = () => {
   const setActiveWindow = useWindowsStore((state) => state.setActiveWindow);
   const openWindow = useWindowsStore((state) => state.openWindow);
   const toggleMinimize = useWindowsStore((state) => state.toggleMinimize);
-  const shouldUseDarkHackerTheme = useWindowsStore(
-    (state) => state.shouldUseDarkHackerTheme
-  );
   const effectsEnabled = useThemeStore((state) => state.effectsEnabled);
 
   // Get audio controls
@@ -139,6 +109,11 @@ const Desktop = () => {
   const [selectedIcon, setSelectedIcon] = useState(null);
   const [hoveredIcon, setHoveredIcon] = useState(null);
   const [previousWindows, setPreviousWindows] = useState([]);
+
+  // Decorative elements for vaporwave theme
+  const [showSun, setShowSun] = useState(true);
+  const [showPalm, setShowPalm] = useState(true);
+  const [showStatue, setShowStatue] = useState(true);
 
   // Effect to track window changes and pause music if music player is closed
   useEffect(() => {
@@ -194,8 +169,18 @@ const Desktop = () => {
 
   return (
     <div className={styles.desktop} onClick={handleDesktopClick}>
-      {/* Desktop background */}
-      <div className={styles.backgroundOverlay}></div>
+      {/* Vaporwave grid background */}
+      <div className={styles.backgroundOverlay}>
+        <div className={styles.gridBackground}></div>
+      </div>
+
+      {/* Decorative elements */}
+      {showSun && <div className={styles.sun}></div>}
+
+      <div className={styles.decorations}>
+        {showPalm && <div className={styles.palm}>🌴</div>}
+        {showStatue && <div className={styles.statue}>🗿</div>}
+      </div>
 
       {/* Desktop icons */}
       <div className={styles.iconsContainer}>
@@ -233,10 +218,10 @@ const Desktop = () => {
       </div>
 
       {/* Scanlines effect if enabled */}
-      {effectsEnabled.scanlines && <Scanlines opacity={0.1} />}
+      {effectsEnabled?.scanlines && <Scanlines opacity={0.1} />}
 
       {/* CRT effect if enabled */}
-      {effectsEnabled.crt && <CRTEffect opacity={0.2} />}
+      {effectsEnabled?.crt && <CRTEffect opacity={0.2} />}
 
       {/* Desktop content - windows */}
       <div className={styles.windows}>
@@ -266,7 +251,6 @@ const Desktop = () => {
               onMinimize={toggleMinimize}
               resizable={false}
               onFocus={setActiveWindow}
-              darkHackerTheme={shouldUseDarkHackerTheme(window.appType)}
             >
               <AppComponent {...window.props} />
             </Window>

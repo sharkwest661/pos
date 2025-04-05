@@ -1,0 +1,360 @@
+// components/apps/terminal/AestheticPuzzle.module.scss
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+@import "../../../styles/effects.scss";
+
+.puzzleContainer {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #000000;
+  color: $vapor-cyan;
+  font-family: $font-vcr;
+  padding: 15px;
+
+  // Custom scrollbar
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba($vapor-neon-pink, 0.5);
+    border-radius: 0;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: $vapor-neon-pink;
+  }
+}
+
+.gameHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid $vapor-neon-pink;
+}
+
+.gameTitle {
+  font-size: 18px;
+  color: $vapor-neon-pink;
+  text-shadow: 0 0 5px rgba($vapor-neon-pink, 0.7);
+}
+
+.attempts {
+  color: $vapor-cyan;
+  font-size: 14px;
+}
+
+.guessDisplay {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.symbolSlot {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #050505;
+  border: 2px solid $vapor-neon-pink;
+  color: $vapor-cyan;
+  font-size: 28px;
+  text-shadow: 0 0 5px $vapor-cyan;
+  box-shadow: 0 0 10px rgba($vapor-neon-pink, 0.3);
+
+  // Blinking cursor for the active position
+  &:empty:last-of-type::after {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 24px;
+    background-color: $vapor-cyan;
+    animation: blink 1s step-end infinite;
+  }
+}
+
+.symbolSelector {
+  margin-bottom: 20px;
+}
+
+.symbolGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.symbolButton {
+  height: 45px;
+  background-color: #0a0a0a;
+  border: 1px solid $vapor-cyan;
+  color: $vapor-cyan;
+  font-family: $font-vcr;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all $transition-standard ease;
+
+  &:hover:not(:disabled) {
+    background-color: rgba($vapor-neon-pink, 0.2);
+    border-color: $vapor-neon-pink;
+    color: $vapor-neon-pink;
+    box-shadow: 0 0 10px rgba($vapor-neon-pink, 0.5);
+    transform: translateY(-2px);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+.controlButtons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.controlButton,
+.submitButton {
+  padding: 8px 15px;
+  background-color: #0a0a0a;
+  font-family: $font-vcr;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all $transition-standard ease;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+}
+
+.controlButton {
+  border: 1px solid $vapor-cyan;
+  color: $vapor-cyan;
+
+  &:hover:not(:disabled) {
+    background-color: rgba($vapor-cyan, 0.2);
+    box-shadow: 0 0 10px rgba($vapor-cyan, 0.5);
+  }
+}
+
+.submitButton {
+  border: 1px solid $vapor-neon-pink;
+  color: $vapor-neon-pink;
+
+  &:hover:not(:disabled) {
+    background-color: rgba($vapor-neon-pink, 0.2);
+    box-shadow: 0 0 10px rgba($vapor-neon-pink, 0.5);
+  }
+}
+
+.message {
+  text-align: center;
+  color: #ff6b6b;
+  margin: 10px 0;
+  padding: 5px;
+  border: 1px solid #ff6b6b;
+  animation: fadeIn 0.3s ease;
+}
+
+.attemptsHistory {
+  margin-top: 30px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid $vapor-cyan;
+}
+
+.historyTitle {
+  font-size: 16px;
+  color: $vapor-cyan;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px dashed $vapor-cyan;
+}
+
+.noAttempts {
+  text-align: center;
+  padding: 10px;
+  font-style: italic;
+  color: rgba($vapor-cyan, 0.7);
+}
+
+.attemptsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.attemptRow {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-left: 3px solid $vapor-neon-pink;
+  gap: 10px;
+}
+
+.attemptNumber {
+  width: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: $vapor-neon-pink;
+}
+
+.attemptGuess {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+}
+
+.guessSymbol {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid $vapor-cyan;
+  color: $vapor-cyan;
+  font-size: 20px;
+}
+
+.attemptFeedback {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 12px;
+}
+
+.feedbackCorrect {
+  color: #00ff00;
+}
+
+.feedbackMisplaced {
+  color: #ffff00;
+}
+
+.instructions {
+  margin-top: 30px;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid $vapor-neon-pink;
+
+  h3 {
+    color: $vapor-neon-pink;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+
+  p {
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  ul {
+    padding-left: 20px;
+    margin-top: 8px;
+
+    li {
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+  }
+}
+
+.exitButtonContainer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.exitButton {
+  padding: 8px 20px;
+  background-color: #0a0a0a;
+  border: 1px solid #ff5f5f;
+  color: #ff5f5f;
+  font-family: $font-vcr;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all $transition-standard ease;
+
+  &:hover:not(:disabled) {
+    background-color: rgba(255, 95, 95, 0.2);
+    box-shadow: 0 0 10px rgba(255, 95, 95, 0.5);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.winMessage,
+.loseMessage {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 20px;
+  animation: fadeIn 0.5s ease;
+
+  h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+}
+
+.winMessage {
+  h3 {
+    color: #00ff00;
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.7);
+  }
+}
+
+.loseMessage {
+  h3 {
+    color: #ff5f5f;
+    text-shadow: 0 0 8px rgba(255, 95, 95, 0.7);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
