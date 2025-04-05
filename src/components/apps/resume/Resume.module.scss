@@ -1,0 +1,325 @@
+// components/apps/resume/Resume.module.scss
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+@import "../../../styles/effects.scss";
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f0f0;
+  color: #000000;
+  position: relative;
+  overflow: hidden;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $vapor-dark-purple;
+  padding: 8px 16px;
+  border-bottom: 1px solid $vapor-neon-pink;
+}
+
+.docTitle {
+  font-family: $font-vcr;
+  color: $vapor-text-light;
+  font-size: 14px;
+}
+
+.toolbarActions {
+  display: flex;
+  gap: 10px;
+}
+
+.toolbarButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background-color: rgba($vapor-dark-blue, 0.5);
+  border: 1px solid $vapor-neon-pink;
+  border-radius: 2px;
+  color: $vapor-text-light;
+  font-family: $font-vcr;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all $transition-standard ease;
+
+  &:hover {
+    background-color: rgba($vapor-dark-blue, 0.8);
+    box-shadow: 0 0 5px rgba($vapor-neon-pink, 0.5);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 150px;
+  background-color: #e0e0e0;
+  padding: 15px 10px;
+  border-right: 1px solid #d0d0d0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebarButton {
+  padding: 8px 12px;
+  text-align: left;
+  font-family: $font-content;
+  font-size: 14px;
+  color: #333;
+  background-color: transparent;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all $transition-standard ease;
+
+  &:hover {
+    background-color: #d0d0d0;
+  }
+
+  &.active {
+    background-color: $vapor-neon-pink;
+    color: white;
+    font-weight: bold;
+  }
+}
+
+.resumeContent {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+
+  // Custom scrollbar
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #e0e0e0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $vapor-neon-pink;
+    border-radius: 4px;
+  }
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.name {
+  font-family: $font-content;
+  font-size: 24px;
+  font-weight: bold;
+  color: $vapor-neon-pink;
+  margin-bottom: 5px;
+}
+
+.title {
+  font-family: $font-content;
+  font-size: 18px;
+  color: $vapor-dark-purple;
+  margin-bottom: 15px;
+}
+
+.contactInfo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  color: #555;
+}
+
+.divider {
+  height: 2px;
+  background: linear-gradient(90deg, $vapor-neon-pink, $vapor-cyan);
+  margin-bottom: 20px;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.sectionTitle {
+  font-family: $font-content;
+  font-size: 18px;
+  font-weight: bold;
+  color: $vapor-dark-purple;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+// Experience section
+.experienceItem {
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed #d0d0d0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.experienceHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.role {
+  font-family: $font-content;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 3px;
+}
+
+.company {
+  font-family: $font-content;
+  font-size: 14px;
+  color: $vapor-neon-pink;
+  margin-bottom: 8px;
+}
+
+.period {
+  font-family: $font-vcr;
+  font-size: 14px;
+  color: #777;
+}
+
+.description {
+  font-family: $font-content;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.highlights {
+  padding-left: 20px;
+
+  li {
+    font-family: $font-content;
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 5px;
+  }
+}
+
+// Education section
+.educationItem {
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed #d0d0d0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.educationHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.degree {
+  font-family: $font-content;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 3px;
+}
+
+.institution {
+  font-family: $font-content;
+  font-size: 14px;
+  color: $vapor-neon-pink;
+  margin-bottom: 8px;
+}
+
+// Skills section
+.skillsGrid {
+  display: flex;
+  gap: 30px;
+}
+
+.skillsColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.skillItem {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.skillInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.skillName {
+  font-family: $font-content;
+  font-size: 14px;
+  color: #333;
+}
+
+.skillLevel {
+  font-family: $font-vcr;
+  font-size: 12px;
+  color: #777;
+}
+
+.skillBar {
+  height: 6px;
+  background-color: #e0e0e0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.skillFill {
+  height: 100%;
+  background: linear-gradient(90deg, $vapor-neon-pink, $vapor-cyan);
+  border-radius: 3px;
+  transition: width 1s ease-out;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  background-color: #e0e0e0;
+  border-top: 1px solid #d0d0d0;
+}
+
+.pageIndicator {
+  font-family: $font-content;
+  font-size: 12px;
+  color: #777;
+}

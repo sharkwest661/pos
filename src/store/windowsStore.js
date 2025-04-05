@@ -1,40 +1,34 @@
-// store/windowsStore.js
+// store/windowsStore.js (updated for Vaporwave OS)
 import { create } from "zustand";
 
 // Window app types
 const APP_TYPES = {
-  DARK_WEB: "darkWeb",
-  SEARCH_ENGINE: "searchEngine",
-  DATABASE: "database",
-  EVIDENCE_BOARD: "evidenceBoard",
-  EMAIL: "email",
-  NOTEPAD: "notepad",
-  FILE_EXPLORER: "fileExplorer",
+  // Original app types
   MUSIC_PLAYER: "musicPlayer",
+  NOTEPAD: "notepad",
   TERMINAL_APP: "terminalApp",
-  TEXT_VIEWER: "textViewer", // New app type
-};
+  TEXT_VIEWER: "textViewer",
 
-// Theme associations for each app
-const APP_THEMES = {
-  [APP_TYPES.DARK_WEB]: "darkHacker",
-  [APP_TYPES.TERMINAL_APP]: "darkHacker",
-  [APP_TYPES.DATABASE]: "darkHacker", // Assuming we want database to use hacker theme
-  // All other apps will use default cyberpunk theme if not specified
+  // New app types for Vaporwave OS
+  MY_PROFILE: "myProfile",
+  RESUME: "resume",
+  CONTACT: "contact",
+  PROJECTS: "projects",
+  NOTES: "notes",
 };
 
 // Default positions for initial window placement
 const DEFAULT_POSITIONS = {
-  [APP_TYPES.DARK_WEB]: { x: 50, y: 50, width: 1200, height: 650 },
-  [APP_TYPES.SEARCH_ENGINE]: { x: 80, y: 80, width: 1000, height: 750 },
-  [APP_TYPES.DATABASE]: { x: 100, y: 100, width: 1100, height: 750 },
-  [APP_TYPES.EVIDENCE_BOARD]: { x: 120, y: 120, width: 900, height: 650 },
-  [APP_TYPES.EMAIL]: { x: 140, y: 140, width: 650, height: 500 },
-  [APP_TYPES.NOTEPAD]: { x: 160, y: 160, width: 750, height: 600 },
-  [APP_TYPES.FILE_EXPLORER]: { x: 180, y: 180, width: 600, height: 450 },
-  [APP_TYPES.MUSIC_PLAYER]: { x: 200, y: 200, width: 350, height: 580 },
-  [APP_TYPES.TERMINAL_APP]: { x: 220, y: 220, width: 650, height: 500 },
-  [APP_TYPES.TEXT_VIEWER]: { x: 240, y: 240, width: 700, height: 600 },
+  // Define positions for all app types - x, y are the top-left corner positions
+  [APP_TYPES.MY_PROFILE]: { x: 100, y: 50, width: 500, height: 400 },
+  [APP_TYPES.PROJECTS]: { x: 150, y: 70, width: 700, height: 500 },
+  [APP_TYPES.RESUME]: { x: 200, y: 90, width: 600, height: 550 },
+  [APP_TYPES.TERMINAL_APP]: { x: 250, y: 110, width: 650, height: 450 },
+  [APP_TYPES.CONTACT]: { x: 300, y: 130, width: 550, height: 500 },
+  [APP_TYPES.MUSIC_PLAYER]: { x: 350, y: 150, width: 370, height: 500 },
+  [APP_TYPES.NOTES]: { x: 400, y: 170, width: 650, height: 450 },
+  [APP_TYPES.TEXT_VIEWER]: { x: 450, y: 190, width: 600, height: 400 },
+  [APP_TYPES.NOTEPAD]: { x: 500, y: 210, width: 600, height: 450 },
 };
 
 // Create the windows store
@@ -47,12 +41,6 @@ const useWindowsStore = create((set, get) => ({
 
   // Counter for generating unique window IDs
   windowIdCounter: 0,
-
-  // Get theme for a specific app type
-  getAppTheme: (appType) => APP_THEMES[appType] || "cyberpunk",
-
-  // Check if an app should use dark hacker theme
-  shouldUseDarkHackerTheme: (appType) => APP_THEMES[appType] === "darkHacker",
 
   // Open a new window
   openWindow: (appType, title, props = {}) => {
@@ -182,9 +170,6 @@ const useWindowsStore = create((set, get) => ({
       // Toggle minimize state
       const isMinimized = !window.isMinimized;
 
-      // Remove the special handling for music player when minimizing
-      // This allows music to continue playing when minimized
-
       // Update windows
       const updatedWindows = state.windows.map((w) =>
         w.id === windowId ? { ...w, isMinimized } : w
@@ -264,4 +249,4 @@ const useWindowsStore = create((set, get) => ({
 }));
 
 // Export the store and constants
-export { useWindowsStore, APP_TYPES, APP_THEMES };
+export { useWindowsStore, APP_TYPES };
