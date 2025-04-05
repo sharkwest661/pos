@@ -1,0 +1,325 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+  background-color: $cyber-dark-blue;
+  color: $cyber-text-light;
+  overflow: hidden;
+}
+
+// Sidebar
+.sidebar {
+  width: 280px;
+  border-right: 1px solid rgba($cyber-neon-pink, 0.3);
+  display: flex;
+  flex-direction: column;
+  transition: transform $transition-standard ease;
+  background-color: rgba($cyber-dark-purple, 0.5);
+
+  &.hidden {
+    transform: translateX(-100%);
+  }
+}
+
+.sidebarHeader {
+  padding: 1rem;
+  border-bottom: 1px solid rgba($cyber-neon-pink, 0.3);
+}
+
+.sidebarTitle {
+  font-family: $font-mono;
+  font-size: 0.875rem;
+  color: $cyber-neon-pink;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 5px rgba($cyber-neon-pink, 0.5);
+}
+
+.searchContainer {
+  position: relative;
+  margin-top: 0.5rem;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.5rem 0.5rem 0.5rem 2rem;
+  background-color: rgba($cyber-dark-blue, 0.5);
+  border: 1px solid rgba($cyber-cyan, 0.4);
+  color: $cyber-text-light;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  outline: none;
+  transition: all $transition-standard ease;
+
+  &:focus {
+    border-color: $cyber-cyan;
+    box-shadow: 0 0 5px rgba($cyber-cyan, 0.5);
+  }
+
+  &::placeholder {
+    color: rgba($cyber-text-light, 0.5);
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $cyber-cyan;
+  opacity: 0.7;
+}
+
+.notesList {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+
+  @include custom-scrollbar(
+    rgba($cyber-dark-blue, 0.6),
+    rgba($cyber-neon-pink, 0.7)
+  );
+}
+
+.noteItem {
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  border-radius: 2px;
+  background-color: rgba($cyber-dark-blue, 0.3);
+  cursor: pointer;
+  transition: all $transition-standard ease;
+  border-left: 2px solid transparent;
+
+  &:hover {
+    background-color: rgba($cyber-dark-blue, 0.5);
+  }
+
+  &.active {
+    background-color: rgba($cyber-dark-blue, 0.7);
+    border-left: 2px solid $cyber-neon-pink;
+    box-shadow: 0 0 5px rgba($cyber-neon-pink, 0.3);
+  }
+}
+
+.noteTitle {
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+  color: $cyber-cyan;
+  @include truncate;
+}
+
+.noteDate {
+  font-size: 0.7rem;
+  color: rgba($cyber-text-light, 0.6);
+  margin-bottom: 0.25rem;
+  font-family: $font-mono;
+}
+
+.notePreview {
+  font-size: 0.75rem;
+  color: rgba($cyber-text-light, 0.8);
+  line-height: 1.4;
+  max-height: 2.8em;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.sidebarFooter {
+  padding: 0.75rem;
+  height: 65px;
+  border-top: 1px solid rgba($cyber-neon-pink, 0.3);
+}
+
+.newNoteButton {
+  @include cyberpunk-button(
+    rgba($cyber-dark-blue, 0.7),
+    $cyber-neon-pink,
+    $cyber-neon-pink
+  );
+  width: 100%;
+  font-size: 0.75rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+// Main content area
+.contentArea {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.toolbar {
+  padding: 0.5rem;
+  background-color: rgba($cyber-dark-purple, 0.5);
+  border-bottom: 1px solid rgba($cyber-neon-pink, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toolbarButton {
+  background: none;
+  border: none;
+  color: $cyber-text-light;
+  padding: 0.25rem;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all $transition-standard ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: rgba($cyber-dark-blue, 0.5);
+    color: $cyber-cyan;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.editor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.titleBar {
+  padding: 0.75rem;
+  background-color: rgba($cyber-dark-blue, 0.3);
+}
+
+.editorTitle {
+  font-size: 1.25rem;
+  color: $cyber-neon-pink;
+  font-weight: 600;
+  margin: 0;
+  cursor: text;
+  text-shadow: 0 0 5px rgba($cyber-neon-pink, 0.3);
+  font-family: $font-display;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-decoration-color: rgba($cyber-neon-pink, 0.5);
+  }
+}
+
+.titleInput {
+  font-size: 1.25rem;
+  color: $cyber-neon-pink;
+  font-weight: 600;
+  background: none;
+  border: none;
+  border-bottom: 1px dashed $cyber-neon-pink;
+  outline: none;
+  width: 100%;
+  padding: 0 0 0.25rem 0;
+  font-family: $font-display;
+
+  &:focus {
+    border-bottom: 1px solid $cyber-neon-pink;
+    box-shadow: 0 2px 0 rgba($cyber-neon-pink, 0.3);
+  }
+}
+
+.contentEditor {
+  flex: 1;
+  padding: 1rem;
+  background-color: rgba($cyber-dark-blue, 0.5);
+  border: none;
+  color: $cyber-text-light;
+  font-family: $font-content;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  resize: none;
+  outline: none;
+  overflow-y: auto;
+
+  @include custom-scrollbar(
+    rgba($cyber-dark-blue, 0.6),
+    rgba($cyber-cyan, 0.7)
+  );
+
+  &::placeholder {
+    color: rgba($cyber-text-light, 0.4);
+  }
+}
+
+.emptyState {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba($cyber-dark-blue, 0.5);
+  padding: 1rem;
+}
+
+.emptyStateContent {
+  text-align: center;
+  max-width: 400px;
+
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: $cyber-cyan;
+    text-shadow: 0 0 5px rgba($cyber-cyan, 0.5);
+  }
+
+  p {
+    color: rgba($cyber-text-light, 0.7);
+    margin-bottom: 1.5rem;
+  }
+}
+
+.createButton {
+  @include cyberpunk-button(
+    rgba($cyber-dark-blue, 0.7),
+    $cyber-neon-pink,
+    $cyber-neon-pink
+  );
+  font-size: 0.9rem;
+  padding: 0.5rem 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.statusBar {
+  padding: 0.5rem;
+  background-color: rgba($cyber-dark-purple, 0.5);
+  border-top: 1px solid rgba($cyber-neon-pink, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: rgba($cyber-text-light, 0.7);
+}
+
+.statusItem {
+  display: flex;
+  align-items: center;
+}
+
+.emptyMessage {
+  padding: 1rem;
+  text-align: center;
+  color: rgba($cyber-text-light, 0.5);
+  font-style: italic;
+  font-size: 0.875rem;
+}

@@ -1,0 +1,203 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.desktop {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: $cyber-dark-blue;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  background-size: cover;
+  background-position: center;
+}
+
+.backgroundOverlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+      rgba($cyber-neon-pink, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba($cyber-neon-pink, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: 1;
+}
+
+.windows {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 48px; /* Account for taskbar height */
+  pointer-events: none; /* This is the key fix - let clicks pass through to desktop icons */
+  z-index: 20;
+
+  /* Only windows themselves should capture pointer events */
+  & > * {
+    pointer-events: auto;
+  }
+}
+
+.iconsContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 48px; /* Account for taskbar height */
+  padding: 12px;
+  z-index: 10; /* Above background, below windows */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 80px); /* Fixed width columns */
+  grid-auto-rows: minmax(100px, auto); /* Minimum height with auto expansion */
+  grid-gap: 12px; /* Slightly larger gap for better separation */
+  align-content: start;
+}
+
+.desktopIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Align items to the top */
+  text-align: center;
+  width: 80px;
+  height: auto; /* Allow height to adjust based on content */
+  min-height: 100px; /* Minimum height */
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all $transition-standard ease;
+  user-select: none;
+
+  &:hover,
+  &.hovered {
+    background-color: rgba($cyber-dark-purple, 0.5);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &.active {
+    .iconWrapper {
+      border-color: $cyber-electric-blue;
+      box-shadow: 0 0 8px rgba($cyber-electric-blue, 0.5);
+    }
+  }
+
+  &.selected {
+    background-color: rgba($cyber-dark-purple, 0.6);
+    box-shadow: 0 0 8px rgba($cyber-neon-pink, 0.5);
+
+    .iconLabel {
+      color: $cyber-neon-pink;
+      text-shadow: 0 0 5px rgba($cyber-neon-pink, 0.5);
+    }
+
+    .iconWrapper {
+      border: 2px solid $cyber-neon-pink;
+      box-shadow: 0 0 8px rgba($cyber-neon-pink, 0.5);
+    }
+  }
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 8px;
+  background-color: rgba($cyber-dark-purple, 0.6);
+  border: 1px solid $cyber-neon-pink;
+  border-radius: 4px;
+  color: $cyber-text-light;
+  box-shadow: 0 0 5px rgba($cyber-neon-pink, 0.3);
+  flex-shrink: 0; /* Prevent icon from shrinking */
+
+  .desktopIcon:hover &,
+  .hovered & {
+    color: $cyber-neon-pink;
+    box-shadow: 0 0 8px rgba($cyber-neon-pink, 0.5);
+  }
+}
+
+.iconLabel {
+  font-family: $font-content;
+  font-size: 12px;
+  line-height: 1.2;
+  color: $cyber-text-light;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+  max-width: 100%;
+  height: auto; /* Allow height to adjust */
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3; /* Allow up to 3 lines */
+  -webkit-box-orient: vertical;
+  text-align: center;
+  word-break: break-word; /* Better word breaking for long filenames */
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 8px;
+  background-color: rgba($cyber-dark-purple, 0.6);
+  border: 1px solid $cyber-neon-pink;
+  border-radius: 4px;
+  color: $cyber-text-light;
+  box-shadow: 0 0 5px rgba($cyber-neon-pink, 0.3);
+
+  .desktopIcon:hover &,
+  .hovered & {
+    color: $cyber-neon-pink;
+    box-shadow: 0 0 8px rgba($cyber-neon-pink, 0.5);
+  }
+}
+
+.iconLabel {
+  font-family: $font-content;
+  font-size: 12px;
+  color: $cyber-text-light;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-align: center;
+}
+
+// App placeholder styles (for development)
+.appPlaceholder {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgba($cyber-dark-purple, 0.3);
+  border-radius: 4px;
+  color: $cyber-text-light;
+}
+
+.appTitle {
+  font-family: $font-display;
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: $cyber-neon-pink;
+  text-shadow: 0 0 5px rgba($cyber-neon-pink, 0.7);
+}

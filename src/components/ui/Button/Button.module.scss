@@ -1,0 +1,134 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.button {
+  transition: all $transition-standard ease;
+  cursor: pointer;
+  font-family: $font-mono;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  border-radius: 0;
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  &.fullWidth {
+    width: 100%;
+  }
+
+  // Size variants
+  &.small {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  &.medium {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  &.large {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  // Button variants
+  &.primary {
+    background-color: $cyber-dark-purple;
+    color: $cyber-neon-pink;
+    border: 1px solid $cyber-neon-pink;
+
+    &:hover:not(.disabled) {
+      box-shadow: $cyber-glow-pink;
+    }
+
+    &:active:not(.disabled) {
+      background-color: $cyber-dark-blue;
+      transform: scale(0.98);
+    }
+  }
+
+  &.secondary {
+    background-color: $cyber-dark-purple;
+    color: $cyber-cyan;
+    border: 1px solid $cyber-cyan;
+
+    &:hover:not(.disabled) {
+      box-shadow: $cyber-glow-cyan;
+    }
+
+    &:active:not(.disabled) {
+      background-color: $cyber-dark-blue;
+      transform: scale(0.98);
+    }
+  }
+
+  &.outline {
+    background-color: transparent;
+    color: $cyber-text-light;
+    border: 1px solid $cyber-text-light;
+
+    &:active:not(.disabled) {
+      transform: scale(0.98);
+    }
+  }
+
+  &.danger {
+    background-color: $cyber-dark-purple;
+    color: $cyber-warning-red;
+    border: 1px solid $cyber-warning-red;
+
+    &:hover:not(.disabled) {
+      box-shadow: 0 0 10px rgba($cyber-warning-red, 0.7);
+    }
+
+    &:active:not(.disabled) {
+      background-color: $cyber-dark-blue;
+      transform: scale(0.98);
+    }
+  }
+
+  // Dark hacker theme variants
+  &.darkHacker {
+    &.primary {
+      background-color: $hacker-panel;
+      color: $hacker-green;
+      border: 1px solid $hacker-green;
+
+      &:hover:not(.disabled) {
+        box-shadow: $cyber-glow-green;
+      }
+
+      &:active:not(.disabled) {
+        background-color: $hacker-bg;
+      }
+    }
+
+    &.secondary {
+      background-color: $hacker-panel;
+      color: $hacker-green;
+      border: 1px solid $hacker-green;
+
+      &:hover:not(.disabled) {
+        box-shadow: $cyber-glow-green;
+      }
+
+      &:active:not(.disabled) {
+        background-color: $hacker-bg;
+      }
+    }
+
+    &.danger {
+      background-color: $hacker-panel;
+      color: $hacker-red;
+      border: 1px solid $hacker-red;
+
+      &:hover:not(.disabled) {
+        box-shadow: 0 0 10px rgba($hacker-red, 0.7);
+      }
+    }
+  }
+}

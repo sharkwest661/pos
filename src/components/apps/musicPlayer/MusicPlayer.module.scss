@@ -1,0 +1,524 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: $cyber-dark-blue;
+
+  /* Custom scrollbar within the music player */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, $cyber-neon-pink, $cyber-cyan);
+    border-radius: 2px;
+    box-shadow: 0 0 5px rgba($cyber-neon-pink, 0.7);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: $cyber-neon-pink;
+    box-shadow: 0 0 8px rgba($cyber-neon-pink, 0.9);
+  }
+
+  /* Custom scrollbar for Dark Hacker theme (if needed) */
+  &.darkHacker {
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(
+        45deg,
+        $hacker-green,
+        rgba($hacker-green, 0.7)
+      );
+      box-shadow: 0 0 5px rgba($hacker-green, 0.7);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: $hacker-green;
+      box-shadow: 0 0 8px rgba($hacker-green, 0.9);
+    }
+  }
+}
+
+// Navigation tabs
+.tabsContainer {
+  display: flex;
+  border-bottom: 1px solid rgba($cyber-cyan, 0.2);
+}
+
+.tab {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-family: $font-mono;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all $transition-standard ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $cyber-text-light;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+
+  &:hover:not(.active) {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  &.active {
+    border-bottom: 2px solid $cyber-neon-pink;
+    color: $cyber-neon-pink;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  .tabIcon {
+    margin-right: 0.5rem;
+  }
+}
+
+// Content area
+.content {
+  flex: 1;
+  overflow: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+// Player view
+.playerView {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.visualizer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 12rem;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  border: 1px solid $cyber-cyan;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  gap: 2px; /* Add spacing between bars */
+}
+
+.visualizerBar {
+  margin: 0 1px;
+  width: 6px;
+  background-color: $cyber-neon-pink;
+  box-shadow: 0 0 5px $cyber-neon-pink;
+  // Note: transition is set inline for dynamic duration
+}
+
+.trackInfo {
+  padding: 0 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.trackTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $cyber-neon-pink;
+  text-shadow: 0 0 5px $cyber-neon-pink;
+  margin-bottom: 0.25rem;
+  @include truncate;
+}
+
+.trackArtist {
+  font-size: 1rem;
+  color: $cyber-text-light;
+  margin-bottom: 0.25rem;
+  @include truncate;
+}
+
+.favoriteButton {
+  padding: 0.25rem;
+  transition: all $transition-standard ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem auto 0;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+// Progress bar
+.progressContainer {
+  padding: 0 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.progressInput {
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    $cyber-neon-pink 0%,
+    $cyber-neon-pink var(--progress-percent, 0%),
+    rgba(31, 41, 55, 0.7) var(--progress-percent, 0%),
+    rgba(31, 41, 55, 0.7) 100%
+  );
+  border-radius: 2px;
+  box-shadow: 0 0 5px $cyber-neon-pink;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: $cyber-cyan;
+    box-shadow: 0 0 5px $cyber-cyan;
+    cursor: pointer;
+  }
+
+  &::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border: none;
+    border-radius: 50%;
+    background: $cyber-cyan;
+    box-shadow: 0 0 5px $cyber-cyan;
+    cursor: pointer;
+  }
+}
+
+.progressTimes {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  font-family: $font-mono;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+// Controls
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.controlButton {
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color $transition-standard ease;
+
+  &:hover {
+    color: $cyber-cyan;
+  }
+}
+
+.playButton {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition-standard ease;
+  background: linear-gradient(135deg, $cyber-neon-pink 0%, $cyber-cyan 100%);
+  box-shadow: 0 0 15px $cyber-neon-pink;
+  border: none;
+  cursor: pointer;
+
+  &.isPlaying {
+    transform: scale(1.05);
+  }
+
+  .playIcon {
+    color: #000;
+    margin-left: 2px;
+  }
+
+  .pauseIcon {
+    color: #000;
+  }
+}
+
+// Volume
+.volumeContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.volumeButton {
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  transition: all $transition-standard ease;
+
+  &:hover {
+    color: $cyber-cyan;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+}
+
+.volumeSliderContainer {
+  position: relative;
+  flex: 1;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.volumeTrack {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color: rgba(31, 41, 55, 0.5);
+  border-radius: 2px;
+}
+
+.volumeProgress {
+  position: absolute;
+  height: 4px;
+  background-color: $cyber-cyan;
+  border-radius: 2px;
+  box-shadow: 0 0 5px $cyber-cyan;
+}
+
+.volumeThumb {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: $cyber-cyan;
+  box-shadow: 0 0 5px $cyber-cyan;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.volumeInput {
+  position: absolute;
+  width: 100%;
+  height: 20px; /* Make hit area larger for better UX */
+  cursor: pointer;
+  opacity: 0;
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+// Playlist view
+.playlistView {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.playlistHeader {
+  padding: 0.75rem 1rem;
+  font-family: $font-mono;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid $cyber-cyan;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.playlistTitle {
+  color: $cyber-cyan;
+}
+
+.playlistCount {
+  font-size: 0.75rem;
+  color: $cyber-text-light;
+}
+
+.tracksList {
+  flex: 1;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $cyber-cyan;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba($cyber-cyan, 0.7);
+  }
+}
+
+.trackItem {
+  padding: 0.75rem;
+  margin: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all $transition-standard ease;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-left: 2px solid transparent;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  &.active {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left: 2px solid $cyber-neon-pink;
+  }
+}
+
+.trackNumber {
+  width: 2rem;
+  font-family: $font-mono;
+  text-align: center;
+  margin-right: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+
+  &.active {
+    color: $cyber-neon-pink;
+  }
+}
+
+.playingAnimation {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 16px;
+  gap: 1px;
+
+  .bar {
+    display: block;
+    width: 2px;
+    background-color: $cyber-neon-pink;
+    animation: playing-animation 1.2s ease infinite;
+    box-shadow: 0 0 2px $cyber-neon-pink;
+
+    &:nth-child(1) {
+      height: 8px;
+      animation-delay: 0s;
+    }
+
+    &:nth-child(2) {
+      height: 16px;
+      animation-delay: 0.2s;
+    }
+
+    &:nth-child(3) {
+      height: 10px;
+      animation-delay: 0.4s;
+    }
+  }
+}
+
+.trackDetails {
+  flex: 1;
+  min-width: 0;
+}
+
+.trackItemTitle {
+  font-weight: 500;
+  @include truncate;
+
+  &.active {
+    color: $cyber-neon-pink;
+  }
+}
+
+.trackItemArtist {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  @include truncate;
+}
+
+.trackActions {
+  display: flex;
+  align-items: center;
+}
+
+.trackFavorite {
+  padding: 0.5rem;
+  opacity: 0.6;
+  transition: opacity $transition-standard ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.trackDuration {
+  font-size: 0.75rem;
+  font-family: $font-mono;
+  color: rgba(255, 255, 255, 0.4);
+  margin-left: 0.5rem;
+}
+
+.playlistFooter {
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid $cyber-cyan;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.playlistFooterText {
+  font-size: 0.75rem;
+  color: $cyber-text-light;
+}
+
+@keyframes playing-animation {
+  0% {
+    height: 8px;
+  }
+  50% {
+    height: 16px;
+  }
+  100% {
+    height: 8px;
+  }
+}

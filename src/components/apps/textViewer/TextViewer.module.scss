@@ -1,0 +1,83 @@
+// components/apps/textViewer/TextViewer.module.scss
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: rgba($cyber-dark-blue, 0.9);
+  color: $cyber-text-light;
+  font-family: $font-content;
+  overflow: hidden;
+}
+
+.header {
+  padding: 1rem;
+  border-bottom: 1px solid $cyber-neon-pink;
+  background-color: rgba($cyber-dark-purple, 0.8);
+}
+
+.fileName {
+  font-family: $font-mono;
+  color: $cyber-neon-pink;
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+  text-shadow: 0 0 5px rgba($cyber-neon-pink, 0.5);
+}
+
+.fileInfo {
+  font-size: 0.8rem;
+  color: rgba($cyber-text-light, 0.7);
+  font-family: $font-mono;
+}
+
+.content {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  line-height: 1.6;
+  font-size: 1rem;
+
+  @include custom-scrollbar(
+    rgba($cyber-dark-blue, 0.6),
+    rgba($cyber-neon-pink, 0.7)
+  );
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  .heading {
+    color: $cyber-cyan;
+    font-family: $font-display;
+    font-size: 1.5rem;
+    margin: 1.5rem 0 1rem;
+    text-shadow: 0 0 5px rgba($cyber-cyan, 0.5);
+    border-bottom: 1px solid rgba($cyber-cyan, 0.3);
+    padding-bottom: 0.5rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .subheading {
+    color: $cyber-electric-blue;
+    font-family: $font-display;
+    font-size: 1.2rem;
+    margin: 1.2rem 0 0.8rem;
+    text-shadow: 0 0 3px rgba($cyber-electric-blue, 0.5);
+  }
+}
+
+.noFile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-family: $font-mono;
+  color: rgba($cyber-text-light, 0.6);
+  font-style: italic;
+}

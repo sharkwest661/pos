@@ -1,0 +1,40 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 10;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.3) 50%
+  );
+  background-size: 100% 4px;
+  background-repeat: repeat;
+  will-change: opacity;
+  transform: translateZ(0); // Force GPU rendering
+}
+
+.crtEffect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 11;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    rgba(0, 0, 0, 0.2) 80%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  transform: translateZ(0); // Force GPU rendering
+  will-change: opacity;
+  backface-visibility: hidden;
+}

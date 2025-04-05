@@ -1,0 +1,16 @@
+// components/common/ConfirmationModal/ConfirmationModal.module.scss
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.message {
+  font-family: $font-content;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0.5rem 0;
+
+  // Add subtle emphasis to the message
+  strong {
+    color: $cyber-cyan;
+    font-weight: 600;
+  }
+}

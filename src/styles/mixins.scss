@@ -1,0 +1,92 @@
+@import "./variables.scss";
+
+// Flex center
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Flex between
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Neon text effects
+@mixin neon-text($color, $glow-color) {
+  color: $color;
+  text-shadow: 0 0 5px $glow-color;
+}
+
+// Neon border
+@mixin neon-border($color, $width: 1px) {
+  border: $width solid $color;
+  box-shadow: 0 0 10px rgba($color, 0.7);
+}
+
+// Truncate text with ellipsis
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Custom scrollbar
+@mixin custom-scrollbar($track-color, $thumb-color) {
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $track-color;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-color;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba($thumb-color, 0.7);
+  }
+}
+
+// Performance optimization for animations
+@mixin optimize-animation {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+// Glass effect
+@mixin glass-effect($opacity: 0.2) {
+  background-color: rgba(0, 0, 0, $opacity);
+  backdrop-filter: blur(4px);
+}
+
+// Cyberpunk button
+@mixin cyberpunk-button($bg-color, $text-color, $border-color) {
+  background-color: $bg-color;
+  color: $text-color;
+  border: 1px solid $border-color;
+  font-family: $font-mono;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: $spacing-sm $spacing-md;
+  transition: all $transition-standard ease;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 0 10px rgba($border-color, 0.7);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

@@ -1,0 +1,152 @@
+@import "./reset.scss";
+@import "./variables.scss";
+@import "./mixins.scss";
+@import "./animations.scss";
+
+/* Import fonts - using Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&family=Open+Sans:wght@400;600&family=Ubuntu+Mono:wght@400;700&display=swap");
+
+/* Font settings */
+.font-mono {
+  font-family: $font-mono;
+}
+
+.font-display {
+  font-family: $font-display;
+}
+
+.font-content {
+  font-family: $font-content;
+}
+
+/* Button hover animation */
+button {
+  transition: all $transition-standard ease;
+}
+
+/* Cyberpunk-themed scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(18, 4, 88, 0.6);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, $cyber-neon-pink, $cyber-cyan);
+  border-radius: 3px;
+  box-shadow: 0 0 5px rgba($cyber-neon-pink, 0.7);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $cyber-neon-pink;
+  box-shadow: 0 0 8px rgba($cyber-neon-pink, 0.9);
+}
+
+*::selection {
+  background-color: rgba($cyber-cyan, 0.7);
+  color: white;
+}
+
+/* Firefox scrollbar compatibility */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: $cyber-neon-pink rgba(18, 4, 88, 0.6);
+}
+
+/* Custom range input styling */
+input[type="range"] {
+  appearance: none; /* Remove default styling */
+  -webkit-appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: #1f2937;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: $cyber-neon-pink;
+  box-shadow: 0 0 5px rgba($cyber-neon-pink, 0.7);
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: none;
+  border-radius: 50%;
+  background: $cyber-neon-pink;
+  box-shadow: 0 0 5px rgba($cyber-neon-pink, 0.7);
+  cursor: pointer;
+}
+
+/* Glitch text class */
+.glitch-text {
+  position: relative;
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+  animation-duration: 0.5s;
+}
+
+/* Cyberpunk neon text effect */
+.neon-text {
+  color: $cyber-text-light;
+  text-shadow: 0 0 5px rgba($cyber-cyan, 0.7);
+}
+
+.neon-text-pink {
+  color: $cyber-neon-pink;
+  text-shadow: 0 0 5px rgba($cyber-neon-pink, 0.7);
+}
+
+.neon-text-cyan {
+  color: $cyber-cyan;
+  text-shadow: 0 0 5px rgba($cyber-cyan, 0.7);
+}
+
+/* Hidden scrollbar */
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* High performance scrolling */
+.high-performance-scroll {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  will-change: scroll-position;
+}
+
+/* Hardware accelerated animations */
+.animate-hardware {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+/* Dark Hacker Theme */
+.dark-hacker-theme {
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, $hacker-green, rgba($hacker-green, 0.7));
+    box-shadow: 0 0 5px rgba($hacker-green, 0.7);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: $hacker-green;
+    box-shadow: 0 0 8px rgba($hacker-green, 0.9);
+  }
+
+  /* Firefox scrollbar compatibility */
+  * {
+    scrollbar-color: $hacker-green rgba(0, 0, 0, 0.4);
+  }
+}
