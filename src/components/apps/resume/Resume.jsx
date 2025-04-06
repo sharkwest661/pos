@@ -1,4 +1,4 @@
-// components/apps/resume/Resume.jsx
+// Updated Resume.jsx without progress bars
 import React, { useState } from "react";
 import {
   Download,
@@ -88,18 +88,18 @@ const Resume = () => {
       },
     ],
     skills: [
-      { name: "React", level: 95 },
-      { name: "JavaScript", level: 90 },
-      { name: "HTML/CSS", level: 95 },
-      { name: "TypeScript", level: 85 },
-      { name: "Responsive Design", level: 90 },
-      { name: "UI/UX Design", level: 80 },
-      { name: "Next.js", level: 75 },
-      { name: "Redux", level: 85 },
-      { name: "GraphQL", level: 70 },
-      { name: "Git/GitHub", level: 90 },
-      { name: "Webpack", level: 75 },
-      { name: "Jest/Testing", level: 80 },
+      "React",
+      "JavaScript",
+      "HTML/CSS",
+      "TypeScript",
+      "Responsive Design",
+      "UI/UX Design",
+      "Next.js",
+      "Redux",
+      "GraphQL",
+      "Git/GitHub",
+      "Webpack",
+      "Jest/Testing",
     ],
   };
 
@@ -107,15 +107,6 @@ const Resume = () => {
   const handleSectionChange = (section) => {
     setActiveSection(section);
   };
-
-  // Show skills in two columns
-  const skillsFirstColumn = resumeData.skills.slice(
-    0,
-    Math.ceil(resumeData.skills.length / 2)
-  );
-  const skillsSecondColumn = resumeData.skills.slice(
-    Math.ceil(resumeData.skills.length / 2)
-  );
 
   return (
     <div className={styles.container}>
@@ -239,43 +230,11 @@ const Resume = () => {
               <h3 className={styles.sectionTitle}>Technical Skills</h3>
 
               <div className={styles.skillsGrid}>
-                <div className={styles.skillsColumn}>
-                  {skillsFirstColumn.map((skill, index) => (
-                    <div key={index} className={styles.skillItem}>
-                      <div className={styles.skillInfo}>
-                        <span className={styles.skillName}>{skill.name}</span>
-                        <span className={styles.skillLevel}>
-                          {skill.level}%
-                        </span>
-                      </div>
-                      <div className={styles.skillBar}>
-                        <div
-                          className={styles.skillFill}
-                          style={{ width: `${skill.level}%` }}
-                        ></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className={styles.skillsColumn}>
-                  {skillsSecondColumn.map((skill, index) => (
-                    <div key={index} className={styles.skillItem}>
-                      <div className={styles.skillInfo}>
-                        <span className={styles.skillName}>{skill.name}</span>
-                        <span className={styles.skillLevel}>
-                          {skill.level}%
-                        </span>
-                      </div>
-                      <div className={styles.skillBar}>
-                        <div
-                          className={styles.skillFill}
-                          style={{ width: `${skill.level}%` }}
-                        ></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                {resumeData.skills.map((skill, index) => (
+                  <div key={index} className={styles.skillItem}>
+                    <span className={styles.skillName}>{skill}</span>
+                  </div>
+                ))}
               </div>
             </div>
           )}
