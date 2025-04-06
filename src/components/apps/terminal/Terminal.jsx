@@ -1,7 +1,7 @@
 // components/apps/terminal/Terminal.jsx
 import React, { useState, useEffect, useRef } from "react";
 import { Scanlines } from "../../effects/Scanlines";
-import { useThemeStore } from "../../../store";
+import { useThemeStore, useTerminalStore } from "../../../store";
 import AestheticPuzzle from "./AestheticPuzzle";
 import styles from "./Terminal.module.scss";
 
@@ -9,16 +9,29 @@ const Terminal = () => {
   // Get theme configuration
   const effectsEnabled = useThemeStore((state) => state.effectsEnabled);
 
-  // Terminal state
-  const [history, setHistory] = useState([
-    { text: "ＶＡＰＯＲＷＡＶＥ  ＯＳ  [Version 1.0.0]", type: "system" },
-    { text: "(c) 2025 Vaporwave Corp. All rights reserved.", type: "system" },
-  ]);
+  // Get terminal state from store
+  const history = useTerminalStore((state) => state.history);
+  const currentDir = useTerminalStore((state) => state.currentDir);
+  const commandHistory = useTerminalStore((state) => state.commandHistory);
+  const historyIndex = useTerminalStore((state) => state.historyIndex);
+  const inGameMode = useTerminalStore((state) => state.inGameMode);
+
+  // Get terminal actions from store
+  const addCommandToHistory = useTerminalStore(
+    (state) => state.addCommandToHistory
+  );
+  const addOutput = useTerminalStore((state) => state.addOutput);
+  const setCurrentDir = useTerminalStore((state) => state.setCurrentDir);
+  const navigateCommandHistory = useTerminalStore(
+    (state) => state.navigateCommandHistory
+  );
+  const getCurrentCommandFromHistory = useTerminalStore(
+    (state) => state.getCurrentCommandFromHistory
+  );
+  const setInGameMode = useTerminalStore((state) => state.setInGameMode);
+
+  // Local input state
   const [input, setInput] = useState("");
-  const [currentDir, setCurrentDir] = useState("C:\\Users\\Guest");
-  const [commandHistory, setCommandHistory] = useState([]);
-  const [historyIndex, setHistoryIndex] = useState(-1);
-  const [inGameMode, setInGameMode] = useState(false);
 
   // References
   const terminalRef = useRef(null);
@@ -54,27 +67,6 @@ const Terminal = () => {
     setInput("");
   };
 
-  // Add a command to history
-  const addCommandToHistory = (command) => {
-    // Add command to display history
-    const newLine = {
-      text: `${currentDir}> ${command}`,
-      type: "command",
-    };
-
-    setHistory((prevHistory) => [...prevHistory, newLine]);
-
-    // Add to command history for up/down arrows
-    setCommandHistory((prevHistory) => [...prevHistory, command]);
-    setHistoryIndex(-1);
-  };
-
-  // Add output lines to history
-  const addOutput = (lines) => {
-    const newLines = lines.map((line) => ({ text: line, type: "output" }));
-    setHistory((prevHistory) => [...prevHistory, ...newLines]);
-  };
-
   // Process commands
   const processCommand = (cmd) => {
     const args = cmd.trim().split(" ");
@@ -97,13 +89,7 @@ const Terminal = () => {
         break;
 
       case "clear":
-        setHistory([
-          { text: "ＶＡＰＯＲＷＡＶＥ  ＯＳ  [Version 1.0.0]", type: "system" },
-          {
-            text: "(c) 2025 Vaporwave Corp. All rights reserved.",
-            type: "system",
-          },
-        ]);
+        useTerminalStore.getState().clearTerminal();
         break;
 
       case "echo":
@@ -221,26 +207,26 @@ const Terminal = () => {
         currentDir === "C:\\Users\\Guest\\Downloads"
       ) {
         setCurrentDir("C:\\Users\\Guest");
-        addOutput([`Changed to ${currentDir}`]);
+        addOutput([`Changed to C:\\Users\\Guest`]);
         return;
       }
     }
 
     if (dir === "Desktop" && currentDir === "C:\\Users\\Guest") {
       setCurrentDir("C:\\Users\\Guest\\Desktop");
-      addOutput([`Changed to ${currentDir}\\Desktop`]);
+      addOutput([`Changed to C:\\Users\\Guest\\Desktop`]);
       return;
     }
 
     if (dir === "Documents" && currentDir === "C:\\Users\\Guest") {
       setCurrentDir("C:\\Users\\Guest\\Documents");
-      addOutput([`Changed to ${currentDir}\\Documents`]);
+      addOutput([`Changed to C:\\Users\\Guest\\Documents`]);
       return;
     }
 
     if (dir === "Downloads" && currentDir === "C:\\Users\\Guest") {
       setCurrentDir("C:\\Users\\Guest\\Downloads");
-      addOutput([`Changed to ${currentDir}\\Downloads`]);
+      addOutput([`Changed to C:\\Users\\Guest\\Downloads`]);
       return;
     }
 
@@ -339,26 +325,15 @@ const Terminal = () => {
     // Up arrow
     if (e.keyCode === 38) {
       e.preventDefault();
-      if (commandHistory.length > 0) {
-        const newIndex =
-          historyIndex < commandHistory.length - 1
-            ? historyIndex + 1
-            : historyIndex;
-        setHistoryIndex(newIndex);
-        setInput(commandHistory[commandHistory.length - 1 - newIndex]);
-      }
+      navigateCommandHistory("up");
+      setInput(getCurrentCommandFromHistory());
     }
     // Down arrow
     else if (e.keyCode === 40) {
       e.preventDefault();
-      if (historyIndex > 0) {
-        const newIndex = historyIndex - 1;
-        setHistoryIndex(newIndex);
-        setInput(commandHistory[commandHistory.length - 1 - newIndex]);
-      } else if (historyIndex === 0) {
-        setHistoryIndex(-1);
-        setInput("");
-      }
+      navigateCommandHistory("down");
+      const command = getCurrentCommandFromHistory();
+      setInput(command === undefined ? "" : command);
     }
   };
 

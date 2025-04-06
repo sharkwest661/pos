@@ -1,5 +1,5 @@
 // components/apps/notes/Notes.jsx
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import {
   PlusCircle,
   Save,
@@ -10,56 +10,31 @@ import {
   Info,
   HelpCircle,
 } from "lucide-react";
-import { useThemeStore } from "../../../store";
+import { useThemeStore, useNotesStore } from "../../../store";
 import { Scanlines } from "../../effects/Scanlines";
 import styles from "./Notes.module.scss";
-
-// Sample notes data - In a real app, this would be stored in localStorage or a backend
-const INITIAL_NOTES = [
-  {
-    id: "note-1",
-    title: "Welcome to Notes",
-    content: `Welcome to the Vaporwave OS Notes app!
-
-This is a simple text editor designed with typewriter styling. You can create, edit, and manage your notes here.
-
-Features:
-- Create new notes
-- Edit note content
-- Rename notes
-- Delete notes
-- Multiple notes accessible via tabs
-
-Feel free to delete this note and create your own.`,
-    createdAt: new Date("2025-03-15T12:00:00"),
-    updatedAt: new Date("2025-03-15T12:00:00"),
-  },
-  {
-    id: "note-2",
-    title: "Project Ideas",
-    content: `Future Project Ideas:
-
-1. Vaporwave music visualizer with WebGL
-2. Retro-themed interactive portfolio
-3. 80s/90s inspired game with synthwave soundtrack
-4. Cyberpunk text adventure
-5. Virtual retro computer environment`,
-    createdAt: new Date("2025-03-20T14:30:00"),
-    updatedAt: new Date("2025-03-25T16:45:00"),
-  },
-];
 
 const Notes = () => {
   // Get theme configuration
   const effectsEnabled = useThemeStore((state) => state.effectsEnabled);
 
-  // Component state
-  const [notes, setNotes] = useState(INITIAL_NOTES);
-  const [activeNoteId, setActiveNoteId] = useState(notes[0]?.id || null);
-  const [isEditing, setIsEditing] = useState(false);
-  const [editTitle, setEditTitle] = useState("");
-  const [showInfo, setShowInfo] = useState(false);
-  const [showHelp, setShowHelp] = useState(false);
+  // Use the store for state management instead of local state
+  const notes = useNotesStore((state) => state.notes);
+  const activeNoteId = useNotesStore((state) => state.activeNoteId);
+  const isEditing = useNotesStore((state) => state.isEditing);
+  const editTitle = useNotesStore((state) => state.editTitle);
+  const showInfo = useNotesStore((state) => state.showInfo);
+  const showHelp = useNotesStore((state) => state.showHelp);
+
+  // Actions from store
+  const setActiveNoteId = useNotesStore((state) => state.setActiveNoteId);
+  const setIsEditing = useNotesStore((state) => state.setIsEditing);
+  const setEditTitle = useNotesStore((state) => state.setEditTitle);
+  const setShowInfo = useNotesStore((state) => state.setShowInfo);
+  const setShowHelp = useNotesStore((state) => state.setShowHelp);
+  const createNote = useNotesStore((state) => state.createNote);
+  const updateNote = useNotesStore((state) => state.updateNote);
+  const deleteNote = useNotesStore((state) => state.deleteNote);
 
   // References
   const textAreaRef = useRef(null);
@@ -67,7 +42,7 @@ const Notes = () => {
 
   // Focus textarea when active note changes
   useEffect(() => {
-    if (textAreaRef.current) {
+    if (textAreaRef.current && activeNoteId) {
       textAreaRef.current.focus();
     }
   }, [activeNoteId]);
@@ -85,49 +60,25 @@ const Notes = () => {
 
   // Handle creating a new note
   const handleCreateNote = () => {
-    const newNote = {
-      id: `note-${Date.now()}`,
-      title: "Untitled Note",
-      content: "",
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    };
-
-    setNotes([...notes, newNote]);
+    const newNote = createNote();
     setActiveNoteId(newNote.id);
-    setIsEditing(true); // Start editing the title for a new note
+    setIsEditing(true);
     setEditTitle("Untitled Note");
   };
 
   // Handle deleting a note
   const handleDeleteNote = (id) => {
-    const updatedNotes = notes.filter((note) => note.id !== id);
-    setNotes(updatedNotes);
-
-    // Set a new active note if the deleted note was active
-    if (id === activeNoteId && updatedNotes.length > 0) {
-      setActiveNoteId(updatedNotes[0].id);
-    } else if (updatedNotes.length === 0) {
-      setActiveNoteId(null);
-    }
+    deleteNote(id);
   };
 
   // Handle note content changes
   const handleContentChange = (e) => {
     if (!activeNoteId) return;
 
-    const updatedNotes = notes.map((note) => {
-      if (note.id === activeNoteId) {
-        return {
-          ...note,
-          content: e.target.value,
-          updatedAt: new Date(),
-        };
-      }
-      return note;
+    updateNote(activeNoteId, {
+      content: e.target.value,
+      updatedAt: new Date(),
     });
-
-    setNotes(updatedNotes);
   };
 
   // Start editing the title
@@ -142,18 +93,11 @@ const Notes = () => {
   const handleSaveTitle = () => {
     if (!activeNoteId) return;
 
-    const updatedNotes = notes.map((note) => {
-      if (note.id === activeNoteId) {
-        return {
-          ...note,
-          title: editTitle || "Untitled Note",
-          updatedAt: new Date(),
-        };
-      }
-      return note;
+    updateNote(activeNoteId, {
+      title: editTitle || "Untitled Note",
+      updatedAt: new Date(),
     });
 
-    setNotes(updatedNotes);
     setIsEditing(false);
   };
 
