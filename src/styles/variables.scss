@@ -7,6 +7,7 @@ $vapor-cyan: #00ffff; // Bright cyan
 $vapor-electric-blue: #0080ff; // Electric blue
 $vapor-text-light: #ffffff; // White text
 $vapor-text-dark: #2a2a4a; // Dark text on light backgrounds
+$vapor-warning-red: #ff2222; // For alerts and errors in vapor theme (renamed from cyber-warning-red)
 $vapor-sunset-gradient: linear-gradient(
   180deg,
   #ff9e68 0%,
@@ -14,20 +15,21 @@ $vapor-sunset-gradient: linear-gradient(
 ); // Sunset gradient
 $vapor-grid-color: rgba(255, 0, 255, 0.1); // Grid line color
 
-// Dark hacker theme colors
-$hacker-bg: #000000; // Black
+// Dark hacker theme colors (refined)
+$hacker-bg: #000000; // Black background
 $hacker-panel: #111111; // Dark panel background
-$hacker-green: #33ff00; // Terminal Green
-$hacker-cyan: #00ffff; // Terminal Cyan
-$hacker-dim-green: #1a8000; // Dimmer green
+$hacker-green: #33ff00; // Primary terminal green
+$hacker-dim-green: #1a8000; // Dimmer green for secondary elements
+$hacker-bright-green: #5fff5f; // Brighter green for highlights
+$hacker-cyan: #00ffff; // Terminal cyan for contrast
 $hacker-blue: #0088ff; // Alternative accent
 $hacker-red: #ff3300; // For alerts and errors
-$cyber-warning-red: #ff2222; // For alerts and errors
 
 // Shadow values
 $vapor-glow-pink: 0 0 10px rgba(255, 0, 255, 0.7); // Neon pink glow
 $vapor-glow-cyan: 0 0 10px rgba(0, 255, 255, 0.7); // Cyan glow
 $vapor-glow-blue: 0 0 10px rgba(0, 128, 255, 0.7); // Blue glow
+$vapor-glow-green: 0 0 10px rgba(51, 255, 0, 0.7); // Hacker green glow (added)
 
 // Font families
 $font-vcr: "VCR OSD Mono", "Courier New", monospace; // Retro monitor font
