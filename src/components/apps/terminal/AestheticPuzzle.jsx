@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from "react";
 import styles from "./AestheticPuzzle.module.scss";
 
-// Symbol set for the game (vaporwave aesthetic)
-const SYMBOLS = ["░", "▒", "▓", "█", "◈", "◇", "♦", "♠"];
+// Symbol set for the game (vaporwave aesthetic emojis)
+const SYMBOLS = ["🌴", "🗿", "🌊", "💾", "🔮", "🕹️", "🎧", "🌇"];
 
 const AestheticPuzzle = ({ onExit }) => {
   // Game state
@@ -123,7 +123,7 @@ const AestheticPuzzle = ({ onExit }) => {
   return (
     <div className={styles.puzzleContainer}>
       <div className={styles.gameHeader}>
-        <h2 className={styles.gameTitle}>ＡＥＳＴＨＥＴＩＣ ＰＵＺＺＬＥ</h2>
+        <h2 className={styles.gameTitle}>ＥＮＩＧＭＡ ＰＵＺＺＬＥ</h2>
         <div className={styles.attempts}>
           Attempts Remaining: {remainingAttempts}/8
         </div>
@@ -132,7 +132,7 @@ const AestheticPuzzle = ({ onExit }) => {
       {/* Game status messages */}
       {gameStatus === "won" && (
         <div className={styles.winMessage}>
-          <h3>ＡＥＳＴＨＥＴＩＣ ＡＣＨＩＥＶＥＤ</h3>
+          <h3>ＥＮＩＧＭＡ ＡＣＨＩＥＶＥＤ</h3>
           <p>You've broken the code!</p>
         </div>
       )}

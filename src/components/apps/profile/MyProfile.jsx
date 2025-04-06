@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useThemeStore } from "../../../store";
 import { Scanlines } from "../../effects/Scanlines";
 import styles from "./MyProfile.module.scss";
+import { Construction } from "lucide-react";
 
 const MyProfile = () => {
   // Get theme configuration and effects status
@@ -127,15 +128,10 @@ const MyProfile = () => {
           </div>
 
           <div className={styles.constructionBar}>
-            <img
-              src="/assets/images/under-construction.gif"
-              alt="Under Construction"
-            />
+            <Construction />
+
             <span>Always improving...</span>
-            <img
-              src="/assets/images/under-construction.gif"
-              alt="Under Construction"
-            />
+            <Construction />
           </div>
         </div>
       </div>
