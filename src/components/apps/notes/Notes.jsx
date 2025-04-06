@@ -284,10 +284,8 @@ const Notes = () => {
 
             <div className={styles.statusBar}>
               <div className={styles.typingSound}>
-                <span
-                  className={`${styles.typingSoundDot} ${styles.active}`}
-                ></span>
-                <span>Typing sounds: ON</span>
+                <span className={`${styles.typingSoundDot} `}></span>
+                <span>Typing sounds: OFF</span>
               </div>
               <div className={styles.wordCount}>
                 {stats.chars} characters | {stats.words} words

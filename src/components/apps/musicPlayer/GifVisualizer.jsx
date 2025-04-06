@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { VISUALIZER_GIFS } from "../../../constants/gifData";
 import styles from "./GifVisualizer.module.scss";
+import { getRandomElement } from "../../../utils/random";
 
 /**
  * GIF visualizer component for the music player
@@ -25,8 +26,7 @@ const GifVisualizer = ({ currentTrack, isPlaying, themeConfig }) => {
     }
 
     // Otherwise, use a random GIF from our collection
-    const randomIndex = Math.floor(Math.random() * VISUALIZER_GIFS.length);
-    return VISUALIZER_GIFS[randomIndex];
+    return getRandomElement(VISUALIZER_GIFS);
   };
 
   // Update GIF when track changes

@@ -3,9 +3,9 @@ export const resumeData = {
     name: "Javad Javadli",
     title: "Frontend Developer",
     email: "ccavad2015@gmail.com",
-    phone: "+994 509688492",
+    // phone: "+994509688492",
     location: "Azerbaijan, Baku",
-    website: "johndoe.com",
+    // website: "",
   },
   experience: [
     {

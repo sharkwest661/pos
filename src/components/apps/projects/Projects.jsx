@@ -1,5 +1,5 @@
 // components/apps/projects/Projects.jsx
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Folder,
   File,
@@ -24,15 +24,19 @@ const Projects = () => {
   const effectsEnabled = useThemeStore((state) => state.effectsEnabled);
 
   // Get projects state from store
+  const projects = useProjectsStore((state) => state.projects);
   const viewMode = useProjectsStore((state) => state.viewMode);
   const searchQuery = useProjectsStore((state) => state.searchQuery);
   const selectedProject = useProjectsStore((state) => state.selectedProject);
   const showProjectDetails = useProjectsStore(
     (state) => state.showProjectDetails
   );
-  const filteredProjects = useProjectsStore((state) =>
-    state.getFilteredProjects()
-  );
+
+  // Local state for filtered projects to avoid render loop
+  const [filteredProjects, setFilteredProjects] = useState([]);
+
+  // Local state for search input to support debouncing
+  const [searchInput, setSearchInput] = useState(searchQuery);
 
   // Get actions from store
   const setViewMode = useProjectsStore((state) => state.setViewMode);
@@ -42,6 +46,33 @@ const Projects = () => {
     (state) => state.clearSelectedProject
   );
 
+  // Update filtered projects when projects or search query changes
+  useEffect(() => {
+    if (!searchQuery.trim()) {
+      setFilteredProjects(projects);
+      return;
+    }
+
+    const query = searchQuery.toLowerCase();
+    const filtered = projects.filter(
+      (project) =>
+        project.name.toLowerCase().includes(query) ||
+        project.description.toLowerCase().includes(query) ||
+        project.technologies.some((tech) => tech.toLowerCase().includes(query))
+    );
+
+    setFilteredProjects(filtered);
+  }, [projects, searchQuery]);
+
+  // Debounce search input changes
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSearchQuery(searchInput);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [searchInput, setSearchQuery]);
+
   // Handle navigation back
   const handleBack = () => {
     clearSelectedProject();
@@ -49,7 +80,7 @@ const Projects = () => {
 
   // Handle search input
   const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
+    setSearchInput(e.target.value);
   };
 
   // Handle view mode toggle
@@ -57,9 +88,11 @@ const Projects = () => {
     setViewMode(viewMode === "grid" ? "list" : "grid");
   };
 
-  // Handle project click
+  // Handle project click with check to prevent unnecessary state updates
   const handleProjectClick = (project) => {
-    selectProject(project);
+    if (!selectedProject || selectedProject.id !== project.id) {
+      selectProject(project);
+    }
   };
 
   // Get project icon based on type
@@ -100,7 +133,7 @@ const Projects = () => {
           <input
             type="text"
             placeholder="Search projects..."
-            value={searchQuery}
+            value={searchInput}
             onChange={handleSearchChange}
             className={styles.searchInput}
           />
@@ -140,7 +173,10 @@ const Projects = () => {
                 <p>No projects match your search criteria.</p>
                 <button
                   className={styles.clearSearchButton}
-                  onClick={() => setSearchQuery("")}
+                  onClick={() => {
+                    setSearchInput("");
+                    setSearchQuery("");
+                  }}
                 >
                   Clear Search
                 </button>
@@ -185,24 +221,28 @@ const Projects = () => {
 
                     {viewMode === "list" && (
                       <div className={styles.projectLinks}>
-                        <a
-                          href={project.links.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={styles.projectLink}
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          <Github size={16} />
-                        </a>
-                        <a
-                          href={project.links.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={styles.projectLink}
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          <ExternalLink size={16} />
-                        </a>
+                        {project.links && project.links.github && (
+                          <a
+                            href={project.links.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.projectLink}
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <Github size={16} />
+                          </a>
+                        )}
+                        {project.links && project.links.live && (
+                          <a
+                            href={project.links.live}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.projectLink}
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <ExternalLink size={16} />
+                          </a>
+                        )}
                       </div>
                     )}
                   </div>

@@ -4,6 +4,7 @@ import { useThemeStore } from "../../../store";
 import { Scanlines } from "../../effects/Scanlines";
 import styles from "./MyProfile.module.scss";
 import { Construction } from "lucide-react";
+import { getRandomNumber } from "../../../utils/random";
 
 const MyProfile = () => {
   // Get theme configuration and effects status
@@ -13,7 +14,7 @@ const MyProfile = () => {
   // Simulate visitor count incrementing randomly
   useEffect(() => {
     const timer = setInterval(() => {
-      setVisitorCount((prev) => prev + Math.floor(Math.random() * 3)); // Random increment
+      setVisitorCount((prev) => prev + getRandomNumber(0, 3)); // Random increment
     }, 30000); // Every 30 seconds
 
     return () => clearInterval(timer);
@@ -43,29 +44,30 @@ const MyProfile = () => {
     <div className={styles.container}>
       <div className={styles.content}>
         <div className={styles.profileImage}>
-          {/* Replace the emoji with actual profile image */}
-          <div className={styles.profileImageInner}>👤</div>
+          <div className={styles.profileImageInner}>
+            <img src="/assets/images/avatar.jpeg" alt="Developer Profile" />
+          </div>
           <div className={styles.scanline}></div>
         </div>
 
         <div className={styles.profileText}>
           <h2
             className={styles.glitchText}
-            data-text="DEVELOPER"
+            data-text="FRONTEND DEVELOPER"
             onClick={handleGlitchEffect}
           >
-            DEVELOPER
+            FRONTEND DEVELOPER
           </h2>
 
           <p>
-            Welcome to my vaporwave OS portfolio! I'm a creative front-end
-            developer passionate about building unique interfaces that combine
-            nostalgia with modern web techniques.
+            Welcome to my OS portfolio! I'm a front-end developer with 2 years
+            of experience in React.js, Next.js, and React Native.
           </p>
 
           <p>
-            Exploring the aesthetics of digital past while crafting the web of
-            tomorrow.
+            I build responsive web and mobile apps, with a working knowledge of
+            backend tech like Node.js and MongoDB. I focus on clean code,
+            performance, and reliable solutions.
           </p>
 
           <div className={styles.statsSection}>
@@ -77,52 +79,87 @@ const MyProfile = () => {
           </div>
 
           <div className={styles.skills}>
-            <h3>SKILLS</h3>
-            <div className={styles.skillsGrid}>
-              <div className={styles.skillItem}>
-                <span className={styles.skillName}>React</span>
-                <div className={styles.skillBar}>
-                  <div
-                    className={styles.skillFill}
-                    style={{ width: "90%" }}
-                  ></div>
+            <h3>C:\SKILLS\</h3>
+            <div className={styles.fileExplorer}>
+              <div className={styles.fileHeader}>
+                <div className={styles.fileName}>Name</div>
+                <div className={styles.fileType}>Type</div>
+                <div className={styles.fileDate}>Modified</div>
+                <div className={styles.fileSize}>Size</div>
+              </div>
+
+              <div className={styles.fileDirectory}>
+                {/* Frontend Directory */}
+                <div className={styles.directoryItem}>
+                  <div className={styles.directoryName}>
+                    <span className={styles.folderIcon}>📁</span>
+                    FRONTEND
+                  </div>
+                </div>
+
+                <div className={styles.fileItem}>
+                  <div className={styles.fileName}>
+                    <span className={styles.fileIcon}>📄</span>
+                    React
+                  </div>
+                  <div className={styles.fileType}>.jsx</div>
+                  <div className={styles.fileDate}>01.05.24</div>
+                  <div className={styles.fileSize}>64KB</div>
+                </div>
+
+                <div className={styles.fileItem}>
+                  <div className={styles.fileName}>
+                    <span className={styles.fileIcon}>📄</span>
+                    JavaScript
+                  </div>
+                  <div className={styles.fileType}>.js</div>
+                  <div className={styles.fileDate}>02.15.24</div>
+                  <div className={styles.fileSize}>128KB</div>
+                </div>
+
+                <div className={styles.fileItem}>
+                  <div className={styles.fileName}>
+                    <span className={styles.fileIcon}>📄</span>
+                    Styling
+                  </div>
+                  <div className={styles.fileType}>.scss</div>
+                  <div className={styles.fileDate}>03.10.24</div>
+                  <div className={styles.fileSize}>96KB</div>
+                </div>
+
+                {/* Backend Directory */}
+                <div className={styles.directoryItem}>
+                  <div className={styles.directoryName}>
+                    <span className={styles.folderIcon}>📁</span>
+                    BACKEND
+                  </div>
+                </div>
+
+                <div className={styles.fileItem}>
+                  <div className={styles.fileName}>
+                    <span className={styles.fileIcon}>📄</span>
+                    Node_Express
+                  </div>
+                  <div className={styles.fileType}>.js</div>
+                  <div className={styles.fileDate}>02.18.24</div>
+                  <div className={styles.fileSize}>96KB</div>
+                </div>
+
+                <div className={styles.fileItem}>
+                  <div className={styles.fileName}>
+                    <span className={styles.fileIcon}>📄</span>
+                    MongoDB
+                  </div>
+                  <div className={styles.fileType}>.db</div>
+                  <div className={styles.fileDate}>01.30.24</div>
+                  <div className={styles.fileSize}>64KB</div>
                 </div>
               </div>
-              <div className={styles.skillItem}>
-                <span className={styles.skillName}>JavaScript</span>
-                <div className={styles.skillBar}>
-                  <div
-                    className={styles.skillFill}
-                    style={{ width: "85%" }}
-                  ></div>
-                </div>
-              </div>
-              <div className={styles.skillItem}>
-                <span className={styles.skillName}>CSS/SCSS</span>
-                <div className={styles.skillBar}>
-                  <div
-                    className={styles.skillFill}
-                    style={{ width: "80%" }}
-                  ></div>
-                </div>
-              </div>
-              <div className={styles.skillItem}>
-                <span className={styles.skillName}>UI Design</span>
-                <div className={styles.skillBar}>
-                  <div
-                    className={styles.skillFill}
-                    style={{ width: "75%" }}
-                  ></div>
-                </div>
-              </div>
-              <div className={styles.skillItem}>
-                <span className={styles.skillName}>Animation</span>
-                <div className={styles.skillBar}>
-                  <div
-                    className={styles.skillFill}
-                    style={{ width: "70%" }}
-                  ></div>
-                </div>
+
+              <div className={styles.diskInfo}>
+                <div>8 File(s)</div>
+                <div>1,216 KB</div>
+                <div>42.0 MB Free</div>
               </div>
             </div>
           </div>
