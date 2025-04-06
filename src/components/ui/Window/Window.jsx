@@ -1,3 +1,4 @@
+// components/ui/Window/Window.jsx
 import React, { useState, useEffect, useRef } from "react";
 import { Rnd } from "react-rnd";
 import { useThemeStore } from "../../../store";
@@ -110,11 +111,6 @@ const Window = ({
     setPosition(initialPosition);
   }, [initialPosition]);
 
-  // Don't render if window is minimized
-  if (isMinimized) {
-    return null;
-  }
-
   // Combine class names
   const windowClass = [
     styles.window,
@@ -154,7 +150,11 @@ const Window = ({
     <Rnd
       ref={windowRef}
       className={windowClass}
-      style={{ zIndex, display: isMinimized ? "none" : "flex" }}
+      style={{
+        zIndex,
+        display: isMinimized ? "none" : "flex",
+        visibility: isMinimized ? "hidden" : "visible",
+      }}
       position={{ x: position.x, y: position.y }}
       size={{ width: position.width, height: position.height }}
       enableResizing={resizable && !isDragging && !isMinimized}
@@ -194,7 +194,7 @@ const Window = ({
 
       {/* Window Content */}
       <div className={contentClass}>
-        {/* The key is to keep children mounted but apply optimizations via CSS */}
+        {/* Keep children mounted but hidden when minimized */}
         {children}
 
         {/* Apply scanlines effect if enabled */}

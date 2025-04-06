@@ -6,7 +6,9 @@ import { useNotepadStore } from "./notepadStore";
 import { useAudioStore } from "./audioStore";
 import { useSearchEngineStore } from "./searchEngineStore";
 import { useTextViewerStore } from "./textViewerStore";
-import terminalStore from "./terminalStore";
+import { useTerminalStore } from "./terminalStore";
+import { useNotesStore } from "./notesStore";
+import { useProjectsStore } from "./projectsStore";
 
 // Export all stores and constants
 export {
@@ -35,5 +37,11 @@ export {
   useTextViewerStore,
 
   // Terminal store
-  terminalStore as useTerminalStore,
+  useTerminalStore,
+
+  // Notes store
+  useNotesStore,
+
+  // Projects store
+  useProjectsStore,
 };
