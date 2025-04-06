@@ -3,12 +3,8 @@ import React, { useState, useEffect } from "react";
 import {
   Music,
   FileText,
-  Folder,
   Terminal,
   Mail,
-  Clipboard,
-  FileQuestion,
-  FileLock,
   FolderOpen,
   Notebook,
   // FileText2,
@@ -113,8 +109,8 @@ const Desktop = () => {
 
   // Decorative elements for vaporwave theme
   const [showSun, setShowSun] = useState(true);
-  const [showPalm, setShowPalm] = useState(true);
-  const [showStatue, setShowStatue] = useState(true);
+  const [showPalm, setShowPalm] = useState(false);
+  const [showStatue, setShowStatue] = useState(false);
 
   // Effect to track window changes and pause music if music player is closed
   useEffect(() => {
