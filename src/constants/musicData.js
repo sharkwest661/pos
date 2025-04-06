@@ -21,7 +21,7 @@ export const PLAYLIST_DATA = [
     artist: "Unknown Artist",
     duration: "3:34",
     active: false,
-    file: "/assets/music/rich_bitch.m4a",
+    file: "/assets/music/rich_bitch.mp3",
   },
   {
     id: 4,
