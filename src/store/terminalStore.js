@@ -1,10 +1,10 @@
 // store/terminalStore.js
 import { create } from "zustand";
 
-// Helper to save terminal state to localStorage
-const saveStateToLocalStorage = (state) => {
+// Helper to save terminal state to sessionStorage
+const saveStateTosessionStorage = (state) => {
   try {
-    localStorage.setItem(
+    sessionStorage.setItem(
       "vaporwave_terminal",
       JSON.stringify({
         history: state.history,
@@ -14,25 +14,25 @@ const saveStateToLocalStorage = (state) => {
       })
     );
   } catch (error) {
-    console.error("Error saving terminal state to localStorage:", error);
+    console.error("Error saving terminal state to sessionStorage:", error);
   }
 };
 
-// Helper to load terminal state from localStorage
-const loadStateFromLocalStorage = () => {
+// Helper to load terminal state from sessionStorage
+const loadStateFromsessionStorage = () => {
   try {
-    const savedState = localStorage.getItem("vaporwave_terminal");
+    const savedState = sessionStorage.getItem("vaporwave_terminal");
     if (savedState) {
       return JSON.parse(savedState);
     }
   } catch (error) {
-    console.error("Error loading terminal state from localStorage:", error);
+    console.error("Error loading terminal state from sessionStorage:", error);
   }
   return null;
 };
 
 // Load saved state
-const savedState = loadStateFromLocalStorage();
+const savedState = loadStateFromsessionStorage();
 
 // Terminal store to persist state across minimization/maximization
 const useTerminalStore = create((set, get) => ({
@@ -57,7 +57,7 @@ const useTerminalStore = create((set, get) => ({
     set((state) => {
       const updatedHistory = [...state.history, line];
       const newState = { history: updatedHistory };
-      saveStateToLocalStorage({ ...state, ...newState });
+      saveStateTosessionStorage({ ...state, ...newState });
       return newState;
     }),
 
@@ -67,7 +67,7 @@ const useTerminalStore = create((set, get) => ({
       const newLines = lines.map((line) => ({ text: line, type: "output" }));
       const updatedHistory = [...state.history, ...newLines];
       const newState = { history: updatedHistory };
-      saveStateToLocalStorage({ ...state, ...newState });
+      saveStateTosessionStorage({ ...state, ...newState });
       return newState;
     }),
 
@@ -90,7 +90,7 @@ const useTerminalStore = create((set, get) => ({
         historyIndex: -1,
       };
 
-      saveStateToLocalStorage({ ...state, ...newState });
+      saveStateTosessionStorage({ ...state, ...newState });
       return newState;
     }),
 
@@ -105,7 +105,7 @@ const useTerminalStore = create((set, get) => ({
         },
       ];
       const newState = { history: clearedHistory };
-      saveStateToLocalStorage({ ...state, ...newState });
+      saveStateTosessionStorage({ ...state, ...newState });
       return newState;
     }),
 
@@ -113,7 +113,7 @@ const useTerminalStore = create((set, get) => ({
   setCurrentDir: (dir) =>
     set((state) => {
       const newState = { currentDir: dir };
-      saveStateToLocalStorage({ ...state, ...newState });
+      saveStateTosessionStorage({ ...state, ...newState });
       return newState;
     }),
 
@@ -137,7 +137,7 @@ const useTerminalStore = create((set, get) => ({
       }
 
       const newState = { historyIndex: newIndex };
-      saveStateToLocalStorage({ ...state, ...newState });
+      saveStateTosessionStorage({ ...state, ...newState });
       return newState;
     }),
 
@@ -156,7 +156,7 @@ const useTerminalStore = create((set, get) => ({
   setInGameMode: (mode) =>
     set((state) => {
       const newState = { inGameMode: mode };
-      saveStateToLocalStorage({ ...state, ...newState });
+      saveStateTosessionStorage({ ...state, ...newState });
       return newState;
     }),
 }));

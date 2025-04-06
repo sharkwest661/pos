@@ -1,10 +1,10 @@
 // store/projectsStore.js
 import { create } from "zustand";
 
-// Helper to save projects state to localStorage
-const saveStateToLocalStorage = (state) => {
+// Helper to save projects state to sessionStorage
+const saveStateTosessionStorage = (state) => {
   try {
-    localStorage.setItem(
+    sessionStorage.setItem(
       "vaporwave_projects",
       JSON.stringify({
         currentPath: state.currentPath,
@@ -17,25 +17,25 @@ const saveStateToLocalStorage = (state) => {
       })
     );
   } catch (error) {
-    console.error("Error saving projects state to localStorage:", error);
+    console.error("Error saving projects state to sessionStorage:", error);
   }
 };
 
-// Helper to load projects state from localStorage
-const loadStateFromLocalStorage = () => {
+// Helper to load projects state from sessionStorage
+const loadStateFromsessionStorage = () => {
   try {
-    const savedState = localStorage.getItem("vaporwave_projects");
+    const savedState = sessionStorage.getItem("vaporwave_projects");
     if (savedState) {
       return JSON.parse(savedState);
     }
   } catch (error) {
-    console.error("Error loading projects state from localStorage:", error);
+    console.error("Error loading projects state from sessionStorage:", error);
   }
   return null;
 };
 
 // Load saved state
-const savedState = loadStateFromLocalStorage();
+const savedState = loadStateFromsessionStorage();
 
 // Sample project data - In a real app, this would come from a store or API
 const PROJECTS_DATA = [
@@ -233,7 +233,7 @@ const useProjectsStore = create((set, get) => ({
   setCurrentPath: (path) =>
     set((state) => {
       const newState = { currentPath: path };
-      saveStateToLocalStorage({ ...state, ...newState });
+      saveStateTosessionStorage({ ...state, ...newState });
       return newState;
     }),
 
@@ -241,7 +241,7 @@ const useProjectsStore = create((set, get) => ({
   setViewMode: (mode) =>
     set((state) => {
       const newState = { viewMode: mode };
-      saveStateToLocalStorage({ ...state, ...newState });
+      saveStateTosessionStorage({ ...state, ...newState });
       return newState;
     }),
 
@@ -249,7 +249,7 @@ const useProjectsStore = create((set, get) => ({
   setSearchQuery: (query) =>
     set((state) => {
       const newState = { searchQuery: query };
-      saveStateToLocalStorage({ ...state, ...newState });
+      saveStateTosessionStorage({ ...state, ...newState });
       return newState;
     }),
 
@@ -260,7 +260,7 @@ const useProjectsStore = create((set, get) => ({
         selectedProject: project,
         showProjectDetails: true,
       };
-      saveStateToLocalStorage({ ...state, ...newState });
+      saveStateTosessionStorage({ ...state, ...newState });
       return newState;
     }),
 
@@ -271,7 +271,7 @@ const useProjectsStore = create((set, get) => ({
         selectedProject: null,
         showProjectDetails: false,
       };
-      saveStateToLocalStorage({ ...state, ...newState });
+      saveStateTosessionStorage({ ...state, ...newState });
       return newState;
     }),
 }));

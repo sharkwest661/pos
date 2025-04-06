@@ -1,73 +1,76 @@
 // store/searchEngineStore.js
 import { create } from "zustand";
 
-// Helper to save bookmarks to localStorage
-const saveBookmarksToLocalStorage = (bookmarks) => {
+// Helper to save bookmarks to sessionStorage
+const saveBookmarksTosessionStorage = (bookmarks) => {
   try {
-    localStorage.setItem("search_bookmarks", JSON.stringify(bookmarks));
+    sessionStorage.setItem("search_bookmarks", JSON.stringify(bookmarks));
   } catch (error) {
-    console.error("Error saving bookmarks to localStorage:", error);
+    console.error("Error saving bookmarks to sessionStorage:", error);
   }
 };
 
-// Helper to load bookmarks from localStorage
-const loadBookmarksFromLocalStorage = () => {
+// Helper to load bookmarks from sessionStorage
+const loadBookmarksFromsessionStorage = () => {
   try {
-    const savedBookmarks = localStorage.getItem("search_bookmarks");
+    const savedBookmarks = sessionStorage.getItem("search_bookmarks");
     return savedBookmarks ? JSON.parse(savedBookmarks) : [];
   } catch (error) {
-    console.error("Error loading bookmarks from localStorage:", error);
+    console.error("Error loading bookmarks from sessionStorage:", error);
     return [];
   }
 };
 
-// Helper to save browsing state to localStorage
-const saveBrowsingStateToLocalStorage = (url, showContent) => {
+// Helper to save browsing state to sessionStorage
+const saveBrowsingStateTosessionStorage = (url, showContent) => {
   try {
-    localStorage.setItem("search_state", JSON.stringify({ url, showContent }));
+    sessionStorage.setItem(
+      "search_state",
+      JSON.stringify({ url, showContent })
+    );
   } catch (error) {
-    console.error("Error saving browsing state to localStorage:", error);
+    console.error("Error saving browsing state to sessionStorage:", error);
   }
 };
 
-// Helper to load browsing state from localStorage
-const loadBrowsingStateFromLocalStorage = () => {
+// Helper to load browsing state from sessionStorage
+const loadBrowsingStateFromsessionStorage = () => {
   try {
-    const savedState = localStorage.getItem("search_state");
+    const savedState = sessionStorage.getItem("search_state");
     return savedState
       ? JSON.parse(savedState)
       : { url: null, showContent: false };
   } catch (error) {
-    console.error("Error loading browsing state from localStorage:", error);
+    console.error("Error loading browsing state from sessionStorage:", error);
     return { url: null, showContent: false };
   }
 };
 
-// Helper to save search history to localStorage
-const saveHistoryToLocalStorage = (history) => {
+// Helper to save search history to sessionStorage
+const saveHistoryTosessionStorage = (history) => {
   try {
-    localStorage.setItem("search_history", JSON.stringify(history));
+    sessionStorage.setItem("search_history", JSON.stringify(history));
   } catch (error) {
-    console.error("Error saving search history to localStorage:", error);
+    console.error("Error saving search history to sessionStorage:", error);
   }
 };
 
-// Helper to load search history from localStorage
-const loadHistoryFromLocalStorage = () => {
+// Helper to load search history from sessionStorage
+const loadHistoryFromsessionStorage = () => {
   try {
-    const savedHistory = localStorage.getItem("search_history");
+    const savedHistory = sessionStorage.getItem("search_history");
     return savedHistory ? JSON.parse(savedHistory) : [];
   } catch (error) {
-    console.error("Error loading search history from localStorage:", error);
+    console.error("Error loading search history from sessionStorage:", error);
     return [];
   }
 };
 
 const useSearchEngineStore = create((set, get) => {
-  // Initialize from localStorage
-  const initialBookmarks = loadBookmarksFromLocalStorage();
-  const initialBrowsingState = loadBrowsingStateFromLocalStorage();
-  const initialHistory = loadHistoryFromLocalStorage();
+  // Initialize from sessionStorage
+  const initialBookmarks = loadBookmarksFromsessionStorage();
+  const initialBrowsingState = loadBrowsingStateFromsessionStorage();
+  const initialHistory = loadHistoryFromsessionStorage();
 
   return {
     // Bookmarks
@@ -89,7 +92,7 @@ const useSearchEngineStore = create((set, get) => {
 
       if (!isBookmarked) {
         const updatedBookmarks = [...get().bookmarks, { url, title }];
-        saveBookmarksToLocalStorage(updatedBookmarks);
+        saveBookmarksTosessionStorage(updatedBookmarks);
         set({ bookmarks: updatedBookmarks });
         return true;
       }
@@ -100,7 +103,7 @@ const useSearchEngineStore = create((set, get) => {
       const updatedBookmarks = get().bookmarks.filter(
         (bookmark) => bookmark.url !== url
       );
-      saveBookmarksToLocalStorage(updatedBookmarks);
+      saveBookmarksTosessionStorage(updatedBookmarks);
       set({ bookmarks: updatedBookmarks });
     },
 
@@ -109,7 +112,7 @@ const useSearchEngineStore = create((set, get) => {
     },
 
     setBrowsingState: (url, showContent) => {
-      saveBrowsingStateToLocalStorage(url, showContent);
+      saveBrowsingStateTosessionStorage(url, showContent);
       set({ currentUrl: url, showWebContent: showContent });
     },
 
@@ -121,13 +124,13 @@ const useSearchEngineStore = create((set, get) => {
           0,
           10
         );
-        saveHistoryToLocalStorage(updatedHistory);
+        saveHistoryTosessionStorage(updatedHistory);
         set({ searchHistory: updatedHistory });
       }
     },
 
     clearHistory: () => {
-      saveHistoryToLocalStorage([]);
+      saveHistoryTosessionStorage([]);
       set({ searchHistory: [] });
     },
   };
