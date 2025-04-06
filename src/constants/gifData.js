@@ -1,4 +1,5 @@
-const arr = [
+// src/constants/gifData.js
+export const VISUALIZER_GIFS = [
   "https://media.giphy.com/media/3oEjHGokRZdOBbcZuo/giphy.gif?cid=790b7611isnew1hlp8l9pti50qa22nj2dcylbs41lklksl6w&ep=v1_gifs_search&rid=giphy.gif&ct=g", // pool
   "https://media.giphy.com/media/798oH0WDEQnicM4857/giphy.gif?cid=ecf05e47z1l1af5274sqc4snmnivx4ew4oqhgamuzavtvd8b&ep=v1_gifs_search&rid=giphy.gif&ct=g", // sunset
   "https://media.giphy.com/media/KheRlOh6HLhoDRFw1O/giphy.gif?cid=ecf05e47yyh6iajh7bmrkcbb09mut0j3hw9j9l5nzwpiqt75&ep=v1_gifs_search&rid=giphy.gif&ct=g", // sea
