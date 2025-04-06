@@ -81,7 +81,7 @@ const Terminal = () => {
           "  echo        - Echo text to the terminal",
           "  dir         - List files in current directory",
           "  cd          - Change directory",
-          "  aesthetic   - Play AESTHETIC_PUZZLE game",
+          "  enigma      - Play ENIGMA_PUZZLE game",
           "  time        - Display current time",
           "  vaporwave   - Convert text to vaporwave style",
           "  exit        - Exit terminal",
@@ -108,7 +108,7 @@ const Terminal = () => {
         changeDirectory(args[1]);
         break;
 
-      case "aesthetic":
+      case "enigma":
         startGame();
         break;
 
@@ -236,9 +236,9 @@ const Terminal = () => {
   // Start the AESTHETIC_PUZZLE game
   const startGame = () => {
     addOutput([
-      "Starting AESTHETIC_PUZZLE...",
+      "Starting ENIGMA_PUZZLE...",
       "----------------------------------------",
-      "Welcome to AESTHETIC_PUZZLE - a vaporwave Mastermind game",
+      "Welcome to ENIGMA_PUZZLE - a vaporwave Mastermind game",
       "Try to guess the sequence of symbols",
       "----------------------------------------",
     ]);
@@ -257,13 +257,13 @@ const Terminal = () => {
       addOutput([
         "----------------------------------------",
         "Congratulations! You've solved the puzzle!",
-        "Aesthetic level: ＭＡＸＩＭＵＭ",
+        "ENIGMA level: ＭＡＸＩＭＵＭ",
         "----------------------------------------",
       ]);
     } else {
       addOutput([
         "----------------------------------------",
-        "Game over! Try again by typing 'aesthetic'",
+        "Game over! Try again by typing 'enigma'",
         "----------------------------------------",
       ]);
     }

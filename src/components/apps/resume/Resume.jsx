@@ -26,18 +26,36 @@ const Resume = () => {
     setActiveSection(section);
   };
 
+  // Handle resume download
+  const handleDownload = () => {
+    // Path to the static resume file in public/assets
+    const resumePath = "/assets/documents/resume.pdf";
+
+    // Create an anchor element
+    const link = document.createElement("a");
+    link.href = resumePath;
+
+    // Set download attribute to suggest a filename
+    link.download = "resume.pdf";
+
+    // Append to document body
+    document.body.appendChild(link);
+
+    // Trigger download
+    link.click();
+
+    // Clean up
+    document.body.removeChild(link);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.toolbar}>
         <div className={styles.docTitle}>Resume.doc</div>
         <div className={styles.toolbarActions}>
-          <button className={styles.toolbarButton}>
+          <button className={styles.toolbarButton} onClick={handleDownload}>
             <Download size={16} />
             <span>Download</span>
-          </button>
-          <button className={styles.toolbarButton}>
-            <Printer size={16} />
-            <span>Print</span>
           </button>
         </div>
       </div>

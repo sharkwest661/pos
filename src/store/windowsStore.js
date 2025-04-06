@@ -22,9 +22,9 @@ const DEFAULT_POSITIONS = {
   // Define positions for all app types - x, y are the top-left corner positions
   [APP_TYPES.MY_PROFILE]: { x: 100, y: 50, width: 600, height: 600 },
   [APP_TYPES.PROJECTS]: { x: 150, y: 70, width: 700, height: 600 },
-  [APP_TYPES.RESUME]: { x: 200, y: 90, width: 600, height: 700 },
-  [APP_TYPES.TERMINAL_APP]: { x: 250, y: 110, width: 650, height: 450 },
-  [APP_TYPES.CONTACT]: { x: 300, y: 130, width: 550, height: 500 },
+  [APP_TYPES.RESUME]: { x: 200, y: 90, width: 800, height: 700 },
+  [APP_TYPES.TERMINAL_APP]: { x: 250, y: 110, width: 750, height: 550 },
+  [APP_TYPES.CONTACT]: { x: 300, y: 130, width: 650, height: 500 },
   [APP_TYPES.MUSIC_PLAYER]: { x: 350, y: 150, width: 370, height: 670 },
   [APP_TYPES.NOTES]: { x: 400, y: 170, width: 650, height: 450 },
   [APP_TYPES.TEXT_VIEWER]: { x: 450, y: 190, width: 600, height: 400 },

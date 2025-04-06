@@ -13,42 +13,31 @@ export const resumeData = {
       role: "Frontend Developer",
       company: "Agile Solutions",
       period: "August 2023 - February 2025",
-      description:
-        "Led front-end development for multiple web applications using React and modern JavaScript. Implemented responsive designs and improved performance by 40%.",
+      // description:
       highlights: [
-        "Developed reusable component library used across 5+ projects",
-        "Optimized loading times from 4.5s to 1.8s",
-        "Mentored junior developers and conducted code reviews",
+        "Developed and maintained call center and dialer applications using React",
+        "Developed a props-based styling system with responsive design support in React",
+        "Mentored programming students",
       ],
     },
     {
       id: 2,
       role: "Intern Frontend Developer",
-      company: "WebSolutions Ltd.",
-      period: "2018 - 2020",
-      description:
-        "Created responsive web applications with focus on user experience and performance. Collaborated with design and backend teams.",
+      company: "Proton.az MMC",
+      period: "September 2022 - November 2022",
+      // description: "",
       highlights: [
-        "Built interactive dashboards with complex data visualizations",
-        "Implemented accessibility improvements across company websites",
-        "Reduced bundle size by 35% through code splitting techniques",
+        "Developed landing page websites using vanilla JavaScript and JQuery",
       ],
     },
   ],
   education: [
     {
       id: 1,
-      degree: "Master of Science, Computer Science",
-      institution: "Stanford University",
-      period: "2014 - 2016",
-      description: "Specialized in Human-Computer Interaction",
-    },
-    {
-      id: 2,
-      degree: "Bachelor of Science, Software Engineering",
-      institution: "University of California",
-      period: "2010 - 2014",
-      description: "Minor in Digital Media Arts",
+      degree: "Mining Engineering",
+      institution: "Azerbaijan State Oil and Industry University",
+      period: "2014 - 2015",
+      // description: "Specialized in Human-Computer Interaction",
     },
   ],
   skills: [
