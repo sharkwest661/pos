@@ -1,0 +1,221 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+@import "../../../styles/effects.scss";
+
+.container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    $vapor-dark-blue 0%,
+    $vapor-dark-purple 100%
+  );
+  color: $vapor-text-light;
+  overflow: hidden;
+  z-index: $z-index-max;
+  padding: 20px;
+}
+
+.backgroundOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.gridBackground {
+  @include grid-background;
+}
+
+.sun {
+  position: absolute;
+  top: 40px;
+  right: 60px;
+  width: 100px;
+  height: 100px;
+  background: $vapor-sunset-gradient;
+  border-radius: 50%;
+  box-shadow: 0 0 40px rgba(255, 159, 104, 0.7);
+  z-index: 2;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    border-radius: 100px 100px 0 0;
+  }
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 3;
+  max-width: 500px;
+  animation: float 6s ease-in-out infinite;
+}
+
+.title {
+  font-family: $font-display;
+  font-size: clamp(1.5rem, 8vw, 3rem);
+  font-weight: 700;
+  color: $vapor-neon-pink;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 15px rgba($vapor-neon-pink, 0.7);
+  text-align: center;
+
+  // Glitch effect
+  position: relative;
+
+  &::before,
+  &::after {
+    content: attr(textContent);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &::before {
+    color: $vapor-cyan;
+    animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+    animation-delay: 0.1s;
+  }
+
+  &::after {
+    color: $vapor-neon-pink;
+    animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both
+      infinite;
+    animation-delay: 0.2s;
+  }
+}
+
+.computerArt {
+  margin: 1rem 0;
+  position: relative;
+}
+
+.asciiArt {
+  font-family: $font-vcr;
+  font-size: clamp(0.35rem, 1.5vw, 0.7rem);
+  line-height: 1.2;
+  color: $vapor-cyan;
+  white-space: pre;
+  text-shadow: 0 0 5px rgba($vapor-cyan, 0.7);
+  background-color: transparent;
+  text-align: center;
+  margin: 0 auto;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.messageBox {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background-color: rgba($vapor-dark-purple, 0.6);
+  border: 2px solid $vapor-neon-pink;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba($vapor-neon-pink, 0.5);
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  overflow: hidden;
+
+  // Overlay scanline effect
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.1) 0px,
+      rgba(0, 0, 0, 0.1) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+  }
+}
+
+.message {
+  font-family: $font-vcr;
+  font-size: clamp(0.875rem, 3vw, 1rem);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: $vapor-text-light;
+  text-shadow: 0 0 5px rgba($vapor-text-light, 0.5);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.highlight {
+  color: $vapor-neon-pink;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba($vapor-neon-pink, 0.7);
+}
+
+.palmContainer {
+  position: absolute;
+  bottom: -80px;
+  right: -60px;
+  z-index: 5;
+  transform: rotate(-5deg);
+  animation: sway 8s ease-in-out infinite;
+}
+
+.palm {
+  font-size: 80px;
+  color: $vapor-neon-pink;
+  text-shadow: 3px 3px 0 $vapor-cyan, -3px -3px 0 $vapor-neon-pink;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+}

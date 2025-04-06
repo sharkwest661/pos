@@ -10,8 +10,8 @@ export const VISUALIZER_GIFS = [
   "https://media.giphy.com/media/zVPiOxEsVBDB6/giphy.gif?cid=ecf05e47wp3kk6bpgxpzvanpjdqf1w4aoruea3m7i3u8e0ht&ep=v1_gifs_search&rid=giphy.gif&ct=g", //sailor moon
   "https://media.giphy.com/media/Dh5q0sShxgp13DwrvG/giphy.gif?cid=790b7611lbnjsbp8u0n7f5z9fskc07cvr6g6xg7u5q29puw3&ep=v1_gifs_search&rid=giphy.gif&ct=g", //dog coding
   "https://media.giphy.com/media/zOvBKUUEERdNm/giphy.gif?cid=790b7611lbnjsbp8u0n7f5z9fskc07cvr6g6xg7u5q29puw3&ep=v1_gifs_search&rid=giphy.gif&ct=g", // monkey coding
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMG5nZzNsaWNzc3NidmRkNnE1ZjR2ZWpvbWEzN2JwcHFzMTM2OGNxayZlcD12MV9naWZzX3NlYXJjaCZjdD1n/AVun92P6O8q2Y/giphy.gif", //miami vice
-  "https://media.giphy.com/media/3o7aCWUAhxmvFc5VVm/giphy.gif?cid=790b76110ngg3licsssbvdd6q5f4vejoma37bppqs1368cqk&ep=v1_gifs_search&rid=giphy.gif&ct=g", // miami vice
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMG5nZzNsaWNzc3NidmRkNnE1ZjR2ZWpvbWEzN2JwcHFzMTM2OGNxayZlcD12MV9naWZzX3NlYXJjaCZjdD1n/AVun92P6O8q2Y/giphy.gif", //miami vice 1
+  "https://media.giphy.com/media/3o7aCWUAhxmvFc5VVm/giphy.gif?cid=790b76110ngg3licsssbvdd6q5f4vejoma37bppqs1368cqk&ep=v1_gifs_search&rid=giphy.gif&ct=g", // miami vice 2
   "https://media.giphy.com/media/J1XfZvlK4SJmQh6Ve1/giphy.gif?cid=ecf05e47g18dhb6eqxwo3ogm8wccenkyy5duq9qfps8w7zum&ep=v1_gifs_search&rid=giphy.gif&ct=g", // miami vice car
   "https://media.giphy.com/media/lg8ZgPzmxgxPi/giphy.gif?cid=790b7611qrrewp4ezvmky467lmh1yoo2medgnwdwzt75r2lz&ep=v1_gifs_search&rid=giphy.gif&ct=g", // family guy
   "https://media.giphy.com/media/fC1HPbYpydrqM/giphy.gif?cid=790b7611qrrewp4ezvmky467lmh1yoo2medgnwdwzt75r2lz&ep=v1_gifs_search&rid=giphy.gif&ct=g", //family guy 2
@@ -44,10 +44,14 @@ export const VISUALIZER_GIFS = [
   "https://media.giphy.com/media/e26OhuJO0wKWWX4Epp/giphy.gif?cid=790b761192yv5dc2gzzc3nx89zec4z2gwgb8v3ug8f423g4b&ep=v1_gifs_search&rid=giphy.gif&ct=g", // walking dead 3
   "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnFwcTJvZzN2dG91N2JyZGFjajZ0b3h3ZGRyZmthdGhqNHZkdHBuMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/4DNPcZOIcgnwA/giphy.gif", // hifi
   "https://media.giphy.com/media/V5qXaUBISlbTa/giphy.gif?cid=ecf05e4763nw62ywpxd8u9r168g6c0wbb8ia0712364olqs9&ep=v1_gifs_related&rid=giphy.gif&ct=g", // anime city
-  "https://media.giphy.com/media/nSiNho356rXH2/giphy.gif?cid=ecf05e47aiiwk4xqb80g7b4zw0b0kqxol7r10yl172tabyjs&ep=v1_gifs_related&rid=giphy.gif&ct=g", //anime
+  "https://media.giphy.com/media/nSiNho356rXH2/giphy.gif?cid=ecf05e47aiiwk4xqb80g7b4zw0b0kqxol7r10yl172tabyjs&ep=v1_gifs_related&rid=giphy.gif&ct=g", //anime casette
   "https://media.giphy.com/media/jUJgL0iByjsAS2MQH1/giphy.gif?cid=ecf05e4763nw62ywpxd8u9r168g6c0wbb8ia0712364olqs9&ep=v1_gifs_related&rid=giphy.gif&ct=g", // anime 2
   "https://media.giphy.com/media/v2WuhMBzb3h5e/giphy.gif?cid=790b7611fozxa4xgth357vs7b8cksfotkuf9ee87x0tl8fmc&ep=v1_gifs_search&rid=giphy.gif&ct=g", // anime 3
   "https://media.giphy.com/media/ozXTrqRgqFcly/giphy.gif?cid=790b76113usz6siwu7i6qg7adby4u9zoz898g0duuenfypla&ep=v1_gifs_search&rid=giphy.gif&ct=g", // kill bill
   "https://media.giphy.com/media/559CKeu0xXg08/giphy.gif?cid=790b76113usz6siwu7i6qg7adby4u9zoz898g0duuenfypla&ep=v1_gifs_search&rid=giphy.gif&ct=g", // kill bill 2
   "https://media.giphy.com/media/JUkAzEFW74tpK/giphy.gif?cid=790b76113usz6siwu7i6qg7adby4u9zoz898g0duuenfypla&ep=v1_gifs_search&rid=giphy.gif&ct=g", // kill bill 3
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHVuaTZ2bjN2cW5uazF4dmh2ZDFkZXY5MmM3eTZxY3RveG42NHZ3biZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l41lO0QvEQ8kjaIko/giphy.gif", // retro ads
+  "https://media.giphy.com/media/kc6n0RKTFbDJC/giphy.gif?cid=ecf05e47250qr189rrmc5xtmtd7pjw5qddi3khnhc3br7avv&ep=v1_gifs_search&rid=giphy.gif&ct=g", // retro game
+  "https://media.giphy.com/media/1EVPGsbaNSmIw/giphy.gif?cid=790b7611luni6vn3vqnnk1xvhvd1dev92c7y6qctoxn64vwn&ep=v1_gifs_search&rid=giphy.gif&ct=g", // dancing
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGNmZDYzMmV6dWdnYjloYW5oOTRjdDc3ZHg3cDI5c25iOXc5NHBpbiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1Syi8XSAkiFupEty1u/giphy.gif", // bill gates
 ];

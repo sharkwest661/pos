@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Desktop from "./components/desktop/Desktop/Desktop";
-import StartPage from "./components/startPage/StartPage";
+import UnsupportedResolution from "./components/desktop/UnsupportedResolution";
 import { useAppStore, useAudioStore } from "./store";
 import { PLAYLIST_DATA } from "./constants/musicData";
 import styles from "./App.module.scss";
@@ -9,13 +9,18 @@ import styles from "./App.module.scss";
 import "./styles/index.scss";
 
 const App = () => {
-  const isInitialized = useAppStore((state) => state.isInitialized);
   const initializeApp = useAppStore((state) => state.initializeApp);
   const initAudio = useAudioStore((state) => state.initAudio);
   const setPlaylist = useAudioStore((state) => state.setPlaylist);
 
-  // Initialize audio system
+  // State to track window width
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  // Initialize audio system and app immediately
   useEffect(() => {
+    // Initialize app immediately
+    initializeApp();
+
     // Initialize audio element
     initAudio();
 
@@ -31,22 +36,24 @@ const App = () => {
     // Add event listener
     document.addEventListener("contextmenu", handleContextMenu);
 
-    // Simulate initialization process
-    const timer = setTimeout(() => {
-      initializeApp(); // This will set isInitialized to true
-    }, 5000); // 5-second delay to show the loading screen
+    // Handle window resize for responsive check
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
 
     // Cleanup on unmount
     return () => {
       useAudioStore.getState().cleanup();
       document.removeEventListener("contextmenu", handleContextMenu);
-      clearTimeout(timer);
+      window.removeEventListener("resize", handleResize);
     };
   }, [initAudio, setPlaylist, initializeApp]);
 
   return (
     <div className={styles.app}>
-      {isInitialized ? <Desktop /> : <StartPage />}
+      {windowWidth < 720 ? <UnsupportedResolution /> : <Desktop />}
     </div>
   );
 };

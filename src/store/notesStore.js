@@ -8,7 +8,7 @@ const generateId = () =>
 // Helper to save notes to sessionStorage
 const saveNotesTosessionStorage = (notes) => {
   try {
-    sessionStorage.setItem("vaporwave_os_notes", JSON.stringify(notes));
+    sessionStorage.setItem("os_notes", JSON.stringify(notes));
   } catch (error) {
     console.error("Error saving notes to sessionStorage:", error);
   }
@@ -17,7 +17,7 @@ const saveNotesTosessionStorage = (notes) => {
 // Helper to load notes from sessionStorage
 const loadNotesFromsessionStorage = () => {
   try {
-    const savedNotes = sessionStorage.getItem("vaporwave_os_notes");
+    const savedNotes = sessionStorage.getItem("os_notes");
     if (savedNotes) {
       return JSON.parse(savedNotes);
     }
@@ -31,7 +31,7 @@ const loadNotesFromsessionStorage = () => {
       id: "note-welcome",
       title: "Welcome to Notes",
       content:
-        "Welcome to the Vaporwave OS Notes app! Use this to jot down your ideas and thoughts in aesthetic vaporwave style.",
+        "Welcome to the Notes app! Use it to capture your ideas and thoughts with a unique retro-inspired interface.",
       createdAt: new Date(),
       updatedAt: new Date(),
     },

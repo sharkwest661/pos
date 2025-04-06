@@ -98,18 +98,23 @@ const Resume = () => {
                 <Mail size={14} />
                 <span>{resumeData.personalInfo.email}</span>
               </div>
-              <div className={styles.contactItem}>
-                <Phone size={14} />
-                <span>{resumeData.personalInfo.phone}</span>
-              </div>
+              {resumeData.personalInfo.phone && (
+                <div className={styles.contactItem}>
+                  <Phone size={14} />
+                  <span>{resumeData.personalInfo.phone}</span>
+                </div>
+              )}
+
               <div className={styles.contactItem}>
                 <MapPin size={14} />
                 <span>{resumeData.personalInfo.location}</span>
               </div>
-              <div className={styles.contactItem}>
-                <Globe size={14} />
-                <span>{resumeData.personalInfo.website}</span>
-              </div>
+              {resumeData.personalInfo.website && (
+                <div className={styles.contactItem}>
+                  <Globe size={14} />
+                  <span>{resumeData.personalInfo.website}</span>
+                </div>
+              )}
             </div>
           </div>
 

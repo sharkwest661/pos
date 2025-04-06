@@ -5,7 +5,7 @@ import { create } from "zustand";
 const saveStateTosessionStorage = (state) => {
   try {
     sessionStorage.setItem(
-      "vaporwave_terminal",
+      "os_terminal",
       JSON.stringify({
         history: state.history,
         commandHistory: state.commandHistory,
@@ -21,7 +21,7 @@ const saveStateTosessionStorage = (state) => {
 // Helper to load terminal state from sessionStorage
 const loadStateFromsessionStorage = () => {
   try {
-    const savedState = sessionStorage.getItem("vaporwave_terminal");
+    const savedState = sessionStorage.getItem("os_terminal");
     if (savedState) {
       return JSON.parse(savedState);
     }
