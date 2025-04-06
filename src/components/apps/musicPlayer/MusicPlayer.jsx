@@ -1,4 +1,4 @@
-// components/apps/musicPlayer/MusicPlayer.jsx
+// components/apps/musicPlayer/MusicPlayer.jsx (Updated with GIF Visualizer)
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import {
   Play,
@@ -13,9 +13,12 @@ import {
   Heart,
   HeartOff,
   RefreshCw,
+  Image,
+  BarChart2,
 } from "lucide-react";
 import { useThemeStore, useAudioStore } from "../../../store";
 import { PLAYLIST_DATA } from "../../../constants/musicData";
+import GifVisualizer from "./GifVisualizer";
 import styles from "./MusicPlayer.module.scss";
 
 const MusicPlayer = () => {
@@ -43,8 +46,9 @@ const MusicPlayer = () => {
   const [progress, setProgress] = useState(0);
   const [selectedView, setSelectedView] = useState("player"); // 'player' or 'playlist'
   const [previousVolume, setPreviousVolume] = useState(40);
-  const [visualizerData, setVisualizerData] = useState([]);
+  const [visualizerMode, setVisualizerMode] = useState("gif"); // 'gif' or 'bars'
   const [isInitialized, setIsInitialized] = useState(false);
+  const [visualizerData, setVisualizerData] = useState([]);
 
   const visualizerRef = useRef(null);
 
@@ -96,7 +100,7 @@ const MusicPlayer = () => {
     }
   };
 
-  // Generate new visualizer data
+  // Generate new visualizer data for bar visualizer
   const generateVisualizerData = () => {
     const barCount = 32;
     const newData = Array.from({ length: barCount }).map(() => ({
@@ -109,14 +113,14 @@ const MusicPlayer = () => {
 
   // Update visualizer animation when playing changes
   useEffect(() => {
-    if (!isPlaying) return;
+    if (!isPlaying || visualizerMode !== "bars") return;
 
     const intervalId = setInterval(() => {
       generateVisualizerData();
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, [isPlaying]);
+  }, [isPlaying, visualizerMode]);
 
   // Update progress when currentTime or duration changes
   useEffect(() => {
@@ -184,6 +188,11 @@ const MusicPlayer = () => {
     toggleFavorite(trackId);
   };
 
+  // Toggle visualizer mode
+  const toggleVisualizerMode = () => {
+    setVisualizerMode(visualizerMode === "gif" ? "bars" : "gif");
+  };
+
   // Current track information
   const currentTrack = useMemo(() => {
     return playlist.length > 0 ? playlist[currentTrackIndex] : null;
@@ -192,21 +201,44 @@ const MusicPlayer = () => {
   // Player view
   const renderPlayerView = () => (
     <div className={styles.playerView}>
-      {/* Visualizer */}
-      <div ref={visualizerRef} className={styles.visualizer}>
-        {visualizerData.map((bar, i) => (
-          <div
-            key={i}
-            className={styles.visualizerBar}
-            style={{
-              height: `${isPlaying ? bar.height : 10}%`,
-              opacity: isPlaying ? bar.opacity : 0.3,
-              transition: `height ${bar.animationDuration}s ease`,
-              boxShadow: `0 0 5px ${themeConfig.accentPrimary}`,
-            }}
-          />
-        ))}
-      </div>
+      {/* Visualizer - Either GIF or Bars based on mode */}
+      {visualizerMode === "gif" ? (
+        <GifVisualizer
+          currentTrack={currentTrack}
+          isPlaying={isPlaying}
+          themeConfig={themeConfig}
+        />
+      ) : (
+        <div ref={visualizerRef} className={styles.visualizer}>
+          {visualizerData.map((bar, i) => (
+            <div
+              key={i}
+              className={styles.visualizerBar}
+              style={{
+                height: `${isPlaying ? bar.height : 10}%`,
+                opacity: isPlaying ? bar.opacity : 0.3,
+                transition: `height ${bar.animationDuration}s ease`,
+                boxShadow: `0 0 5px ${themeConfig.accentPrimary}`,
+              }}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* Visualizer mode toggle button */}
+      <button
+        className={styles.visualizerToggle}
+        onClick={toggleVisualizerMode}
+        title={`Switch to ${
+          visualizerMode === "gif" ? "bars" : "GIF"
+        } visualizer`}
+      >
+        {visualizerMode === "gif" ? (
+          <BarChart2 size={16} />
+        ) : (
+          <Image size={16} />
+        )}
+      </button>
 
       {/* Track info */}
       <div className={styles.trackInfo}>

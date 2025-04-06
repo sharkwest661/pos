@@ -13,8 +13,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: $cyber-dark-blue;
-  color: $cyber-text-light;
+  background-color: $vapor-dark-blue;
+  color: $vapor-text-light;
 }
 
 .loadingContent {
@@ -28,11 +28,11 @@
   font-size: 2.25rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  font-family: $font-mono;
-  color: $cyber-neon-pink;
+  font-family: $font-vcr;
+  color: $vapor-neon-pink;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  text-shadow: $cyber-glow-pink;
+  text-shadow: $vapor-glow-pink;
 }
 
 .loadingBar {
@@ -51,15 +51,15 @@
   left: 0;
   height: 100%;
   width: 50%;
-  background: linear-gradient(to right, $cyber-neon-pink, $cyber-cyan);
-  box-shadow: 0 0 10px rgba($cyber-cyan, 0.7);
+  background: linear-gradient(to right, $vapor-neon-pink, $vapor-cyan);
+  box-shadow: 0 0 10px rgba($vapor-cyan, 0.7);
   animation: loadingBar 1.5s ease-in-out infinite;
   transform-origin: left center;
 }
 
 .loadingText {
   font-size: 0.875rem;
-  font-family: $font-mono;
-  color: $cyber-cyan;
+  font-family: $font-vcr;
+  color: $vapor-cyan;
   text-transform: uppercase;
 }

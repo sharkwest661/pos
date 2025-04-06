@@ -1,5 +1,5 @@
-@import "../../../styles/variables";
-@import "../../../styles/mixins";
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
 
 .container {
   width: 100%;
@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  background-color: $cyber-dark-blue;
+  background-color: $vapor-dark-blue;
 
   /* Custom scrollbar within the music player */
   ::-webkit-scrollbar {
@@ -21,44 +21,27 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, $cyber-neon-pink, $cyber-cyan);
+    background: linear-gradient(to bottom, $vapor-neon-pink, $vapor-cyan);
     border-radius: 2px;
-    box-shadow: 0 0 5px rgba($cyber-neon-pink, 0.7);
+    box-shadow: 0 0 5px rgba($vapor-neon-pink, 0.7);
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: $cyber-neon-pink;
-    box-shadow: 0 0 8px rgba($cyber-neon-pink, 0.9);
-  }
-
-  /* Custom scrollbar for Dark Hacker theme (if needed) */
-  &.darkHacker {
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(
-        45deg,
-        $hacker-green,
-        rgba($hacker-green, 0.7)
-      );
-      box-shadow: 0 0 5px rgba($hacker-green, 0.7);
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: $hacker-green;
-      box-shadow: 0 0 8px rgba($hacker-green, 0.9);
-    }
+    background: $vapor-neon-pink;
+    box-shadow: 0 0 8px rgba($vapor-neon-pink, 0.9);
   }
 }
 
 // Navigation tabs
 .tabsContainer {
   display: flex;
-  border-bottom: 1px solid rgba($cyber-cyan, 0.2);
+  border-bottom: 1px solid rgba($vapor-cyan, 0.2);
 }
 
 .tab {
   flex: 1;
   padding: 0.75rem 1rem;
-  font-family: $font-mono;
+  font-family: $font-vcr;
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -66,7 +49,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $cyber-text-light;
+  color: $vapor-text-light;
   background-color: transparent;
   border: none;
   border-bottom: 2px solid transparent;
@@ -77,8 +60,8 @@
   }
 
   &.active {
-    border-bottom: 2px solid $cyber-neon-pink;
-    color: $cyber-neon-pink;
+    border-bottom: 2px solid $vapor-neon-pink;
+    color: $vapor-neon-pink;
     background-color: rgba(0, 0, 0, 0.2);
   }
 
@@ -101,6 +84,36 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  position: relative;
+}
+
+// Visualizer toggle button
+.visualizerToggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background-color: rgba($vapor-dark-blue, 0.7);
+  border: 1px solid $vapor-neon-pink;
+  border-radius: 50%;
+  color: $vapor-neon-pink;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all $transition-standard ease;
+  z-index: 10;
+
+  &:hover {
+    background-color: rgba($vapor-neon-pink, 0.2);
+    box-shadow: 0 0 10px rgba($vapor-neon-pink, 0.7);
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
 }
 
 .visualizer {
@@ -112,7 +125,7 @@
   padding: 0.5rem 1rem;
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  border: 1px solid $cyber-cyan;
+  border: 1px solid $vapor-cyan;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   gap: 2px; /* Add spacing between bars */
@@ -121,8 +134,8 @@
 .visualizerBar {
   margin: 0 1px;
   width: 6px;
-  background-color: $cyber-neon-pink;
-  box-shadow: 0 0 5px $cyber-neon-pink;
+  background-color: $vapor-neon-pink;
+  box-shadow: 0 0 5px $vapor-neon-pink;
   // Note: transition is set inline for dynamic duration
 }
 
@@ -135,15 +148,15 @@
 .trackTitle {
   font-size: 1.5rem;
   font-weight: 700;
-  color: $cyber-neon-pink;
-  text-shadow: 0 0 5px $cyber-neon-pink;
+  color: $vapor-neon-pink;
+  text-shadow: 0 0 5px $vapor-neon-pink;
   margin-bottom: 0.25rem;
   @include truncate;
 }
 
 .trackArtist {
   font-size: 1rem;
-  color: $cyber-text-light;
+  color: $vapor-text-light;
   margin-bottom: 0.25rem;
   @include truncate;
 }
@@ -175,13 +188,13 @@
   height: 4px;
   background: linear-gradient(
     to right,
-    $cyber-neon-pink 0%,
-    $cyber-neon-pink var(--progress-percent, 0%),
+    $vapor-neon-pink 0%,
+    $vapor-neon-pink var(--progress-percent, 0%),
     rgba(31, 41, 55, 0.7) var(--progress-percent, 0%),
     rgba(31, 41, 55, 0.7) 100%
   );
   border-radius: 2px;
-  box-shadow: 0 0 5px $cyber-neon-pink;
+  box-shadow: 0 0 5px $vapor-neon-pink;
   -webkit-appearance: none;
   appearance: none;
   outline: none;
@@ -194,8 +207,8 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: $cyber-cyan;
-    box-shadow: 0 0 5px $cyber-cyan;
+    background: $vapor-cyan;
+    box-shadow: 0 0 5px $vapor-cyan;
     cursor: pointer;
   }
 
@@ -204,8 +217,8 @@
     height: 12px;
     border: none;
     border-radius: 50%;
-    background: $cyber-cyan;
-    box-shadow: 0 0 5px $cyber-cyan;
+    background: $vapor-cyan;
+    box-shadow: 0 0 5px $vapor-cyan;
     cursor: pointer;
   }
 }
@@ -215,7 +228,7 @@
   justify-content: space-between;
   font-size: 0.75rem;
   margin-top: 0.25rem;
-  font-family: $font-mono;
+  font-family: $font-vcr;
   color: rgba(255, 255, 255, 0.6);
 }
 
@@ -237,7 +250,7 @@
   transition: color $transition-standard ease;
 
   &:hover {
-    color: $cyber-cyan;
+    color: $vapor-cyan;
   }
 }
 
@@ -249,8 +262,8 @@
   align-items: center;
   justify-content: center;
   transition: all $transition-standard ease;
-  background: linear-gradient(135deg, $cyber-neon-pink 0%, $cyber-cyan 100%);
-  box-shadow: 0 0 15px $cyber-neon-pink;
+  background: linear-gradient(135deg, $vapor-neon-pink 0%, $vapor-cyan 100%);
+  box-shadow: 0 0 15px $vapor-neon-pink;
   border: none;
   cursor: pointer;
 
@@ -289,7 +302,7 @@
   transition: all $transition-standard ease;
 
   &:hover {
-    color: $cyber-cyan;
+    color: $vapor-cyan;
     background-color: rgba(0, 0, 0, 0.2);
   }
 }
@@ -313,9 +326,9 @@
 .volumeProgress {
   position: absolute;
   height: 4px;
-  background-color: $cyber-cyan;
+  background-color: $vapor-cyan;
   border-radius: 2px;
-  box-shadow: 0 0 5px $cyber-cyan;
+  box-shadow: 0 0 5px $vapor-cyan;
 }
 
 .volumeThumb {
@@ -323,8 +336,8 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: $cyber-cyan;
-  box-shadow: 0 0 5px $cyber-cyan;
+  background-color: $vapor-cyan;
+  box-shadow: 0 0 5px $vapor-cyan;
   z-index: 1;
   pointer-events: none;
 }
@@ -351,21 +364,21 @@
 
 .playlistHeader {
   padding: 0.75rem 1rem;
-  font-family: $font-mono;
+  font-family: $font-vcr;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid $cyber-cyan;
+  border-bottom: 1px solid $vapor-cyan;
   background-color: rgba(0, 0, 0, 0.2);
 }
 
 .playlistTitle {
-  color: $cyber-cyan;
+  color: $vapor-cyan;
 }
 
 .playlistCount {
   font-size: 0.75rem;
-  color: $cyber-text-light;
+  color: $vapor-text-light;
 }
 
 .tracksList {
@@ -381,9 +394,9 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: $cyber-cyan;
+    background: $vapor-cyan;
     border-radius: 4px;
-    box-shadow: 0 0 5px rgba($cyber-cyan, 0.7);
+    box-shadow: 0 0 5px rgba($vapor-cyan, 0.7);
   }
 }
 
@@ -405,19 +418,19 @@
 
   &.active {
     background-color: rgba(255, 255, 255, 0.05);
-    border-left: 2px solid $cyber-neon-pink;
+    border-left: 2px solid $vapor-neon-pink;
   }
 }
 
 .trackNumber {
   width: 2rem;
-  font-family: $font-mono;
+  font-family: $font-vcr;
   text-align: center;
   margin-right: 0.75rem;
   color: rgba(255, 255, 255, 0.4);
 
   &.active {
-    color: $cyber-neon-pink;
+    color: $vapor-neon-pink;
   }
 }
 
@@ -431,9 +444,9 @@
   .bar {
     display: block;
     width: 2px;
-    background-color: $cyber-neon-pink;
+    background-color: $vapor-neon-pink;
     animation: playing-animation 1.2s ease infinite;
-    box-shadow: 0 0 2px $cyber-neon-pink;
+    box-shadow: 0 0 2px $vapor-neon-pink;
 
     &:nth-child(1) {
       height: 8px;
@@ -462,7 +475,7 @@
   @include truncate;
 
   &.active {
-    color: $cyber-neon-pink;
+    color: $vapor-neon-pink;
   }
 }
 
@@ -492,7 +505,7 @@
 
 .trackDuration {
   font-size: 0.75rem;
-  font-family: $font-mono;
+  font-family: $font-vcr;
   color: rgba(255, 255, 255, 0.4);
   margin-left: 0.5rem;
 }
@@ -502,13 +515,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-top: 1px solid $cyber-cyan;
+  border-top: 1px solid $vapor-cyan;
   background-color: rgba(0, 0, 0, 0.2);
 }
 
 .playlistFooterText {
   font-size: 0.75rem;
-  color: $cyber-text-light;
+  color: $vapor-text-light;
 }
 
 @keyframes playing-animation {

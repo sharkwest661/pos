@@ -1,0 +1,254 @@
+// components/startPage/StartPage.module.scss
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+@import "../../styles/effects.scss";
+
+.loadingScreen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    $vapor-dark-blue 0%,
+    $vapor-dark-purple 100%
+  );
+  color: $vapor-text-light;
+  overflow: hidden;
+  z-index: $z-index-max;
+}
+
+.gridBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  @include grid-background;
+}
+
+.sun {
+  position: absolute;
+  top: 50px;
+  right: 80px;
+  width: 120px;
+  height: 120px;
+  background: $vapor-sunset-gradient;
+  border-radius: 50%;
+  box-shadow: 0 0 40px rgba(255, 159, 104, 0.7);
+  z-index: 2;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    border-radius: 100px 100px 0 0;
+  }
+}
+
+.loadingContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 3;
+  padding: $spacing-lg;
+  max-width: 500px;
+}
+
+.loadingTitle {
+  font-family: $font-display;
+  font-size: 3rem;
+  font-weight: 700;
+  color: $vapor-neon-pink;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: $spacing-xl;
+  text-shadow: 0 0 15px rgba($vapor-neon-pink, 0.7);
+  position: relative;
+
+  &.glitching {
+    @include glitch-text($vapor-neon-pink, $vapor-cyan);
+  }
+}
+
+.loadingBar {
+  width: 100%;
+  height: 12px;
+  background-color: rgba($vapor-dark-blue, 0.5);
+  border: 1px solid $vapor-neon-pink;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: $spacing-lg;
+  position: relative;
+  box-shadow: 0 0 10px rgba($vapor-neon-pink, 0.5);
+}
+
+.loadingProgress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, $vapor-neon-pink, $vapor-cyan);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px rgba($vapor-cyan, 0.7),
+    0 0 20px rgba($vapor-neon-pink, 0.3);
+}
+
+.loadingStatus {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: $spacing-lg;
+  font-family: $font-vcr;
+}
+
+.statusText {
+  color: $vapor-cyan;
+  font-size: 1rem;
+  text-shadow: 0 0 5px rgba($vapor-cyan, 0.5);
+}
+
+.progressText {
+  color: $vapor-neon-pink;
+  font-size: 1rem;
+  text-shadow: 0 0 5px rgba($vapor-neon-pink, 0.5);
+}
+
+.floppyAnimation {
+  margin: $spacing-xl 0;
+  position: relative;
+}
+
+.floppy {
+  width: 120px;
+  height: 120px;
+  background-color: #111;
+  border: 2px solid $vapor-cyan;
+  border-radius: 4px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba($vapor-cyan, 0.5);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    background-color: $vapor-dark-purple;
+    border: 1px solid $vapor-cyan;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, $vapor-neon-pink, $vapor-cyan);
+    animation: loadingBar 1.5s ease-in-out infinite;
+  }
+}
+
+.floppySlot {
+  position: absolute;
+  bottom: 20px;
+  width: 60px;
+  height: 5px;
+  background-color: rgba($vapor-dark-blue, 0.8);
+  border: 1px solid rgba($vapor-cyan, 0.5);
+}
+
+.floppyLabel {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  transform: translateY(-50%);
+  color: $vapor-cyan;
+  font-family: $font-vcr;
+  font-size: 0.75rem;
+  text-shadow: 0 0 5px rgba($vapor-cyan, 0.5);
+}
+
+.copyrightText {
+  font-family: $font-vcr;
+  font-size: 0.75rem;
+  color: rgba($vapor-text-light, 0.7);
+  margin-top: $spacing-xl;
+}
+
+.decorations {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.palm {
+  position: absolute;
+  bottom: 40px;
+  right: 50px;
+  font-size: 80px;
+  transform: rotate(-5deg);
+  color: $vapor-neon-pink;
+  text-shadow: 3px 3px 0 $vapor-cyan, -3px -3px 0 $vapor-neon-pink;
+}
+
+.statue {
+  position: absolute;
+  bottom: 100px;
+  left: 50px;
+  font-size: 60px;
+  color: white;
+  opacity: 0.5;
+}
+
+/* Animations */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(0.98);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

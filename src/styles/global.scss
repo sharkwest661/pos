@@ -8,7 +8,7 @@
 
 /* Font settings */
 .font-mono {
-  font-family: $font-mono;
+  font-family: $font-display;
 }
 
 .font-display {
@@ -36,25 +36,25 @@ button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, $cyber-neon-pink, $cyber-cyan);
+  background: linear-gradient(45deg, $vapor-neon-pink, $vapor-cyan);
   border-radius: 3px;
-  box-shadow: 0 0 5px rgba($cyber-neon-pink, 0.7);
+  box-shadow: 0 0 5px rgba($vapor-neon-pink, 0.7);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: $cyber-neon-pink;
-  box-shadow: 0 0 8px rgba($cyber-neon-pink, 0.9);
+  background: $vapor-neon-pink;
+  box-shadow: 0 0 8px rgba($vapor-neon-pink, 0.9);
 }
 
 *::selection {
-  background-color: rgba($cyber-cyan, 0.7);
+  background-color: rgba($vapor-cyan, 0.7);
   color: white;
 }
 
 /* Firefox scrollbar compatibility */
 * {
   scrollbar-width: thin;
-  scrollbar-color: $cyber-neon-pink rgba(18, 4, 88, 0.6);
+  scrollbar-color: $vapor-neon-pink rgba(18, 4, 88, 0.6);
 }
 
 /* Custom range input styling */
@@ -71,8 +71,8 @@ input[type="range"]::-webkit-slider-thumb {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: $cyber-neon-pink;
-  box-shadow: 0 0 5px rgba($cyber-neon-pink, 0.7);
+  background: $vapor-neon-pink;
+  box-shadow: 0 0 5px rgba($vapor-neon-pink, 0.7);
   cursor: pointer;
 }
 
@@ -81,8 +81,8 @@ input[type="range"]::-moz-range-thumb {
   height: 12px;
   border: none;
   border-radius: 50%;
-  background: $cyber-neon-pink;
-  box-shadow: 0 0 5px rgba($cyber-neon-pink, 0.7);
+  background: $vapor-neon-pink;
+  box-shadow: 0 0 5px rgba($vapor-neon-pink, 0.7);
   cursor: pointer;
 }
 
@@ -95,18 +95,18 @@ input[type="range"]::-moz-range-thumb {
 
 /* Cyberpunk neon text effect */
 .neon-text {
-  color: $cyber-text-light;
-  text-shadow: 0 0 5px rgba($cyber-cyan, 0.7);
+  color: $vapor-text-light;
+  text-shadow: 0 0 5px rgba($vapor-cyan, 0.7);
 }
 
 .neon-text-pink {
-  color: $cyber-neon-pink;
-  text-shadow: 0 0 5px rgba($cyber-neon-pink, 0.7);
+  color: $vapor-neon-pink;
+  text-shadow: 0 0 5px rgba($vapor-neon-pink, 0.7);
 }
 
 .neon-text-cyan {
-  color: $cyber-cyan;
-  text-shadow: 0 0 5px rgba($cyber-cyan, 0.7);
+  color: $vapor-cyan;
+  text-shadow: 0 0 5px rgba($vapor-cyan, 0.7);
 }
 
 /* Hidden scrollbar */

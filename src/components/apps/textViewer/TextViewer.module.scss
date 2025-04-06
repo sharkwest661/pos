@@ -7,30 +7,30 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
-  background-color: rgba($cyber-dark-blue, 0.9);
-  color: $cyber-text-light;
+  background-color: rgba($vapor-dark-blue, 0.9);
+  color: $vapor-text-light;
   font-family: $font-content;
   overflow: hidden;
 }
 
 .header {
   padding: 1rem;
-  border-bottom: 1px solid $cyber-neon-pink;
-  background-color: rgba($cyber-dark-purple, 0.8);
+  border-bottom: 1px solid $vapor-neon-pink;
+  background-color: rgba($vapor-dark-purple, 0.8);
 }
 
 .fileName {
-  font-family: $font-mono;
-  color: $cyber-neon-pink;
+  font-family: $font-display;
+  color: $vapor-neon-pink;
   font-size: 1.2rem;
   margin-bottom: 0.25rem;
-  text-shadow: 0 0 5px rgba($cyber-neon-pink, 0.5);
+  text-shadow: 0 0 5px rgba($vapor-neon-pink, 0.5);
 }
 
 .fileInfo {
   font-size: 0.8rem;
-  color: rgba($cyber-text-light, 0.7);
-  font-family: $font-mono;
+  color: rgba($vapor-text-light, 0.7);
+  font-family: $font-display;
 }
 
 .content {
@@ -41,8 +41,8 @@
   font-size: 1rem;
 
   @include custom-scrollbar(
-    rgba($cyber-dark-blue, 0.6),
-    rgba($cyber-neon-pink, 0.7)
+    rgba($vapor-dark-blue, 0.6),
+    rgba($vapor-neon-pink, 0.7)
   );
 
   p {
@@ -50,12 +50,12 @@
   }
 
   .heading {
-    color: $cyber-cyan;
+    color: $vapor-cyan;
     font-family: $font-display;
     font-size: 1.5rem;
     margin: 1.5rem 0 1rem;
-    text-shadow: 0 0 5px rgba($cyber-cyan, 0.5);
-    border-bottom: 1px solid rgba($cyber-cyan, 0.3);
+    text-shadow: 0 0 5px rgba($vapor-cyan, 0.5);
+    border-bottom: 1px solid rgba($vapor-cyan, 0.3);
     padding-bottom: 0.5rem;
 
     &:first-child {
@@ -64,11 +64,11 @@
   }
 
   .subheading {
-    color: $cyber-electric-blue;
+    color: $vapor-electric-blue;
     font-family: $font-display;
     font-size: 1.2rem;
     margin: 1.2rem 0 0.8rem;
-    text-shadow: 0 0 3px rgba($cyber-electric-blue, 0.5);
+    text-shadow: 0 0 3px rgba($vapor-electric-blue, 0.5);
   }
 }
 
@@ -77,7 +77,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  font-family: $font-mono;
-  color: rgba($cyber-text-light, 0.6);
+  font-family: $font-display;
+  color: rgba($vapor-text-light, 0.6);
   font-style: italic;
 }

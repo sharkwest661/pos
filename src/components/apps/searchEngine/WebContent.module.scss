@@ -6,16 +6,16 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: $cyber-dark-blue;
-  color: $cyber-text-light;
+  background-color: $vapor-dark-blue;
+  color: $vapor-text-light;
   position: relative;
   overflow: hidden;
 }
 
 .header {
   padding: 12px;
-  background-color: $cyber-dark-purple;
-  border-bottom: 1px solid $cyber-neon-pink;
+  background-color: $vapor-dark-purple;
+  border-bottom: 1px solid $vapor-neon-pink;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -33,15 +33,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba($cyber-dark-blue, 0.5);
-  border: 1px solid rgba($cyber-neon-pink, 0.4);
-  color: $cyber-text-light;
+  background-color: rgba($vapor-dark-blue, 0.5);
+  border: 1px solid rgba($vapor-neon-pink, 0.4);
+  color: $vapor-text-light;
   cursor: pointer;
   transition: all $transition-standard ease;
 
   &:hover:not(:disabled) {
-    background-color: rgba($cyber-neon-pink, 0.2);
-    border-color: $cyber-neon-pink;
+    background-color: rgba($vapor-neon-pink, 0.2);
+    border-color: $vapor-neon-pink;
   }
 
   &:disabled {
@@ -56,15 +56,15 @@
   align-items: center;
   gap: 6px;
   padding: 6px 10px;
-  background-color: rgba($cyber-dark-blue, 0.7);
-  border: 1px solid rgba($cyber-cyan, 0.5);
-  font-family: $font-mono;
+  background-color: rgba($vapor-dark-blue, 0.7);
+  border: 1px solid rgba($vapor-cyan, 0.5);
+  font-family: $font-display;
   font-size: 12px;
-  color: $cyber-cyan;
+  color: $vapor-cyan;
 }
 
 .urlIcon {
-  color: $cyber-cyan;
+  color: $vapor-cyan;
   opacity: 0.7;
 }
 
@@ -87,18 +87,18 @@
   justify-content: center;
   background: none;
   border: none;
-  color: $cyber-text-light;
+  color: $vapor-text-light;
   cursor: pointer;
   transition: all $transition-standard ease;
 
   &:hover {
-    color: $cyber-neon-pink;
+    color: $vapor-neon-pink;
   }
 }
 
 .bookmarkedIcon {
-  color: $cyber-neon-pink;
-  fill: $cyber-neon-pink;
+  color: $vapor-neon-pink;
+  fill: $vapor-neon-pink;
 }
 
 .content {
@@ -107,8 +107,8 @@
   padding: 20px;
 
   @include custom-scrollbar(
-    rgba($cyber-dark-blue, 0.6),
-    rgba($cyber-neon-pink, 0.5)
+    rgba($vapor-dark-blue, 0.6),
+    rgba($vapor-neon-pink, 0.5)
   );
 }
 
@@ -116,9 +116,9 @@
   font-family: $font-display;
   font-size: 24px;
   font-weight: 700;
-  color: $cyber-neon-pink;
+  color: $vapor-neon-pink;
   margin-bottom: 12px;
-  text-shadow: 0 0 5px rgba($cyber-neon-pink, 0.5);
+  text-shadow: 0 0 5px rgba($vapor-neon-pink, 0.5);
   line-height: 1.2;
 }
 
@@ -128,8 +128,8 @@
   align-items: center;
   padding: 8px 10px;
   margin-bottom: 20px;
-  background-color: rgba($cyber-dark-blue, 0.5);
-  border-left: 3px solid $cyber-cyan;
+  background-color: rgba($vapor-dark-blue, 0.5);
+  border-left: 3px solid $vapor-cyan;
 }
 
 .source {
@@ -137,11 +137,11 @@
   align-items: center;
   gap: 6px;
   font-size: 13px;
-  color: $cyber-text-light;
+  color: $vapor-text-light;
 
   .sourceLabel {
-    color: $cyber-cyan;
-    font-family: $font-mono;
+    color: $vapor-cyan;
+    font-family: $font-display;
     font-size: 12px;
   }
 }
@@ -150,12 +150,12 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  font-family: $font-mono;
+  font-family: $font-display;
   font-size: 12px;
-  color: rgba($cyber-text-light, 0.7);
+  color: rgba($vapor-text-light, 0.7);
 
   .dateIcon {
-    color: $cyber-cyan;
+    color: $vapor-cyan;
   }
 }
 
@@ -175,18 +175,18 @@
   font-family: $font-display;
   font-size: 18px;
   font-weight: 600;
-  color: $cyber-cyan;
+  color: $vapor-cyan;
   margin-bottom: 12px;
   padding-bottom: 6px;
-  border-bottom: 1px solid rgba($cyber-cyan, 0.3);
-  text-shadow: 0 0 5px rgba($cyber-cyan, 0.5);
+  border-bottom: 1px solid rgba($vapor-cyan, 0.3);
+  text-shadow: 0 0 5px rgba($vapor-cyan, 0.5);
 }
 
 .paragraph {
   margin-bottom: 12px;
   line-height: 1.6;
   font-size: 14px;
-  color: $cyber-text-light;
+  color: $vapor-text-light;
 
   &:last-child {
     margin-bottom: 0;
@@ -196,14 +196,14 @@
 .relatedPages {
   margin-top: 30px;
   padding-top: 20px;
-  border-top: 1px solid rgba($cyber-neon-pink, 0.3);
+  border-top: 1px solid rgba($vapor-neon-pink, 0.3);
 }
 
 .relatedPagesHeading {
-  font-family: $font-mono;
+  font-family: $font-display;
   font-size: 16px;
   font-weight: 600;
-  color: $cyber-neon-pink;
+  color: $vapor-neon-pink;
   margin-bottom: 12px;
 }
 
@@ -215,14 +215,14 @@
 
 .relatedItem {
   padding: 10px;
-  background-color: rgba($cyber-dark-blue, 0.5);
-  border: 1px solid rgba($cyber-cyan, 0.3);
+  background-color: rgba($vapor-dark-blue, 0.5);
+  border: 1px solid rgba($vapor-cyan, 0.3);
   cursor: pointer;
   transition: all $transition-standard ease;
 
   &:hover {
-    border-color: $cyber-cyan;
-    background-color: rgba($cyber-dark-blue, 0.7);
+    border-color: $vapor-cyan;
+    background-color: rgba($vapor-dark-blue, 0.7);
     transform: translateX(5px);
   }
 }
@@ -230,13 +230,13 @@
 .relatedTitle {
   font-size: 14px;
   font-weight: 500;
-  color: $cyber-cyan;
+  color: $vapor-cyan;
   margin-bottom: 5px;
 }
 
 .relatedSource {
   font-size: 12px;
-  color: rgba($cyber-text-light, 0.7);
+  color: rgba($vapor-text-light, 0.7);
 }
 
 .loadingContainer,
@@ -253,8 +253,8 @@
 .loadingAnimation {
   width: 200px;
   height: 4px;
-  background-color: rgba($cyber-dark-blue, 0.5);
-  border: 1px solid $cyber-neon-pink;
+  background-color: rgba($vapor-dark-blue, 0.5);
+  border: 1px solid $vapor-neon-pink;
   margin-bottom: 15px;
   overflow: hidden;
   position: relative;
@@ -266,15 +266,15 @@
   left: 0;
   height: 100%;
   width: 30%;
-  background-color: $cyber-neon-pink;
-  box-shadow: 0 0 8px $cyber-neon-pink;
+  background-color: $vapor-neon-pink;
+  box-shadow: 0 0 8px $vapor-neon-pink;
   animation: loadingAnimation 1.5s infinite;
 }
 
 .loadingText {
-  font-family: $font-mono;
+  font-family: $font-display;
   font-size: 14px;
-  color: $cyber-text-light;
+  color: $vapor-text-light;
 }
 
 .errorIcon {
@@ -284,15 +284,15 @@
 
 .errorText {
   color: $cyber-warning-red;
-  font-family: $font-mono;
+  font-family: $font-display;
   font-size: 14px;
   text-align: center;
   max-width: 400px;
 }
 
 .emptyText {
-  color: rgba($cyber-text-light, 0.6);
-  font-family: $font-mono;
+  color: rgba($vapor-text-light, 0.6);
+  font-family: $font-display;
   font-size: 14px;
   font-style: italic;
 }
