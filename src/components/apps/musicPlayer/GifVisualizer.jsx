@@ -1,5 +1,6 @@
 // components/apps/musicPlayer/GifVisualizer.jsx
 import React, { useState, useEffect, useRef } from "react";
+import { VISUALIZER_GIFS } from "../../../constants/gifData";
 import styles from "./GifVisualizer.module.scss";
 
 /**
@@ -16,45 +17,16 @@ const GifVisualizer = ({ currentTrack, isPlaying, themeConfig }) => {
   const [alternateGif, setAlternateGif] = useState(false);
   const gifCache = useRef(new Map());
 
-  // Set of GIFs for different categories (these would be actual GIF URLs in production)
-  const gifCategories = {
-    vaporwave: [
-      "/assets/gifs/vaporwave/palm.gif",
-      "https://media.giphy.com/media/3oEjHGokRZdOBbcZuo/giphy.gif?cid=790b7611isnew1hlp8l9pti50qa22nj2dcylbs41lklksl6w&ep=v1_gifs_search&rid=giphy.gif&ct=g", // pool
-      "https://media.giphy.com/media/798oH0WDEQnicM4857/giphy.gif?cid=ecf05e47z1l1af5274sqc4snmnivx4ew4oqhgamuzavtvd8b&ep=v1_gifs_search&rid=giphy.gif&ct=g", // sunset
-      "https://media.giphy.com/media/KheRlOh6HLhoDRFw1O/giphy.gif?cid=ecf05e47yyh6iajh7bmrkcbb09mut0j3hw9j9l5nzwpiqt75&ep=v1_gifs_search&rid=giphy.gif&ct=g", // sea
-    ],
-    // anime: [
-    //   "/assets/gifs/anime/lofi1.gif",
-    //   "/assets/gifs/anime/lofi2.gif",
-    //   "/assets/gifs/anime/hifi.gif",
-    // ],
-    // abstract: [
-    //   "/assets/gifs/abstract/geometric.gif",
-    //   "/assets/gifs/abstract/glitch.gif",
-    //   "/assets/gifs/abstract/waves.gif",
-    // ],
-    // internet: [
-    //   "/assets/gifs/internet/dial-up.gif",
-    //   "/assets/gifs/internet/windows95.gif",
-    //   "/assets/gifs/internet/macintosh.gif",
-    // ],
-  };
-
   // Get GIF URL based on track or use random one
   const getGifUrl = (track, useAlternate = false) => {
-    // Get category based on track ID or default to vaporwave
-    const category = track?.gifCategory || "vaporwave";
-    const gifs = gifCategories[category] || gifCategories.vaporwave;
-
     // If track has specific GIF, use it
     if (track?.gifSrc) {
       return useAlternate && track.gifAlt ? track.gifAlt : track.gifSrc;
     }
 
-    // Otherwise, use a random GIF from the appropriate category
-    const randomIndex = Math.floor(Math.random() * gifs.length);
-    return gifs[randomIndex];
+    // Otherwise, use a random GIF from our collection
+    const randomIndex = Math.floor(Math.random() * VISUALIZER_GIFS.length);
+    return VISUALIZER_GIFS[randomIndex];
   };
 
   // Update GIF when track changes

@@ -1,4 +1,5 @@
-const arr = [
+// src/constants/gifData.js
+export const VISUALIZER_GIFS = [
   "https://media.giphy.com/media/3oEjHGokRZdOBbcZuo/giphy.gif?cid=790b7611isnew1hlp8l9pti50qa22nj2dcylbs41lklksl6w&ep=v1_gifs_search&rid=giphy.gif&ct=g", // pool
   "https://media.giphy.com/media/798oH0WDEQnicM4857/giphy.gif?cid=ecf05e47z1l1af5274sqc4snmnivx4ew4oqhgamuzavtvd8b&ep=v1_gifs_search&rid=giphy.gif&ct=g", // sunset
   "https://media.giphy.com/media/KheRlOh6HLhoDRFw1O/giphy.gif?cid=ecf05e47yyh6iajh7bmrkcbb09mut0j3hw9j9l5nzwpiqt75&ep=v1_gifs_search&rid=giphy.gif&ct=g", // sea
@@ -40,4 +41,9 @@ const arr = [
   "https://media.giphy.com/media/3o7TKRIo0WSvarDEPe/giphy.gif?cid=790b7611mf22eeyd0usww6rjp8ah6kduvk4zv0bx3htib8ae&ep=v1_gifs_search&rid=giphy.gif&ct=g", // walking dead
   "https://media.giphy.com/media/26ufjyAvlCA94o2HK/giphy.gif?cid=ecf05e47sr9stlfocjm9m64o3ukw16q49owza0h4qa0jev3j&ep=v1_gifs_search&rid=giphy.gif&ct=g", // walking dead 2
   "https://media.giphy.com/media/e26OhuJO0wKWWX4Epp/giphy.gif?cid=790b761192yv5dc2gzzc3nx89zec4z2gwgb8v3ug8f423g4b&ep=v1_gifs_search&rid=giphy.gif&ct=g", // walking dead 3
+  "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnFwcTJvZzN2dG91N2JyZGFjajZ0b3h3ZGRyZmthdGhqNHZkdHBuMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/4DNPcZOIcgnwA/giphy.gif", // hifi
+  "https://media.giphy.com/media/V5qXaUBISlbTa/giphy.gif?cid=ecf05e4763nw62ywpxd8u9r168g6c0wbb8ia0712364olqs9&ep=v1_gifs_related&rid=giphy.gif&ct=g", // anime city
+  "https://media.giphy.com/media/nSiNho356rXH2/giphy.gif?cid=ecf05e47aiiwk4xqb80g7b4zw0b0kqxol7r10yl172tabyjs&ep=v1_gifs_related&rid=giphy.gif&ct=g", //anime
+  "https://media.giphy.com/media/jUJgL0iByjsAS2MQH1/giphy.gif?cid=ecf05e4763nw62ywpxd8u9r168g6c0wbb8ia0712364olqs9&ep=v1_gifs_related&rid=giphy.gif&ct=g", // anime 2
+  "https://media.giphy.com/media/v2WuhMBzb3h5e/giphy.gif?cid=790b7611fozxa4xgth357vs7b8cksfotkuf9ee87x0tl8fmc&ep=v1_gifs_search&rid=giphy.gif&ct=g", // anime 3,
 ];
