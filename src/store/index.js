@@ -8,9 +8,9 @@ import {
 import { useWindowsStore, APP_TYPES } from "./windowsStore";
 import { useNotepadStore } from "./notepadStore";
 import { useAudioStore } from "./audioStore";
-import { useDarkWebStore } from "./darkWebStore";
-import { useEvidenceBoardStore } from "./evidenceBoardStore";
-import { useDatabaseStore } from "./databaseStore";
+// import { useDarkWebStore } from "./darkWebStore";
+// import { useEvidenceBoardStore } from "./evidenceBoardStore";
+// import { useDatabaseStore } from "./databaseStore";
 import { useSearchEngineStore } from "./searchEngineStore";
 import { useTextViewerStore } from "./textViewerStore";
 import terminalStore from "./terminalStore";
@@ -36,13 +36,13 @@ export {
   useAudioStore,
 
   // Dark Web store
-  useDarkWebStore,
+  // useDarkWebStore,
 
   // Evidence Board store
-  useEvidenceBoardStore,
+  // useEvidenceBoardStore,
 
   // Database store
-  useDatabaseStore,
+  // useDatabaseStore,
 
   // Search Engine store
   useSearchEngineStore,

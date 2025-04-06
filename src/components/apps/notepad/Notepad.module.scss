@@ -6,19 +6,19 @@
   height: 100%;
   display: flex;
   position: relative;
-  background-color: $cyber-dark-blue;
-  color: $cyber-text-light;
+  background-color: $vapor-dark-blue;
+  color: $vapor-text-light;
   overflow: hidden;
 }
 
 // Sidebar
 .sidebar {
   width: 280px;
-  border-right: 1px solid rgba($cyber-neon-pink, 0.3);
+  border-right: 1px solid rgba($vapor-neon-pink, 0.3);
   display: flex;
   flex-direction: column;
   transition: transform $transition-standard ease;
-  background-color: rgba($cyber-dark-purple, 0.5);
+  background-color: rgba($vapor-dark-purple, 0.5);
 
   &.hidden {
     transform: translateX(-100%);
@@ -27,15 +27,15 @@
 
 .sidebarHeader {
   padding: 1rem;
-  border-bottom: 1px solid rgba($cyber-neon-pink, 0.3);
+  border-bottom: 1px solid rgba($vapor-neon-pink, 0.3);
 }
 
 .sidebarTitle {
-  font-family: $font-mono;
+  font-family: $font-display;
   font-size: 0.875rem;
-  color: $cyber-neon-pink;
+  color: $vapor-neon-pink;
   margin-bottom: 0.5rem;
-  text-shadow: 0 0 5px rgba($cyber-neon-pink, 0.5);
+  text-shadow: 0 0 5px rgba($vapor-neon-pink, 0.5);
 }
 
 .searchContainer {
@@ -46,21 +46,21 @@
 .searchInput {
   width: 100%;
   padding: 0.5rem 0.5rem 0.5rem 2rem;
-  background-color: rgba($cyber-dark-blue, 0.5);
-  border: 1px solid rgba($cyber-cyan, 0.4);
-  color: $cyber-text-light;
-  font-family: $font-mono;
+  background-color: rgba($vapor-dark-blue, 0.5);
+  border: 1px solid rgba($vapor-cyan, 0.4);
+  color: $vapor-text-light;
+  font-family: $font-display;
   font-size: 0.75rem;
   outline: none;
   transition: all $transition-standard ease;
 
   &:focus {
-    border-color: $cyber-cyan;
-    box-shadow: 0 0 5px rgba($cyber-cyan, 0.5);
+    border-color: $vapor-cyan;
+    box-shadow: 0 0 5px rgba($vapor-cyan, 0.5);
   }
 
   &::placeholder {
-    color: rgba($cyber-text-light, 0.5);
+    color: rgba($vapor-text-light, 0.5);
   }
 }
 
@@ -69,7 +69,7 @@
   left: 0.5rem;
   top: 50%;
   transform: translateY(-50%);
-  color: $cyber-cyan;
+  color: $vapor-cyan;
   opacity: 0.7;
 }
 
@@ -79,8 +79,8 @@
   padding: 0.5rem;
 
   @include custom-scrollbar(
-    rgba($cyber-dark-blue, 0.6),
-    rgba($cyber-neon-pink, 0.7)
+    rgba($vapor-dark-blue, 0.6),
+    rgba($vapor-neon-pink, 0.7)
   );
 }
 
@@ -88,19 +88,19 @@
   padding: 0.75rem;
   margin-bottom: 0.5rem;
   border-radius: 2px;
-  background-color: rgba($cyber-dark-blue, 0.3);
+  background-color: rgba($vapor-dark-blue, 0.3);
   cursor: pointer;
   transition: all $transition-standard ease;
   border-left: 2px solid transparent;
 
   &:hover {
-    background-color: rgba($cyber-dark-blue, 0.5);
+    background-color: rgba($vapor-dark-blue, 0.5);
   }
 
   &.active {
-    background-color: rgba($cyber-dark-blue, 0.7);
-    border-left: 2px solid $cyber-neon-pink;
-    box-shadow: 0 0 5px rgba($cyber-neon-pink, 0.3);
+    background-color: rgba($vapor-dark-blue, 0.7);
+    border-left: 2px solid $vapor-neon-pink;
+    box-shadow: 0 0 5px rgba($vapor-neon-pink, 0.3);
   }
 }
 
@@ -108,20 +108,20 @@
   font-weight: 600;
   font-size: 0.875rem;
   margin-bottom: 0.25rem;
-  color: $cyber-cyan;
+  color: $vapor-cyan;
   @include truncate;
 }
 
 .noteDate {
   font-size: 0.7rem;
-  color: rgba($cyber-text-light, 0.6);
+  color: rgba($vapor-text-light, 0.6);
   margin-bottom: 0.25rem;
-  font-family: $font-mono;
+  font-family: $font-display;
 }
 
 .notePreview {
   font-size: 0.75rem;
-  color: rgba($cyber-text-light, 0.8);
+  color: rgba($vapor-text-light, 0.8);
   line-height: 1.4;
   max-height: 2.8em;
   overflow: hidden;
@@ -134,14 +134,14 @@
 .sidebarFooter {
   padding: 0.75rem;
   height: 65px;
-  border-top: 1px solid rgba($cyber-neon-pink, 0.3);
+  border-top: 1px solid rgba($vapor-neon-pink, 0.3);
 }
 
 .newNoteButton {
   @include cyberpunk-button(
-    rgba($cyber-dark-blue, 0.7),
-    $cyber-neon-pink,
-    $cyber-neon-pink
+    rgba($vapor-dark-blue, 0.7),
+    $vapor-neon-pink,
+    $vapor-neon-pink
   );
   width: 100%;
   font-size: 0.75rem;
@@ -162,8 +162,8 @@
 
 .toolbar {
   padding: 0.5rem;
-  background-color: rgba($cyber-dark-purple, 0.5);
-  border-bottom: 1px solid rgba($cyber-neon-pink, 0.3);
+  background-color: rgba($vapor-dark-purple, 0.5);
+  border-bottom: 1px solid rgba($vapor-neon-pink, 0.3);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -172,7 +172,7 @@
 .toolbarButton {
   background: none;
   border: none;
-  color: $cyber-text-light;
+  color: $vapor-text-light;
   padding: 0.25rem;
   cursor: pointer;
   border-radius: 2px;
@@ -182,8 +182,8 @@
   justify-content: center;
 
   &:hover {
-    background-color: rgba($cyber-dark-blue, 0.5);
-    color: $cyber-cyan;
+    background-color: rgba($vapor-dark-blue, 0.5);
+    color: $vapor-cyan;
   }
 
   &:active {
@@ -200,49 +200,49 @@
 
 .titleBar {
   padding: 0.75rem;
-  background-color: rgba($cyber-dark-blue, 0.3);
+  background-color: rgba($vapor-dark-blue, 0.3);
 }
 
 .editorTitle {
   font-size: 1.25rem;
-  color: $cyber-neon-pink;
+  color: $vapor-neon-pink;
   font-weight: 600;
   margin: 0;
   cursor: text;
-  text-shadow: 0 0 5px rgba($cyber-neon-pink, 0.3);
+  text-shadow: 0 0 5px rgba($vapor-neon-pink, 0.3);
   font-family: $font-display;
 
   &:hover {
     text-decoration: underline;
     text-decoration-style: dashed;
-    text-decoration-color: rgba($cyber-neon-pink, 0.5);
+    text-decoration-color: rgba($vapor-neon-pink, 0.5);
   }
 }
 
 .titleInput {
   font-size: 1.25rem;
-  color: $cyber-neon-pink;
+  color: $vapor-neon-pink;
   font-weight: 600;
   background: none;
   border: none;
-  border-bottom: 1px dashed $cyber-neon-pink;
+  border-bottom: 1px dashed $vapor-neon-pink;
   outline: none;
   width: 100%;
   padding: 0 0 0.25rem 0;
   font-family: $font-display;
 
   &:focus {
-    border-bottom: 1px solid $cyber-neon-pink;
-    box-shadow: 0 2px 0 rgba($cyber-neon-pink, 0.3);
+    border-bottom: 1px solid $vapor-neon-pink;
+    box-shadow: 0 2px 0 rgba($vapor-neon-pink, 0.3);
   }
 }
 
 .contentEditor {
   flex: 1;
   padding: 1rem;
-  background-color: rgba($cyber-dark-blue, 0.5);
+  background-color: rgba($vapor-dark-blue, 0.5);
   border: none;
-  color: $cyber-text-light;
+  color: $vapor-text-light;
   font-family: $font-content;
   font-size: 0.9rem;
   line-height: 1.6;
@@ -251,12 +251,12 @@
   overflow-y: auto;
 
   @include custom-scrollbar(
-    rgba($cyber-dark-blue, 0.6),
-    rgba($cyber-cyan, 0.7)
+    rgba($vapor-dark-blue, 0.6),
+    rgba($vapor-cyan, 0.7)
   );
 
   &::placeholder {
-    color: rgba($cyber-text-light, 0.4);
+    color: rgba($vapor-text-light, 0.4);
   }
 }
 
@@ -265,7 +265,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba($cyber-dark-blue, 0.5);
+  background-color: rgba($vapor-dark-blue, 0.5);
   padding: 1rem;
 }
 
@@ -276,21 +276,21 @@
   h3 {
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
-    color: $cyber-cyan;
-    text-shadow: 0 0 5px rgba($cyber-cyan, 0.5);
+    color: $vapor-cyan;
+    text-shadow: 0 0 5px rgba($vapor-cyan, 0.5);
   }
 
   p {
-    color: rgba($cyber-text-light, 0.7);
+    color: rgba($vapor-text-light, 0.7);
     margin-bottom: 1.5rem;
   }
 }
 
 .createButton {
   @include cyberpunk-button(
-    rgba($cyber-dark-blue, 0.7),
-    $cyber-neon-pink,
-    $cyber-neon-pink
+    rgba($vapor-dark-blue, 0.7),
+    $vapor-neon-pink,
+    $vapor-neon-pink
   );
   font-size: 0.9rem;
   padding: 0.5rem 1.25rem;
@@ -301,14 +301,14 @@
 
 .statusBar {
   padding: 0.5rem;
-  background-color: rgba($cyber-dark-purple, 0.5);
-  border-top: 1px solid rgba($cyber-neon-pink, 0.3);
+  background-color: rgba($vapor-dark-purple, 0.5);
+  border-top: 1px solid rgba($vapor-neon-pink, 0.3);
   display: flex;
   align-items: center;
   gap: 1rem;
-  font-family: $font-mono;
+  font-family: $font-display;
   font-size: 0.75rem;
-  color: rgba($cyber-text-light, 0.7);
+  color: rgba($vapor-text-light, 0.7);
 }
 
 .statusItem {
@@ -319,7 +319,7 @@
 .emptyMessage {
   padding: 1rem;
   text-align: center;
-  color: rgba($cyber-text-light, 0.5);
+  color: rgba($vapor-text-light, 0.5);
   font-style: italic;
   font-size: 0.875rem;
 }

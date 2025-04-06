@@ -21,8 +21,8 @@
   position: relative;
 
   &:hover {
-    background-color: rgba($cyber-dark-purple, 0.5);
-    box-shadow: 0 0 5px rgba($cyber-neon-pink, 0.3);
+    background-color: rgba($vapor-dark-purple, 0.5);
+    box-shadow: 0 0 5px rgba($vapor-neon-pink, 0.3);
   }
 
   &:active {
@@ -30,12 +30,12 @@
   }
 
   &:focus {
-    outline: 1px solid $cyber-neon-pink;
+    outline: 1px solid $vapor-neon-pink;
   }
 
   &.active {
-    background-color: rgba($cyber-dark-purple, 0.6);
-    box-shadow: 0 0 8px rgba($cyber-neon-pink, 0.4);
+    background-color: rgba($vapor-dark-purple, 0.6);
+    box-shadow: 0 0 8px rgba($vapor-neon-pink, 0.4);
   }
 }
 
@@ -46,23 +46,23 @@
   width: 48px;
   height: 48px;
   margin-bottom: 8px;
-  background-color: rgba($cyber-dark-purple, 0.6);
-  border: 1px solid $cyber-neon-pink;
+  background-color: rgba($vapor-dark-purple, 0.6);
+  border: 1px solid $vapor-neon-pink;
   border-radius: 4px;
-  color: $cyber-text-light;
-  box-shadow: 0 0 5px rgba($cyber-neon-pink, 0.3);
+  color: $vapor-text-light;
+  box-shadow: 0 0 5px rgba($vapor-neon-pink, 0.3);
   transition: all $transition-standard ease;
 
   .desktopIcon:hover & {
-    color: $cyber-neon-pink;
-    box-shadow: 0 0 8px rgba($cyber-neon-pink, 0.5);
+    color: $vapor-neon-pink;
+    box-shadow: 0 0 8px rgba($vapor-neon-pink, 0.5);
   }
 }
 
 .iconLabel {
   font-family: $font-content;
   font-size: 12px;
-  color: $cyber-text-light;
+  color: $vapor-text-light;
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
   max-width: 100%;
   overflow: hidden;

@@ -4,7 +4,7 @@
 .button {
   transition: all $transition-standard ease;
   cursor: pointer;
-  font-family: $font-mono;
+  font-family: $font-vcr;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-weight: 500;
@@ -37,39 +37,39 @@
 
   // Button variants
   &.primary {
-    background-color: $cyber-dark-purple;
-    color: $cyber-neon-pink;
-    border: 1px solid $cyber-neon-pink;
+    background-color: $vapor-dark-purple;
+    color: $vapor-neon-pink;
+    border: 1px solid $vapor-neon-pink;
 
     &:hover:not(.disabled) {
-      box-shadow: $cyber-glow-pink;
+      box-shadow: $vapor-glow-pink;
     }
 
     &:active:not(.disabled) {
-      background-color: $cyber-dark-blue;
+      background-color: $vapor-dark-blue;
       transform: scale(0.98);
     }
   }
 
   &.secondary {
-    background-color: $cyber-dark-purple;
-    color: $cyber-cyan;
-    border: 1px solid $cyber-cyan;
+    background-color: $vapor-dark-purple;
+    color: $vapor-cyan;
+    border: 1px solid $vapor-cyan;
 
     &:hover:not(.disabled) {
-      box-shadow: $cyber-glow-cyan;
+      box-shadow: $vapor-glow-cyan;
     }
 
     &:active:not(.disabled) {
-      background-color: $cyber-dark-blue;
+      background-color: $vapor-dark-blue;
       transform: scale(0.98);
     }
   }
 
   &.outline {
     background-color: transparent;
-    color: $cyber-text-light;
-    border: 1px solid $cyber-text-light;
+    color: $vapor-text-light;
+    border: 1px solid $vapor-text-light;
 
     &:active:not(.disabled) {
       transform: scale(0.98);
@@ -77,58 +77,17 @@
   }
 
   &.danger {
-    background-color: $cyber-dark-purple;
-    color: $cyber-warning-red;
-    border: 1px solid $cyber-warning-red;
+    background-color: $vapor-dark-purple;
+    color: #ff5f5f;
+    border: 1px solid #ff5f5f;
 
     &:hover:not(.disabled) {
-      box-shadow: 0 0 10px rgba($cyber-warning-red, 0.7);
+      box-shadow: 0 0 10px rgba(#ff5f5f, 0.7);
     }
 
     &:active:not(.disabled) {
-      background-color: $cyber-dark-blue;
+      background-color: $vapor-dark-blue;
       transform: scale(0.98);
-    }
-  }
-
-  // Dark hacker theme variants
-  &.darkHacker {
-    &.primary {
-      background-color: $hacker-panel;
-      color: $hacker-green;
-      border: 1px solid $hacker-green;
-
-      &:hover:not(.disabled) {
-        box-shadow: $cyber-glow-green;
-      }
-
-      &:active:not(.disabled) {
-        background-color: $hacker-bg;
-      }
-    }
-
-    &.secondary {
-      background-color: $hacker-panel;
-      color: $hacker-green;
-      border: 1px solid $hacker-green;
-
-      &:hover:not(.disabled) {
-        box-shadow: $cyber-glow-green;
-      }
-
-      &:active:not(.disabled) {
-        background-color: $hacker-bg;
-      }
-    }
-
-    &.danger {
-      background-color: $hacker-panel;
-      color: $hacker-red;
-      border: 1px solid $hacker-red;
-
-      &:hover:not(.disabled) {
-        box-shadow: 0 0 10px rgba($hacker-red, 0.7);
-      }
     }
   }
 }

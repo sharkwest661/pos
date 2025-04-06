@@ -14,6 +14,16 @@ $vapor-sunset-gradient: linear-gradient(
 ); // Sunset gradient
 $vapor-grid-color: rgba(255, 0, 255, 0.1); // Grid line color
 
+// Dark hacker theme colors
+$hacker-bg: #000000; // Black
+$hacker-panel: #111111; // Dark panel background
+$hacker-green: #33ff00; // Terminal Green
+$hacker-cyan: #00ffff; // Terminal Cyan
+$hacker-dim-green: #1a8000; // Dimmer green
+$hacker-blue: #0088ff; // Alternative accent
+$hacker-red: #ff3300; // For alerts and errors
+$cyber-warning-red: #ff2222; // For alerts and errors
+
 // Shadow values
 $vapor-glow-pink: 0 0 10px rgba(255, 0, 255, 0.7); // Neon pink glow
 $vapor-glow-cyan: 0 0 10px rgba(0, 255, 255, 0.7); // Cyan glow
