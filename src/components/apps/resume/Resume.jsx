@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { useThemeStore } from "../../../store";
 import { Scanlines } from "../../effects/Scanlines";
+import { resumeData } from "../../../constants/resumeData";
 import styles from "./Resume.module.scss";
 
 const Resume = () => {
@@ -19,89 +20,6 @@ const Resume = () => {
 
   // Define sections for the resume
   const [activeSection, setActiveSection] = useState("experience");
-
-  // Resume data - in a real app, this would come from a store or API
-  const resumeData = {
-    personalInfo: {
-      name: "John Doe",
-      title: "Frontend Developer",
-      email: "john.doe@example.com",
-      phone: "(555) 123-4567",
-      location: "San Francisco, CA",
-      website: "johndoe.com",
-    },
-    experience: [
-      {
-        id: 1,
-        role: "Senior Frontend Developer",
-        company: "TechCorp Inc.",
-        period: "2020 - Present",
-        description:
-          "Led front-end development for multiple web applications using React and modern JavaScript. Implemented responsive designs and improved performance by 40%.",
-        highlights: [
-          "Developed reusable component library used across 5+ projects",
-          "Optimized loading times from 4.5s to 1.8s",
-          "Mentored junior developers and conducted code reviews",
-        ],
-      },
-      {
-        id: 2,
-        role: "Frontend Developer",
-        company: "WebSolutions Ltd.",
-        period: "2018 - 2020",
-        description:
-          "Created responsive web applications with focus on user experience and performance. Collaborated with design and backend teams.",
-        highlights: [
-          "Built interactive dashboards with complex data visualizations",
-          "Implemented accessibility improvements across company websites",
-          "Reduced bundle size by 35% through code splitting techniques",
-        ],
-      },
-      {
-        id: 3,
-        role: "UI Developer",
-        company: "CreativeLab",
-        period: "2016 - 2018",
-        description:
-          "Designed and developed user interfaces for client websites. Created responsive layouts and interactive elements.",
-        highlights: [
-          "Worked on 20+ client websites across various industries",
-          "Created CSS animations and transitions for enhanced UI",
-          "Collaborated with UX designers to implement user-friendly interfaces",
-        ],
-      },
-    ],
-    education: [
-      {
-        id: 1,
-        degree: "Master of Science, Computer Science",
-        institution: "Stanford University",
-        period: "2014 - 2016",
-        description: "Specialized in Human-Computer Interaction",
-      },
-      {
-        id: 2,
-        degree: "Bachelor of Science, Software Engineering",
-        institution: "University of California",
-        period: "2010 - 2014",
-        description: "Minor in Digital Media Arts",
-      },
-    ],
-    skills: [
-      "React",
-      "JavaScript",
-      "HTML/CSS",
-      "TypeScript",
-      "Responsive Design",
-      "UI/UX Design",
-      "Next.js",
-      "Redux",
-      "GraphQL",
-      "Git/GitHub",
-      "Webpack",
-      "Jest/Testing",
-    ],
-  };
 
   // Handle section change
   const handleSectionChange = (section) => {

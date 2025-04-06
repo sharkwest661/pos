@@ -5,24 +5,24 @@ import { create } from "zustand";
 const generateId = () =>
   `note-${Date.now()}-${Math.floor(Math.random() * 10000)}`;
 
-// Helper to save notes to localStorage
-const saveNotesToLocalStorage = (notes) => {
+// Helper to save notes to sessionStorage
+const saveNotesTosessionStorage = (notes) => {
   try {
-    localStorage.setItem("vaporwave_os_notes", JSON.stringify(notes));
+    sessionStorage.setItem("vaporwave_os_notes", JSON.stringify(notes));
   } catch (error) {
-    console.error("Error saving notes to localStorage:", error);
+    console.error("Error saving notes to sessionStorage:", error);
   }
 };
 
-// Helper to load notes from localStorage
-const loadNotesFromLocalStorage = () => {
+// Helper to load notes from sessionStorage
+const loadNotesFromsessionStorage = () => {
   try {
-    const savedNotes = localStorage.getItem("vaporwave_os_notes");
+    const savedNotes = sessionStorage.getItem("vaporwave_os_notes");
     if (savedNotes) {
       return JSON.parse(savedNotes);
     }
   } catch (error) {
-    console.error("Error loading notes from localStorage:", error);
+    console.error("Error loading notes from sessionStorage:", error);
   }
 
   // Return default notes if nothing is saved
@@ -40,7 +40,7 @@ const loadNotesFromLocalStorage = () => {
 
 const useNotesStore = create((set, get) => ({
   // Notes data
-  notes: loadNotesFromLocalStorage(),
+  notes: loadNotesFromsessionStorage(),
   activeNoteId: null,
   isEditing: false,
   editTitle: "",
@@ -64,7 +64,7 @@ const useNotesStore = create((set, get) => ({
 
     set((state) => {
       const updatedNotes = [...state.notes, newNote];
-      saveNotesToLocalStorage(updatedNotes);
+      saveNotesTosessionStorage(updatedNotes);
       return {
         notes: updatedNotes,
         activeNoteId: newNote.id,
@@ -80,7 +80,7 @@ const useNotesStore = create((set, get) => ({
       const updatedNotes = state.notes.map((note) =>
         note.id === id ? { ...note, ...updates } : note
       );
-      saveNotesToLocalStorage(updatedNotes);
+      saveNotesTosessionStorage(updatedNotes);
       return { notes: updatedNotes };
     });
   },
@@ -89,7 +89,7 @@ const useNotesStore = create((set, get) => ({
   deleteNote: (id) => {
     set((state) => {
       const updatedNotes = state.notes.filter((note) => note.id !== id);
-      saveNotesToLocalStorage(updatedNotes);
+      saveNotesTosessionStorage(updatedNotes);
 
       // If deleting the active note, select another one
       let newActiveId = state.activeNoteId;

@@ -5,24 +5,24 @@ import { create } from "zustand";
 const generateId = () =>
   `note-${Date.now()}-${Math.floor(Math.random() * 10000)}`;
 
-// Helper to save notes to localStorage
-const saveNotesToLocalStorage = (notes) => {
+// Helper to save notes to sessionStorage
+const saveNotesTosessionStorage = (notes) => {
   try {
-    localStorage.setItem("shadow_market_notes", JSON.stringify(notes));
+    sessionStorage.setItem("shadow_market_notes", JSON.stringify(notes));
   } catch (error) {
-    console.error("Error saving notes to localStorage:", error);
+    console.error("Error saving notes to sessionStorage:", error);
   }
 };
 
-// Helper to load notes from localStorage
-const loadNotesFromLocalStorage = () => {
+// Helper to load notes from sessionStorage
+const loadNotesFromsessionStorage = () => {
   try {
-    const savedNotes = localStorage.getItem("shadow_market_notes");
+    const savedNotes = sessionStorage.getItem("shadow_market_notes");
     if (savedNotes) {
       return JSON.parse(savedNotes);
     }
   } catch (error) {
-    console.error("Error loading notes from localStorage:", error);
+    console.error("Error loading notes from sessionStorage:", error);
   }
 
   // Return default notes if nothing is saved
@@ -40,7 +40,7 @@ const loadNotesFromLocalStorage = () => {
 
 const useNotepadStore = create((set, get) => ({
   // List of all notes
-  notes: loadNotesFromLocalStorage(),
+  notes: loadNotesFromsessionStorage(),
 
   // ID of the currently active note
   activeNoteId: null,
@@ -57,7 +57,7 @@ const useNotepadStore = create((set, get) => ({
 
     set((state) => {
       const updatedNotes = [newNote, ...state.notes];
-      saveNotesToLocalStorage(updatedNotes);
+      saveNotesTosessionStorage(updatedNotes);
       return { notes: updatedNotes, activeNoteId: newNote.id };
     });
 
@@ -70,7 +70,7 @@ const useNotepadStore = create((set, get) => ({
       const updatedNotes = state.notes.map((note) =>
         note.id === id ? { ...note, ...updates } : note
       );
-      saveNotesToLocalStorage(updatedNotes);
+      saveNotesTosessionStorage(updatedNotes);
       return { notes: updatedNotes };
     });
   },
@@ -79,7 +79,7 @@ const useNotepadStore = create((set, get) => ({
   deleteNote: (id) => {
     set((state) => {
       const updatedNotes = state.notes.filter((note) => note.id !== id);
-      saveNotesToLocalStorage(updatedNotes);
+      saveNotesTosessionStorage(updatedNotes);
 
       // Set next active note if deleting the active one
       let newActiveId = state.activeNoteId;
@@ -101,7 +101,7 @@ const useNotepadStore = create((set, get) => ({
 
   // Import notes (for game state loading)
   importNotes: (notes) => {
-    saveNotesToLocalStorage(notes);
+    saveNotesTosessionStorage(notes);
     set({
       notes,
       activeNoteId: notes.length > 0 ? notes[0].id : null,
@@ -111,7 +111,7 @@ const useNotepadStore = create((set, get) => ({
   // Clear all notes
   clearNotes: () => {
     const emptyNotes = [];
-    saveNotesToLocalStorage(emptyNotes);
+    saveNotesTosessionStorage(emptyNotes);
     set({ notes: emptyNotes, activeNoteId: null });
   },
 }));

@@ -25,6 +25,7 @@ export const VISUALIZER_GIFS = [
   "https://media.giphy.com/media/xT5LMw5JOqszIQEQVy/giphy.gif?cid=790b7611mte2j00mioqxi2ydfg8am4fhch3of6yo8gfdctvy&ep=v1_gifs_search&rid=giphy.gif&ct=g", // oldboy
   "https://media.giphy.com/media/UpK24om9HevUIdaPgM/giphy.gif?cid=ecf05e473zourlosziev630el576wj9kzru5xgr6x259k7h8&ep=v1_gifs_search&rid=giphy.gif&ct=g", // oldboy 2
   "https://media.giphy.com/media/KxuGXUMPceJ0L5LRet/giphy.gif?cid=ecf05e473zourlosziev630el576wj9kzru5xgr6x259k7h8&ep=v1_gifs_search&rid=giphy.gif&ct=g", // oldboy 3
+  "https://media.giphy.com/media/tlWpxKyXvYfQHOzwFN/giphy.gif?cid=ecf05e475iexwuxk7f416t11vlacm2hyg859cl8m7r9gyg3i&ep=v1_gifs_search&rid=giphy.gif&ct=g", // oldboy 4
   "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGF1ajBoeWc1YTd1bzVsdWxkaWo2dXVvempyMTI0dGtxY3NtZmF3ayZlcD12MV9naWZzX3NlYXJjaCZjdD1n/SupA7OgPcAI0g/giphy.gif", //chunking express
   "https://media.giphy.com/media/bVoflcc4kidaM/giphy.gif?cid=ecf05e471tam02snnw8q0czx8ibzzy79syjd2gq5y5yvmj1k&ep=v1_gifs_related&rid=giphy.gif&ct=g", //sweaty
   "https://media.giphy.com/media/xTeVhzd6UuxeGBmMww/giphy.gif?cid=ecf05e4731heryq26jqrwmu513qwxkjfh93fna5y4rqgfyy4&ep=v1_gifs_search&rid=giphy.gif&ct=g", //bogart
@@ -45,5 +46,8 @@ export const VISUALIZER_GIFS = [
   "https://media.giphy.com/media/V5qXaUBISlbTa/giphy.gif?cid=ecf05e4763nw62ywpxd8u9r168g6c0wbb8ia0712364olqs9&ep=v1_gifs_related&rid=giphy.gif&ct=g", // anime city
   "https://media.giphy.com/media/nSiNho356rXH2/giphy.gif?cid=ecf05e47aiiwk4xqb80g7b4zw0b0kqxol7r10yl172tabyjs&ep=v1_gifs_related&rid=giphy.gif&ct=g", //anime
   "https://media.giphy.com/media/jUJgL0iByjsAS2MQH1/giphy.gif?cid=ecf05e4763nw62ywpxd8u9r168g6c0wbb8ia0712364olqs9&ep=v1_gifs_related&rid=giphy.gif&ct=g", // anime 2
-  "https://media.giphy.com/media/v2WuhMBzb3h5e/giphy.gif?cid=790b7611fozxa4xgth357vs7b8cksfotkuf9ee87x0tl8fmc&ep=v1_gifs_search&rid=giphy.gif&ct=g", // anime 3,
+  "https://media.giphy.com/media/v2WuhMBzb3h5e/giphy.gif?cid=790b7611fozxa4xgth357vs7b8cksfotkuf9ee87x0tl8fmc&ep=v1_gifs_search&rid=giphy.gif&ct=g", // anime 3
+  "https://media.giphy.com/media/ozXTrqRgqFcly/giphy.gif?cid=790b76113usz6siwu7i6qg7adby4u9zoz898g0duuenfypla&ep=v1_gifs_search&rid=giphy.gif&ct=g", // kill bill
+  "https://media.giphy.com/media/559CKeu0xXg08/giphy.gif?cid=790b76113usz6siwu7i6qg7adby4u9zoz898g0duuenfypla&ep=v1_gifs_search&rid=giphy.gif&ct=g", // kill bill 2
+  "https://media.giphy.com/media/JUkAzEFW74tpK/giphy.gif?cid=790b76113usz6siwu7i6qg7adby4u9zoz898g0duuenfypla&ep=v1_gifs_search&rid=giphy.gif&ct=g", // kill bill 3
 ];

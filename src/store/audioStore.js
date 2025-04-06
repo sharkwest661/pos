@@ -164,7 +164,7 @@ const useAudioStore = create((set, get) => ({
       updatedFavorites = [...favorites, trackId];
     }
 
-    // Update state only (no localStorage)
+    // Update state only (no sessionStorage)
     set({ favorites: updatedFavorites });
 
     // Return the new favorite status
