@@ -31,6 +31,20 @@ const SYNTHWAVE_THEME = {
   sunsetGradient: "linear-gradient(180deg, #FC28FB, #03EDF9)", // Gradient
 };
 
+// Dark hacker theme for terminal and specialized apps
+const DARK_HACKER_THEME = {
+  darkBg: "#000000", // Black background
+  lightBg: "#111111", // Dark panel background
+  accentPrimary: "#33ff00", // Hacker green
+  accentSecondary: "#00ffff", // Terminal cyan
+  textLight: "#ffffff", // White text
+  textDark: "#000000", // Black text
+  electricBlue: "#0088ff", // Blue accent
+  warningRed: "#ff3300", // Warning red
+  glowEffect: "0 0 10px rgba(51, 255, 0, 0.7)", // Green glow
+  gridColor: "rgba(51, 255, 0, 0.1)", // Grid line color
+};
+
 // Visual effects settings (for accessibility and aesthetics)
 const DEFAULT_EFFECTS = {
   scanlines: true, // CRT scanline effect
@@ -67,6 +81,9 @@ const useThemeStore = create((set) => ({
       case "synthwave":
         newTheme = SYNTHWAVE_THEME;
         break;
+      case "hacker":
+        newTheme = DARK_HACKER_THEME;
+        break;
       case "vaporwave":
       default:
         newTheme = VAPORWAVE_THEME;
@@ -84,4 +101,4 @@ const useThemeStore = create((set) => ({
 }));
 
 // Export the store and theme constants
-export { useThemeStore, VAPORWAVE_THEME, SYNTHWAVE_THEME };
+export { useThemeStore, VAPORWAVE_THEME, SYNTHWAVE_THEME, DARK_HACKER_THEME };

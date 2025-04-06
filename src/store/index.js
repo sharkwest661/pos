@@ -1,16 +1,9 @@
 // store/index.js
 import { useAppStore } from "./appStore";
-import {
-  useThemeStore,
-  CYBERPUNK_THEME,
-  DARK_HACKER_THEME,
-} from "./themeStore";
+import { useThemeStore, VAPORWAVE_THEME, SYNTHWAVE_THEME } from "./themeStore";
 import { useWindowsStore, APP_TYPES } from "./windowsStore";
 import { useNotepadStore } from "./notepadStore";
 import { useAudioStore } from "./audioStore";
-// import { useDarkWebStore } from "./darkWebStore";
-// import { useEvidenceBoardStore } from "./evidenceBoardStore";
-// import { useDatabaseStore } from "./databaseStore";
 import { useSearchEngineStore } from "./searchEngineStore";
 import { useTextViewerStore } from "./textViewerStore";
 import terminalStore from "./terminalStore";
@@ -22,8 +15,8 @@ export {
 
   // Theme store and constants
   useThemeStore,
-  CYBERPUNK_THEME,
-  DARK_HACKER_THEME,
+  VAPORWAVE_THEME,
+  SYNTHWAVE_THEME,
 
   // Window management store and constants
   useWindowsStore,
@@ -34,15 +27,6 @@ export {
 
   // Audio store
   useAudioStore,
-
-  // Dark Web store
-  // useDarkWebStore,
-
-  // Evidence Board store
-  // useEvidenceBoardStore,
-
-  // Database store
-  // useDatabaseStore,
 
   // Search Engine store
   useSearchEngineStore,

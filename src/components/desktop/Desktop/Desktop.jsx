@@ -10,7 +10,8 @@ import {
   FileQuestion,
   FileLock,
   FolderOpen,
-  FileText2,
+  Notebook,
+  // FileText2,
 } from "lucide-react";
 import {
   useWindowsStore,
@@ -55,14 +56,14 @@ const desktopApps = [
   },
   {
     id: "projects",
-    title: "Projects",
+    title: "Projects Folder",
     icon: <FolderOpen size={24} />,
     appType: APP_TYPES.PROJECTS,
   },
   {
     id: "resume",
     title: "Resume.doc",
-    icon: <FileText2 size={24} />,
+    icon: <FileText size={24} />,
     appType: APP_TYPES.RESUME,
   },
   {
@@ -86,7 +87,7 @@ const desktopApps = [
   {
     id: "notes",
     title: "Notes.txt",
-    icon: <FileText size={24} />,
+    icon: <Notebook size={24} />,
     appType: APP_TYPES.NOTES,
   },
 ];
