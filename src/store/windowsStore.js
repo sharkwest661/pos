@@ -25,7 +25,7 @@ const DEFAULT_POSITIONS = {
   [APP_TYPES.RESUME]: { x: 200, y: 90, width: 600, height: 700 },
   [APP_TYPES.TERMINAL_APP]: { x: 250, y: 110, width: 650, height: 450 },
   [APP_TYPES.CONTACT]: { x: 300, y: 130, width: 550, height: 500 },
-  [APP_TYPES.MUSIC_PLAYER]: { x: 350, y: 150, width: 370, height: 500 },
+  [APP_TYPES.MUSIC_PLAYER]: { x: 350, y: 150, width: 370, height: 670 },
   [APP_TYPES.NOTES]: { x: 400, y: 170, width: 650, height: 450 },
   [APP_TYPES.TEXT_VIEWER]: { x: 450, y: 190, width: 600, height: 400 },
   [APP_TYPES.NOTEPAD]: { x: 500, y: 210, width: 600, height: 450 },
