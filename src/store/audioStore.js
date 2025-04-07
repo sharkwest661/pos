@@ -10,6 +10,9 @@ const useAudioStore = create((set, get) => ({
   volume: 30,
   duration: 0,
   currentTime: 0,
+  audioBuffer: null,
+  audioContext: null,
+  audioSource: null,
 
   // Favorites - stored in memory only, not persisted
   favorites: [],
@@ -29,23 +32,49 @@ const useAudioStore = create((set, get) => ({
       // Set initial volume
       audio.volume = get().volume / 100;
 
-      // Set up event listeners
-      audio.addEventListener("timeupdate", () => {
-        set({ currentTime: audio.currentTime });
-      });
+      // Store references to event handlers so they can be properly removed
+      const timeUpdateHandler = () => {
+        // Use requestAnimationFrame to optimize UI updates
+        if (!get().isUpdatingUI) {
+          set({ isUpdatingUI: true });
+          requestAnimationFrame(() => {
+            set({
+              currentTime: audio.currentTime,
+              isUpdatingUI: false,
+            });
+          });
+        }
+      };
 
-      audio.addEventListener("durationchange", () => {
+      const durationChangeHandler = () => {
         set({ duration: audio.duration || 0 });
-      });
+      };
 
-      audio.addEventListener("ended", () => {
+      const endedHandler = () => {
         // Auto play next track
         const nextIndex = (get().currentTrackIndex + 1) % get().playlist.length;
         get().changeTrack(nextIndex);
+      };
+
+      // Store event handlers for proper cleanup later
+      set({
+        audioEventHandlers: {
+          timeUpdate: timeUpdateHandler,
+          durationChange: durationChangeHandler,
+          ended: endedHandler,
+        },
       });
 
+      // Add event listeners with stored handlers
+      audio.addEventListener("timeupdate", timeUpdateHandler);
+      audio.addEventListener("durationchange", durationChangeHandler);
+      audio.addEventListener("ended", endedHandler);
+
       // Store in state
-      set({ audioElement: audio });
+      set({
+        audioElement: audio,
+        isUpdatingUI: false,
+      });
 
       // Load initial playlist if empty
       if (get().playlist.length === 0) {
@@ -59,6 +88,45 @@ const useAudioStore = create((set, get) => ({
           audio.load();
         }
       }
+    }
+  },
+
+  initWebAudio: async (audioUrl) => {
+    try {
+      // Create audio context if it doesn't exist
+      let audioContext = get().audioContext;
+      if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        set({ audioContext });
+      }
+
+      // Fetch audio data
+      const response = await fetch(audioUrl);
+      const arrayBuffer = await response.arrayBuffer();
+
+      // Decode audio data
+      const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+
+      // Clean up previous source if exists
+      if (get().audioSource) {
+        get().audioSource.disconnect();
+      }
+
+      // Create new source
+      const source = audioContext.createBufferSource();
+      source.buffer = audioBuffer;
+      source.connect(audioContext.destination);
+
+      // Store references
+      set({
+        audioBuffer,
+        audioSource: source,
+      });
+
+      return source;
+    } catch (error) {
+      console.error("Error initializing Web Audio:", error);
+      return null;
     }
   },
 
@@ -178,23 +246,35 @@ const useAudioStore = create((set, get) => ({
 
   // Clean up
   cleanup: () => {
-    const { audioElement } = get();
+    const { audioElement, audioEventHandlers } = get();
     if (audioElement) {
       audioElement.pause();
       audioElement.src = "";
-      // Remove event listeners
-      audioElement.removeEventListener("timeupdate", () => {});
-      audioElement.removeEventListener("durationchange", () => {});
-      audioElement.removeEventListener("ended", () => {});
+
+      // Properly remove event listeners using stored handlers
+      if (audioEventHandlers) {
+        audioElement.removeEventListener(
+          "timeupdate",
+          audioEventHandlers.timeUpdate
+        );
+        audioElement.removeEventListener(
+          "durationchange",
+          audioEventHandlers.durationChange
+        );
+        audioElement.removeEventListener("ended", audioEventHandlers.ended);
+      }
     }
+
     // Reset all state to initial values
     set({
       audioElement: null,
+      audioEventHandlers: null,
       isPlaying: false,
       currentTrackIndex: 0,
       currentTime: 0,
       duration: 0,
-      favorites: [], // Clear favorites when app is closed
+      favorites: [],
+      isUpdatingUI: false,
     });
   },
 }));

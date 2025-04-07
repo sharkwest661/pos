@@ -4,12 +4,23 @@ export const VISUALIZER_GIFS = [
   "https://media.giphy.com/media/798oH0WDEQnicM4857/giphy.gif?cid=ecf05e47z1l1af5274sqc4snmnivx4ew4oqhgamuzavtvd8b&ep=v1_gifs_search&rid=giphy.gif&ct=g", // sunset
   "https://media.giphy.com/media/KheRlOh6HLhoDRFw1O/giphy.gif?cid=ecf05e47yyh6iajh7bmrkcbb09mut0j3hw9j9l5nzwpiqt75&ep=v1_gifs_search&rid=giphy.gif&ct=g", // sea
   "https://media.giphy.com/media/3o6Zt9r1TuoFWx9yE0/giphy.gif?cid=790b7611359v8pabbe4mojcaw2fb1x3r4uupj1qqxi7zykxf&ep=v1_gifs_search&rid=giphy.gif&ct=g", // greece
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdjUwaHV4Y2c4dXRqdDFuMjBnNjY1OHZ1eG45bTdwbXY3ZXlmYnRsaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/UtbOum4hi4s4hsHqK7/giphy.gif", // vaporwave
+  "https://media.giphy.com/media/dCdjEefnc6wP16v545/giphy.gif?cid=790b7611v50huxcg8utjt1n20g6658vuxn9m7pmv7eyfbtlj&ep=v1_gifs_search&rid=giphy.gif&ct=g", // vaporwave 2
   "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXRjbmlubXd5c2M2YXZzcXpvYXVqM2pybTR1Znc0Y3FkNWJzc3NxdiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/KLGfgLXAN6IE0/giphy.gif", // anime girl
   "https://media.giphy.com/media/PWYNBAn0vjD0VDtHCb/giphy.gif?cid=790b7611x6js71nfjvmv30yixt5va5ur8gsq0uivxt5lwkey&ep=v1_gifs_search&rid=giphy.gif&ct=g", // cd
   "https://media.giphy.com/media/1mpAmSVQNOzxS/giphy.gif?cid=ecf05e47wp3kk6bpgxpzvanpjdqf1w4aoruea3m7i3u8e0ht&ep=v1_gifs_search&rid=giphy.gif&ct=g", // anime fight
-  "https://media.giphy.com/media/zVPiOxEsVBDB6/giphy.gif?cid=ecf05e47wp3kk6bpgxpzvanpjdqf1w4aoruea3m7i3u8e0ht&ep=v1_gifs_search&rid=giphy.gif&ct=g", //sailor moon
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExN242NWN2MnE4amZnNGZkdzI2c3c2b3ZrdDdkOGd6aHdwd29xM2o2NSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/4ilFRqgbzbx4c/giphy.gif", // anime
+  "https://media.giphy.com/media/cVPcABKys8dHy/giphy.gif?cid=ecf05e47hqod6gmbbc1lzh4f6bk7b2ilsl8cqysh9a2jg7rn&ep=v1_gifs_search&rid=giphy.gif&ct=g", // anime 2
+  "https://media.giphy.com/media/10ZuedtImbopos/giphy.gif?cid=ecf05e47u8dc5912vm9x94cber5wzmryhs5vtazozhfg44s8&ep=v1_gifs_search&rid=giphy.gif&ct=g", // anime 3
+  "https://media.giphy.com/media/u2LJ0n4lx6jF6/giphy.gif?cid=ecf05e475rvii1fsmb8gqjhz9h2jffxjp6jm58mceaa6o4vk&ep=v1_gifs_search&rid=giphy.gif&ct=g", // anime 4
+  "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjR3dDEwZ2Y5Nnhxa3p5ZWlzdGxnZm9jMGJmdTkxZmplazVqeTE4OSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ATilRS1TRJDxu/giphy.gif", // anime 5
+  "https://media.giphy.com/media/tptFQ8QAJYYvu/giphy.gif?cid=790b76117n65cv2q8jfg4fdw26sw6ovkt7d8gzhwpwoq3j65&ep=v1_gifs_search&rid=giphy.gif&ct=g", // death note
+  "https://media.giphy.com/media/zVPiOxEsVBDB6/giphy.gif?cid=ecf05e47wp3kk6bpgxpzvanpjdqf1w4aoruea3m7i3u8e0ht&ep=v1_gifs_search&rid=giphy.gif&ct=g", // sailor moon
+  "https://media.giphy.com/media/d0JPBhiwCm6Kk/giphy.gif?cid=ecf05e477q5oniix4vg3x711khoeoxedb2qf83yownnurqrc&ep=v1_gifs_search&rid=giphy.gif&ct=g", // sailor moon 2
+  "https://media.giphy.com/media/XmPrx6vcB0X6g/giphy.gif?cid=ecf05e47u8dc5912vm9x94cber5wzmryhs5vtazozhfg44s8&ep=v1_gifs_search&rid=giphy.gif&ct=g", // sailor moon 3
   "https://media.giphy.com/media/Dh5q0sShxgp13DwrvG/giphy.gif?cid=790b7611lbnjsbp8u0n7f5z9fskc07cvr6g6xg7u5q29puw3&ep=v1_gifs_search&rid=giphy.gif&ct=g", //dog coding
   "https://media.giphy.com/media/zOvBKUUEERdNm/giphy.gif?cid=790b7611lbnjsbp8u0n7f5z9fskc07cvr6g6xg7u5q29puw3&ep=v1_gifs_search&rid=giphy.gif&ct=g", // monkey coding
+  "https://media.giphy.com/media/l41lVsYDBC0UVQJCE/giphy.gif?cid=ecf05e47kfmbmevegx7re59n5fmks1tfurbgx3ixag0jsfr4&ep=v1_gifs_search&rid=giphy.gif&ct=g", // monkey phone
   "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMG5nZzNsaWNzc3NidmRkNnE1ZjR2ZWpvbWEzN2JwcHFzMTM2OGNxayZlcD12MV9naWZzX3NlYXJjaCZjdD1n/AVun92P6O8q2Y/giphy.gif", //miami vice 1
   "https://media.giphy.com/media/3o7aCWUAhxmvFc5VVm/giphy.gif?cid=790b76110ngg3licsssbvdd6q5f4vejoma37bppqs1368cqk&ep=v1_gifs_search&rid=giphy.gif&ct=g", // miami vice 2
   "https://media.giphy.com/media/J1XfZvlK4SJmQh6Ve1/giphy.gif?cid=ecf05e47g18dhb6eqxwo3ogm8wccenkyy5duq9qfps8w7zum&ep=v1_gifs_search&rid=giphy.gif&ct=g", // miami vice car
@@ -54,4 +65,25 @@ export const VISUALIZER_GIFS = [
   "https://media.giphy.com/media/kc6n0RKTFbDJC/giphy.gif?cid=ecf05e47250qr189rrmc5xtmtd7pjw5qddi3khnhc3br7avv&ep=v1_gifs_search&rid=giphy.gif&ct=g", // retro game
   "https://media.giphy.com/media/1EVPGsbaNSmIw/giphy.gif?cid=790b7611luni6vn3vqnnk1xvhvd1dev92c7y6qctoxn64vwn&ep=v1_gifs_search&rid=giphy.gif&ct=g", // dancing
   "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGNmZDYzMmV6dWdnYjloYW5oOTRjdDc3ZHg3cDI5c25iOXc5NHBpbiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1Syi8XSAkiFupEty1u/giphy.gif", // bill gates
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExenU5ZDQ2eHIwZ292bmczdXo1YzV4NTg2emdwMHR2bWFtaml2Z2h6diZlcD12MV9naWZzX3NlYXJjaCZjdD1n/w35dffdV41MppD6SAP/giphy.gif", // south park
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHFwZDJ3MXIzZjdvajhueXpzdW4wZHZxbGcxYXI3d252bG5vY3VjeCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/gY8Bs8qvD1EukQBj5V/giphy.gif", // japanese aesthetic
+  "https://media.giphy.com/media/sgdzyx9fFe53gBOXiY/giphy.gif?cid=ecf05e4720scoi3y5gnzq2wza96tcha2ahxnos09n4or01e7&ep=v1_gifs_search&rid=giphy.gif&ct=g", // japanese aesthetic 2
+  "https://media.giphy.com/media/xTiTnslZ1YAQ1e6zss/giphy.gif?cid=ecf05e4720scoi3y5gnzq2wza96tcha2ahxnos09n4or01e7&ep=v1_gifs_search&rid=giphy.gif&ct=g", // vaporwawe
+  "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTNwbHJ3dmJlb3RhcHNmYTE4aDdwdnQ4NzR2ZTV6bndiaW5lN25vbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Emp2gn6BaX3ttktTq4/giphy.gif", // japanese cars
+  "https://media.giphy.com/media/hW4ZX7eV2YvgUQakK8/giphy.gif?cid=ecf05e47zpgsvwtoe93d1hgknm8qbr38n661rlqcahld4rj3&ep=v1_gifs_related&rid=giphy.gif&ct=g", // japanese cars 2
+  "https://media.giphy.com/media/51Y3t2oj6pclv2nZ77/giphy.gif?cid=ecf05e47zpgsvwtoe93d1hgknm8qbr38n661rlqcahld4rj3&ep=v1_gifs_related&rid=giphy.gif&ct=g", // system malfunctioning
+  "https://media.giphy.com/media/mEtzy8mE3JgnKPBKQK/giphy.gif?cid=ecf05e47zpgsvwtoe93d1hgknm8qbr38n661rlqcahld4rj3&ep=v1_gifs_related&rid=giphy.gif&ct=g", // retro city
+  "https://media.giphy.com/media/gIIH6utn7kr4cZUarc/giphy.gif?cid=ecf05e47zpgsvwtoe93d1hgknm8qbr38n661rlqcahld4rj3&ep=v1_gifs_related&rid=giphy.gif&ct=g", // miami beach
+  "https://media.giphy.com/media/idwM9LY06SDpoIZULt/giphy.gif?cid=ecf05e475jk9b2fsifn8f5bmbllpabq4ouh0qdwb86qqb6b1&ep=v1_gifs_related&rid=giphy.gif&ct=g", // palm
+  "https://media.giphy.com/media/DN0RBOsfYFHPy4nOiA/giphy.gif?cid=ecf05e475jk9b2fsifn8f5bmbllpabq4ouh0qdwb86qqb6b1&ep=v1_gifs_related&rid=giphy.gif&ct=g", // 80s
+  "https://media.giphy.com/media/Z4N3kcsCHv6KCLxTss/giphy.gif?cid=ecf05e47oolh2g0wd5m1l6ssg28t97z49qs9qz0yqw1weyek&ep=v1_gifs_related&rid=giphy.gif&ct=g", // 80s hotel
+  "https://media.giphy.com/media/KBD21aYIBcx131UHu1/giphy.gif?cid=ecf05e47oolh2g0wd5m1l6ssg28t97z49qs9qz0yqw1weyek&ep=v1_gifs_related&rid=giphy.gif&ct=g", // fuzzyghost
+  "https://media.giphy.com/media/Q59B8pYwZnuZXWjc5b/giphy.gif?cid=ecf05e476hj5krhxlmu0ryrrmxcl490tilap14qw4h54bous&ep=v1_gifs_related&rid=giphy.gif&ct=g", // girls guns
+  "https://media.giphy.com/media/443tY9570QuIpNPc6x/giphy.gif?cid=ecf05e477hhk5s1yg2vwfa0np51yflicja4x4aaf0jp8f4tc&ep=v1_gifs_related&rid=giphy.gif&ct=g", // girl pool
+  "https://media.giphy.com/media/QWMkjyAZ0f1xVcsIma/giphy.gif?cid=ecf05e47k45pcc10zl89u80oukfg9yf0bz3938q8b56lxetr&ep=v1_gifs_related&rid=giphy.gif&ct=g", // 80s vhs
+  "https://media.giphy.com/media/9rpcNySPYIlB9SzKTi/giphy.gif?cid=ecf05e47pkvkqkwh2nqjxiesma49rijnb2z5qhqn6ox3zotl&ep=v1_gifs_related&rid=giphy.gif&ct=g", // 80s car
+  "https://media.giphy.com/media/HekrB46ZE0f5K/giphy.gif?cid=790b7611ge2szv8snpazk5fw0whcf00q5bazdfpqgzghqszk&ep=v1_gifs_search&rid=giphy.gif&ct=g", // terminator
+  "https://media.giphy.com/media/BCL8y2qRqYb96/giphy.gif?cid=ecf05e47w240zbvyncmwyqaveq658i1vc941jfw82ow9ueht&ep=v1_gifs_search&rid=giphy.gif&ct=g", // terminator 2
+  "https://media.giphy.com/media/r7ZtqpSM8GMta/giphy.gif?cid=790b7611ge2szv8snpazk5fw0whcf00q5bazdfpqgzghqszk&ep=v1_gifs_search&rid=giphy.gif&ct=g", // terminator 3
+  "https://media.giphy.com/media/3o6nVaPCxSdAscx74Q/giphy.gif?cid=790b7611pqpd2w1r3f7oj8nyzsun0dvqlg1ar7wnvlnocucx&ep=v1_gifs_search&rid=giphy.gif&ct=g", // wong karwai
 ];

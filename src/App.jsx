@@ -27,6 +27,14 @@ const App = () => {
     // Set playlist data
     setPlaylist(PLAYLIST_DATA);
 
+    // Setup memory monitoring in development
+    if (import.meta.env.DEV) {
+      console.log("Setting up memory monitor...");
+      import("./utils/memoryMonitor").then(({ setupMemoryMonitor }) => {
+        setupMemoryMonitor();
+      });
+    }
+
     // Prevent right-click context menu
     const handleContextMenu = (e) => {
       e.preventDefault();

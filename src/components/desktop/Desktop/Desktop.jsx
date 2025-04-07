@@ -1,5 +1,5 @@
 // components/desktop/Desktop/Desktop.jsx (updated)
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import {
   Music,
   FileText,
@@ -29,11 +29,14 @@ import Notes from "../../apps/notes";
 import TextViewer from "../../apps/textViewer";
 import styles from "./Desktop.module.scss";
 
+const MemoizedMusicPlayer = memo(MusicPlayer);
+const MemoizedTerminal = memo(TerminalApp);
+
 // Map of app types to components
 const APP_COMPONENTS = {
-  [APP_TYPES.MUSIC_PLAYER]: MusicPlayer,
-  [APP_TYPES.NOTEPAD]: Notepad,
-  [APP_TYPES.TERMINAL_APP]: TerminalApp,
+  [APP_TYPES.MUSIC_PLAYER]: MemoizedMusicPlayer,
+  [APP_TYPES.NOTEPAD]: memo(Notepad),
+  [APP_TYPES.TERMINAL_APP]: MemoizedTerminal,
   [APP_TYPES.TEXT_VIEWER]: TextViewer,
   [APP_TYPES.MY_PROFILE]: MyProfile,
   [APP_TYPES.RESUME]: Resume,

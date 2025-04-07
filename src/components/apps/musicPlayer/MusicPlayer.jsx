@@ -44,6 +44,7 @@ const MusicPlayer = () => {
   const [selectedView, setSelectedView] = useState("player"); // 'player' or 'playlist'
   const [previousVolume, setPreviousVolume] = useState(40);
   const [isInitialized, setIsInitialized] = useState(false);
+  const [lastUpdateTime, setLastUpdateTime] = useState(0);
 
   // For styling the progress input
   const progressStyle = {
@@ -92,13 +93,18 @@ const MusicPlayer = () => {
 
   // Update progress when currentTime or duration changes
   useEffect(() => {
-    if (duration > 0) {
-      const calculatedProgress = (currentTime / duration) * 100;
-      setProgress(isNaN(calculatedProgress) ? 0 : calculatedProgress);
-    } else {
-      setProgress(0);
+    // Throttle updates to once every 250ms
+    const now = Date.now();
+    if (now - lastUpdateTime > 250) {
+      if (duration > 0) {
+        const calculatedProgress = (currentTime / duration) * 100;
+        setProgress(isNaN(calculatedProgress) ? 0 : calculatedProgress);
+        setLastUpdateTime(now);
+      } else {
+        setProgress(0);
+      }
     }
-  }, [currentTime, duration]);
+  }, [currentTime, duration, lastUpdateTime]);
 
   const handleNext = () => {
     const nextIndex = (currentTrackIndex + 1) % playlist.length;

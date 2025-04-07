@@ -66,22 +66,21 @@ const Window = ({
 
   // Set position when dragging stops
   const handleDragStop = (e, d) => {
+    // Immediately update local state for responsive UI
+    const newPosition = { x: d.x, y: d.y };
+
     // Clear any pending timeouts
     if (dragTimeoutRef.current) {
       clearTimeout(dragTimeoutRef.current);
       dragTimeoutRef.current = null;
     }
 
-    // Use requestAnimationFrame for smooth updates
-    rafRef.current = requestAnimationFrame(() => {
-      setPosition((prev) => ({
-        ...prev,
-        x: d.x,
-        y: d.y,
-      }));
+    // Use a timeout to debounce store updates
+    dragTimeoutRef.current = setTimeout(() => {
+      setPosition(newPosition);
       setIsDragging(false);
-      rafRef.current = null;
-    });
+      dragTimeoutRef.current = null;
+    }, 50); // Short delay to debounce rapid movements
   };
 
   // Set size when resizing stops
