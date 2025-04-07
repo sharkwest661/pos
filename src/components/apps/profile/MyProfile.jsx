@@ -4,7 +4,7 @@ import { useThemeStore } from "../../../store";
 import { Scanlines } from "../../effects/Scanlines";
 import styles from "./MyProfile.module.scss";
 import { Construction } from "lucide-react";
-import { getRandomNumber } from "../../../utils/random";
+import { getRandomInteger } from "../../../utils/random";
 
 const MyProfile = () => {
   // Get theme configuration and effects status
@@ -14,7 +14,7 @@ const MyProfile = () => {
   // Simulate visitor count incrementing randomly
   useEffect(() => {
     const timer = setInterval(() => {
-      setVisitorCount((prev) => prev + getRandomNumber(0, 3)); // Random increment
+      setVisitorCount((prev) => prev + getRandomInteger(0, 3)); // Random increment
     }, 30000); // Every 30 seconds
 
     return () => clearInterval(timer);

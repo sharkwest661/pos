@@ -4,8 +4,8 @@
  * @param {number} max - The maximum value (exclusive).
  * @returns {number} A random number between min and max.
  */
-function getRandomNumber(min, max) {
-  return Math.random() * (max - min) + min;
+function getRandomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 /**
@@ -21,4 +21,4 @@ function getRandomElement(array) {
   return array[randomIndex];
 }
 
-export { getRandomNumber, getRandomElement };
+export { getRandomInteger, getRandomElement };
