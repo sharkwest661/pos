@@ -7,7 +7,14 @@ import styles from "./Scanlines.module.scss";
  */
 export const Scanlines = ({ opacity = 0.3, className = "" }) => {
   return (
-    <div className={`${styles.scanlines} ${className}`} style={{ opacity }} />
+    <div
+      className={`${styles.scanlines} ${className}`}
+      style={{
+        opacity,
+        willChange: "opacity", // Hint to browser to optimize
+        transform: "translateZ(0)", // Force GPU rendering
+      }}
+    />
   );
 };
 

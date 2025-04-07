@@ -17,6 +17,7 @@ const GifVisualizer = ({ currentTrack, isPlaying, themeConfig }) => {
   const [currentGif, setCurrentGif] = useState(null);
   const [alternateGif, setAlternateGif] = useState(false);
   const gifCache = useRef(new Map());
+  const loadingTimeoutRef = useRef(null);
 
   // Get GIF URL based on track or use random one
   const getGifUrl = (track, useAlternate = false) => {
@@ -34,31 +35,56 @@ const GifVisualizer = ({ currentTrack, isPlaying, themeConfig }) => {
     if (currentTrack) {
       setIsLoaded(false);
 
+      // Clear any previous timeouts
+      if (loadingTimeoutRef.current) {
+        clearTimeout(loadingTimeoutRef.current);
+      }
+
       // Get GIF URL (either from track or randomly)
       const newGifUrl = getGifUrl(currentTrack, alternateGif);
+
+      // Limit GIF cache size
+      if (gifCache.current.size > 5) {
+        // Get the oldest key
+        const keysIterator = gifCache.current.keys();
+        const oldestKey = keysIterator.next().value;
+        // Remove it from cache
+        gifCache.current.delete(oldestKey);
+      }
 
       // Check if we have this GIF cached
       if (gifCache.current.has(newGifUrl)) {
         setCurrentGif(newGifUrl);
         setIsLoaded(true);
       } else {
-        // Preload the GIF
-        const img = new Image();
-        img.onload = () => {
-          gifCache.current.set(newGifUrl, true);
-          setCurrentGif(newGifUrl);
-          setIsLoaded(true);
-        };
-        img.src = newGifUrl;
-      }
+        // Use a single loading timeout
+        loadingTimeoutRef.current = setTimeout(() => {
+          // Create a new image for preloading
+          const img = new Image();
 
-      // Clean up cache if it gets too large
-      if (gifCache.current.size > 5) {
-        const keysIterator = gifCache.current.keys();
-        const oldestKey = keysIterator.next().value;
-        gifCache.current.delete(oldestKey);
+          img.onload = () => {
+            gifCache.current.set(newGifUrl, true);
+            setCurrentGif(newGifUrl);
+            setIsLoaded(true);
+          };
+
+          img.onerror = () => {
+            // Handle loading error
+            console.warn("Failed to load GIF:", newGifUrl);
+            setIsLoaded(true); // Show placeholder instead
+          };
+
+          img.src = newGifUrl;
+        }, 300); // Small delay to avoid loading unused GIFs
       }
     }
+
+    // Cleanup function
+    return () => {
+      if (loadingTimeoutRef.current) {
+        clearTimeout(loadingTimeoutRef.current);
+      }
+    };
   }, [currentTrack, alternateGif]);
 
   // Toggle between alternate GIFs for the same track
