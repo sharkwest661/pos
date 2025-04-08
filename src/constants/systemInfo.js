@@ -3,7 +3,7 @@
 
 export const SYSTEM_INFO = {
   // Version information
-  VERSION: "1.0.0",
+  VERSION: "1.0.1",
   CODENAME: "AESTHETIC",
   BUILD_DATE: "04/08/2025",
 
