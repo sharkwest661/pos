@@ -3,7 +3,7 @@ export const resumeData = {
     name: "Javad Javadli",
     title: "Frontend Developer",
     email: "ccavad2015@gmail.com",
-    // phone: "+994509688492",
+    // phone: "",
     location: "Azerbaijan, Baku",
     // website: "",
   },
@@ -11,9 +11,9 @@ export const resumeData = {
     {
       id: 1,
       role: "Frontend Developer",
-      company: "Agile Solutions",
+      company: "Agile Solutions Azerbaijan",
       period: "August 2023 - February 2025",
-      // description:
+      // description: "",
       highlights: [
         "Developed and maintained call center and dialer applications using React",
         "Developed a props-based styling system with responsive design support in React",
@@ -37,7 +37,7 @@ export const resumeData = {
       degree: "Mining Engineering",
       institution: "Azerbaijan State Oil and Industry University",
       period: "2014 - 2015",
-      // description: "Specialized in Human-Computer Interaction",
+      // description: "",
     },
   ],
   skills: [

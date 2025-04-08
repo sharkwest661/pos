@@ -35,8 +35,10 @@
     box-shadow: $vapor-glow-pink;
   }
 
-  &:active {
+  &:active,
+  &.active {
     transform: scale(0.98);
+    background-color: rgba($vapor-neon-pink, 0.2);
   }
 }
 
@@ -55,6 +57,97 @@
   font-weight: 700;
   color: $vapor-text-light;
   letter-spacing: 0.05em;
+}
+
+// Start Menu styling
+.startMenu {
+  position: absolute;
+  bottom: 55px;
+  left: 5px;
+  width: 320px;
+  background: rgba($vapor-dark-blue, 0.85);
+  border: 2px solid $vapor-neon-pink;
+  border-bottom: none;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba($vapor-neon-pink, 0.5);
+  z-index: 9100;
+  overflow: hidden;
+  animation: slideUp 0.2s ease;
+}
+
+.startMenuHeader {
+  background: linear-gradient(90deg, $vapor-neon-pink, $vapor-cyan);
+  padding: 12px 15px;
+}
+
+.startMenuTitle {
+  font-family: $font-display;
+  font-size: 20px;
+  color: $vapor-text-light;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.startMenuVersion {
+  font-family: $font-vcr;
+  font-size: 12px;
+  color: rgba($vapor-text-light, 0.8);
+  margin: 2px 0 0;
+}
+
+.startMenuContent {
+  padding: 15px;
+}
+
+.systemInfoSection {
+  margin-bottom: 20px;
+}
+
+.systemInfoTitle {
+  font-family: $font-vcr;
+  font-size: 14px;
+  color: $vapor-cyan;
+  text-shadow: 0 0 5px rgba($vapor-cyan, 0.5);
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba($vapor-cyan, 0.3);
+  padding-bottom: 5px;
+}
+
+.systemInfoItems {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.systemInfoItem {
+  font-family: $font-vcr;
+  font-size: 12px;
+}
+
+.systemInfoLabel {
+  color: rgba($vapor-text-light, 0.7);
+  margin-right: 5px;
+}
+
+.systemInfoValue {
+  color: $vapor-neon-pink;
+  text-shadow: 0 0 5px rgba($vapor-neon-pink, 0.5);
+}
+
+.messageBox {
+  padding: 10px;
+  background-color: rgba($vapor-dark-purple, 0.5);
+  border: 1px solid rgba($vapor-neon-pink, 0.3);
+  border-radius: 2px;
+
+  p {
+    font-family: $font-vcr;
+    font-size: 12px;
+    color: $vapor-text-light;
+    text-align: center;
+    font-style: italic;
+  }
 }
 
 .openWindows {
@@ -158,10 +251,43 @@
   border-left: 1px solid rgba($vapor-neon-pink, 0.3);
 }
 
+.fullscreenButton {
+  background: none;
+  display: flex;
+
+  border: none;
+  color: $vapor-text-light;
+  padding: 6px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all $transition-standard ease;
+
+  &:hover {
+    color: $vapor-cyan;
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
 .clock {
   font-family: $font-vcr;
   font-size: 14px;
   color: $vapor-text-light;
   padding: 0 10px;
   text-shadow: 0 0 5px rgba($vapor-text-light, 0.5);
+}
+
+// Animation for start menu
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
