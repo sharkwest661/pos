@@ -77,13 +77,13 @@ const AestheticPuzzle = ({ onExit }) => {
       setGameStatus("won");
       setTimeout(() => {
         onExit(true); // exit with success
-      }, 3000);
+      }, 10000);
     } else if (remainingAttempts <= 1) {
       // This was the last attempt
       setGameStatus("lost");
       setTimeout(() => {
         onExit(false); // exit with failure
-      }, 3000);
+      }, 10000);
     }
   };
 
@@ -206,9 +206,11 @@ const AestheticPuzzle = ({ onExit }) => {
           <div className={styles.noAttempts}>No attempts yet</div>
         ) : (
           <div className={styles.attemptsList}>
-            {attempts.map((attempt, index) => (
+            {[...attempts].reverse().map((attempt, index) => (
               <div key={index} className={styles.attemptRow}>
-                <div className={styles.attemptNumber}>{8 - index}</div>
+                <div className={styles.attemptNumber}>
+                  {9 - attempts.length + index}
+                </div>
                 <div className={styles.attemptGuess}>
                   {attempt.guess.map((symbol, i) => (
                     <span key={i} className={styles.guessSymbol}>

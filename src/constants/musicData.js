@@ -47,4 +47,20 @@ export const PLAYLIST_DATA = [
     active: false,
     file: "/assets/music/shahzoda_afghana.mp3",
   },
+  {
+    id: 7,
+    title: "Track 7",
+    artist: "Unknown Artist",
+    duration: "5:04",
+    active: false,
+    file: "/assets/music/ella.mp3",
+  },
+  {
+    id: 8,
+    title: "Track 8",
+    artist: "Unknown Artist",
+    duration: "3:50",
+    active: false,
+    file: "/assets/music/fantasy_jessie_frye.mp3",
+  },
 ];

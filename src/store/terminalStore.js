@@ -1,5 +1,6 @@
 // store/terminalStore.js
 import { create } from "zustand";
+import { SYSTEM_INFO } from "./../constants/systemInfo";
 
 // Helper to save terminal state to sessionStorage
 const saveStateTosessionStorage = (state) => {
@@ -38,7 +39,10 @@ const savedState = loadStateFromsessionStorage();
 const useTerminalStore = create((set, get) => ({
   // Terminal history
   history: savedState?.history || [
-    { text: "ＶＡＰＯＲＷＡＶＥ  ＯＳ  [Version 1.0.0]", type: "system" },
+    {
+      text: `ＶＡＰＯＲＷＡＶＥ  ＯＳ  [Version ${SYSTEM_INFO.VERSION}]`,
+      type: "system",
+    },
     { text: "(c) 2025 Vaporwave Corp. All rights reserved.", type: "system" },
   ],
 

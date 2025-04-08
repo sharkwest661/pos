@@ -4,7 +4,6 @@ export const VISUALIZER_GIFS = [
   "https://media.giphy.com/media/798oH0WDEQnicM4857/giphy.gif?cid=ecf05e47z1l1af5274sqc4snmnivx4ew4oqhgamuzavtvd8b&ep=v1_gifs_search&rid=giphy.gif&ct=g", // sunset
   "https://media.giphy.com/media/KheRlOh6HLhoDRFw1O/giphy.gif?cid=ecf05e47yyh6iajh7bmrkcbb09mut0j3hw9j9l5nzwpiqt75&ep=v1_gifs_search&rid=giphy.gif&ct=g", // sea
   "https://media.giphy.com/media/3o6Zt9r1TuoFWx9yE0/giphy.gif?cid=790b7611359v8pabbe4mojcaw2fb1x3r4uupj1qqxi7zykxf&ep=v1_gifs_search&rid=giphy.gif&ct=g", // greece
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdjUwaHV4Y2c4dXRqdDFuMjBnNjY1OHZ1eG45bTdwbXY3ZXlmYnRsaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/UtbOum4hi4s4hsHqK7/giphy.gif", // vaporwave
   "https://media.giphy.com/media/dCdjEefnc6wP16v545/giphy.gif?cid=790b7611v50huxcg8utjt1n20g6658vuxn9m7pmv7eyfbtlj&ep=v1_gifs_search&rid=giphy.gif&ct=g", // vaporwave 2
   "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXRjbmlubXd5c2M2YXZzcXpvYXVqM2pybTR1Znc0Y3FkNWJzc3NxdiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/KLGfgLXAN6IE0/giphy.gif", // anime girl
   "https://media.giphy.com/media/PWYNBAn0vjD0VDtHCb/giphy.gif?cid=790b7611x6js71nfjvmv30yixt5va5ur8gsq0uivxt5lwkey&ep=v1_gifs_search&rid=giphy.gif&ct=g", // cd
@@ -49,7 +48,14 @@ export const VISUALIZER_GIFS = [
   "https://media.giphy.com/media/12xHSWmlPG9OoM/giphy.gif?cid=790b7611n3v72p4he99l3lwhr9n87hqmixziqvxxdot216l6&ep=v1_gifs_search&rid=giphy.gif&ct=g", // mars attacks
   "https://media.giphy.com/media/3oz8xWqZk843O0TPXy/giphy.gif?cid=790b7611k5u7f4bwd1nj8x153pwkqklhbwklrbn785ds1q30&ep=v1_gifs_search&rid=giphy.gif&ct=g", // fcb
   "https://media.giphy.com/media/2KvLEDVIoUU0w/giphy.gif?cid=790b7611sqa7dqg8mndutjwy0anxsu8zl8i2vsueatfdej9g&ep=v1_gifs_search&rid=giphy.gif&ct=g", // ronaldinho
-  "https://media.giphy.com/media/IcF46X839w60U/giphy.gif?cid=790b761107qu7mh0g1n4bpldlim9sckymt7khmhstiuwv8d9&ep=v1_gifs_search&rid=giphy.gif&ct=g", // silent hill
+  "https://media.giphy.com/media/jamrMWyptbJJN7sYa3/giphy.gif?cid=790b7611w5xxylpyo2hnemxk8ixynjby49t9fj8471s7cs5k&ep=v1_gifs_search&rid=giphy.gif&ct=g", // silent hill
+  "https://media.giphy.com/media/0RfuqUxKkrQhcL2Ef0/giphy.gif?cid=790b7611pfiqjo76xdvqtj4qs3whmuxx1kedfknwhz7emwty&ep=v1_gifs_search&rid=giphy.gif&ct=g", // silent hill
+  "https://media.giphy.com/media/KgLekZrE4nrIA/giphy.gif?cid=790b7611pfiqjo76xdvqtj4qs3whmuxx1kedfknwhz7emwty&ep=v1_gifs_search&rid=giphy.gif&ct=g", // silent hill rabbit
+  "https://media.giphy.com/media/11NEUQW7jbufHW/giphy.gif?cid=790b76113t5n7xw8tfqybhib2anmggm8k621qa0wucqr042x&ep=v1_gifs_search&rid=giphy.gif&ct=g", // metal gear solid
+  "https://media.giphy.com/media/rMszO5FZRLMyc/giphy.gif?cid=790b7611pigoaq04413vyn91l0l5uimzvdhtn5kkxichngf8&ep=v1_gifs_search&rid=giphy.gif&ct=g", // skiing
+  "https://media.giphy.com/media/kiGxsKmkY73ig/giphy.gif?cid=ecf05e47s6d1s4i3oueo9gkt60gx5vb7bma0heotea0nrmu9&ep=v1_gifs_search&rid=giphy.gif&ct=g", // vintage cartoon
+  "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExaDFyZ2JuODYzOXRya3lrbmdpdnJoNWF2bWYwbWlpbHc5ZzlubzNjMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/eFxpuiAuG4nrPNCPEM/giphy.gif", // cod
+  "https://media.giphy.com/media/JXibbAa7ysN9K/giphy.gif?cid=790b7611es3it1dp7zj5opahel46ws1uifxad70ne3d4aa8o&ep=v1_gifs_search&rid=giphy.gif&ct=g", // cute anime
   "https://media.giphy.com/media/3o7TKRIo0WSvarDEPe/giphy.gif?cid=790b7611mf22eeyd0usww6rjp8ah6kduvk4zv0bx3htib8ae&ep=v1_gifs_search&rid=giphy.gif&ct=g", // walking dead
   "https://media.giphy.com/media/26ufjyAvlCA94o2HK/giphy.gif?cid=ecf05e47sr9stlfocjm9m64o3ukw16q49owza0h4qa0jev3j&ep=v1_gifs_search&rid=giphy.gif&ct=g", // walking dead 2
   "https://media.giphy.com/media/e26OhuJO0wKWWX4Epp/giphy.gif?cid=790b761192yv5dc2gzzc3nx89zec4z2gwgb8v3ug8f423g4b&ep=v1_gifs_search&rid=giphy.gif&ct=g", // walking dead 3
@@ -86,4 +92,9 @@ export const VISUALIZER_GIFS = [
   "https://media.giphy.com/media/BCL8y2qRqYb96/giphy.gif?cid=ecf05e47w240zbvyncmwyqaveq658i1vc941jfw82ow9ueht&ep=v1_gifs_search&rid=giphy.gif&ct=g", // terminator 2
   "https://media.giphy.com/media/r7ZtqpSM8GMta/giphy.gif?cid=790b7611ge2szv8snpazk5fw0whcf00q5bazdfpqgzghqszk&ep=v1_gifs_search&rid=giphy.gif&ct=g", // terminator 3
   "https://media.giphy.com/media/3o6nVaPCxSdAscx74Q/giphy.gif?cid=790b7611pqpd2w1r3f7oj8nyzsun0dvqlg1ar7wnvlnocucx&ep=v1_gifs_search&rid=giphy.gif&ct=g", // wong karwai
+  "https://media.giphy.com/media/T2vDaYr8yRhrpFe6WE/giphy.gif?cid=790b7611frm6ljgz2zdty4dnh163db824nx8y7f9sfco9bup&ep=v1_gifs_search&rid=giphy.gif&ct=g", // the thing
+  "https://media.giphy.com/media/3o7WIDraOCam8uw4Du/giphy.gif?cid=790b7611rrmn0f7rbt8omyluc9thyr8aj0gks715qej5ejg6&ep=v1_gifs_search&rid=giphy.gif&ct=g", // drive movie
+  "https://media.giphy.com/media/bo5pJyxUr3R9C/giphy.gif?cid=ecf05e47tx0jpu4y0xus5dsmsjzr37l2vp53dh4fej7qlga3&ep=v1_gifs_search&rid=giphy.gif&ct=g", // drive movie 2
+  "https://media.giphy.com/media/7FvaPVEKXuB3O/giphy.gif?cid=ecf05e47yaxd0tl4tm6rglo9y2r31c5ccnuirnyfpjpkfyjn&ep=v1_gifs_search&rid=giphy.gif&ct=g", // drive movie 3
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGJmbjB5MGp2b2Y2bGFpaGM0MGE4azg0dnU3NG5qMzJiNm5nbDJjaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/26AHKUzOZv1cSFWfu/giphy.gif", // katana zero
 ];
