@@ -24,6 +24,7 @@ const Window = ({
   const windowRef = useRef(null);
   const dragTimeoutRef = useRef(null);
   const rafRef = useRef(null);
+  const isDraggingRef = useRef(false);
 
   // Get effects configuration
   const effectsEnabled = useThemeStore((state) => state.effectsEnabled);
@@ -31,13 +32,6 @@ const Window = ({
   // Local state
   const [position, setPosition] = useState(initialPosition);
   const [isDragging, setIsDragging] = useState(false);
-
-  // Handle window focus when clicked
-  const handleWindowClick = () => {
-    if (onFocus) {
-      onFocus(id);
-    }
-  };
 
   // Close window
   const handleClose = (e) => {
@@ -57,30 +51,45 @@ const Window = ({
 
   // Set position when dragging starts
   const handleDragStart = () => {
+    // Set both the state and the ref for redundancy
     setIsDragging(true);
+    isDraggingRef.current = true;
+
     // Cancel any ongoing animations
     if (rafRef.current) {
       cancelAnimationFrame(rafRef.current);
     }
-  };
-
-  // Set position when dragging stops
-  const handleDragStop = (e, d) => {
-    // Immediately update local state for responsive UI
-    const newPosition = { x: d.x, y: d.y };
 
     // Clear any pending timeouts
     if (dragTimeoutRef.current) {
       clearTimeout(dragTimeoutRef.current);
       dragTimeoutRef.current = null;
     }
+  };
 
-    // Use a timeout to debounce store updates
+  // Set position when dragging stops
+  const handleDragStop = (e, d) => {
+    // Immediately update dragging ref for redundancy
+    isDraggingRef.current = false;
+
+    // Clear any pending timeouts
+    if (dragTimeoutRef.current) {
+      clearTimeout(dragTimeoutRef.current);
+    }
+
+    // Use timeout for state updates to ensure they happen after React's current cycle
     dragTimeoutRef.current = setTimeout(() => {
-      setPosition(newPosition);
-      setIsDragging(false);
+      // Double-check that we're still in the component before updating state
+      if (windowRef.current) {
+        setPosition((prev) => ({
+          ...prev,
+          x: d.x,
+          y: d.y,
+        }));
+        setIsDragging(false);
+      }
       dragTimeoutRef.current = null;
-    }, 50); // Short delay to debounce rapid movements
+    }, 50);
   };
 
   // Set size when resizing stops
@@ -93,15 +102,49 @@ const Window = ({
     });
   };
 
+  // Force reset dragging state on window click
+  const handleWindowClick = () => {
+    // First reset dragging state if it's stuck
+    if (isDraggingRef.current || isDragging) {
+      isDraggingRef.current = false;
+      setIsDragging(false);
+    }
+
+    // Then call the onFocus handler
+    if (onFocus) {
+      onFocus(id);
+    }
+  };
+
   // Clean up any pending animations on unmount
+  // useEffect(() => {
+  //   return () => {
+  //     if (dragTimeoutRef.current) {
+  //       clearTimeout(dragTimeoutRef.current);
+  //     }
+  //     if (rafRef.current) {
+  //       cancelAnimationFrame(rafRef.current);
+  //     }
+  //   };
+  // }, []);
+
+  // Add an emergency reset mechanism with useEffect
   useEffect(() => {
+    // Emergency reset for dragging state if mouse is released outside window
+    const handleMouseUp = () => {
+      if (isDraggingRef.current) {
+        // If we detect a mouse up while dragging ref is still true,
+        // the normal drag stop probably didn't fire
+        isDraggingRef.current = false;
+        setIsDragging(false);
+      }
+    };
+
+    // Add global mouse up listener
+    document.addEventListener("mouseup", handleMouseUp);
+
     return () => {
-      if (dragTimeoutRef.current) {
-        clearTimeout(dragTimeoutRef.current);
-      }
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
-      }
+      document.removeEventListener("mouseup", handleMouseUp);
     };
   }, []);
 
@@ -114,7 +157,7 @@ const Window = ({
   const windowClass = [
     styles.window,
     isActive ? styles.active : "",
-    isDragging ? styles.dragging : "",
+    isDragging || isDraggingRef.current ? styles.dragging : "",
     isMinimized ? styles.minimized : "",
     darkHackerTheme ? styles.darkHacker : "",
     className,
@@ -163,8 +206,15 @@ const Window = ({
       enableUserSelectHack={false} // Important performance fix
       onDragStart={handleDragStart}
       onDragStop={handleDragStop}
-      onResizeStop={handleResizeStop}
       onClick={handleWindowClick}
+      onMouseUp={() => {
+        // Additional safety check
+        if (isDraggingRef.current) {
+          isDraggingRef.current = false;
+          setIsDragging(false);
+        }
+      }}
+      onResizeStop={handleResizeStop}
       minWidth={300}
       minHeight={200}
       bounds="parent"
@@ -198,7 +248,7 @@ const Window = ({
 
         {/* Apply scanlines effect if enabled */}
         {effectsEnabled?.scanlines && !isDragging && (
-          <Scanlines opacity={0.15} />
+          <Scanlines opacity={0.25} />
         )}
       </div>
     </Rnd>

@@ -22,6 +22,8 @@ export const VISUALIZER_GIFS = [
   "https://media.giphy.com/media/l41lVsYDBC0UVQJCE/giphy.gif?cid=ecf05e47kfmbmevegx7re59n5fmks1tfurbgx3ixag0jsfr4&ep=v1_gifs_search&rid=giphy.gif&ct=g", // monkey phone
   "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMG5nZzNsaWNzc3NidmRkNnE1ZjR2ZWpvbWEzN2JwcHFzMTM2OGNxayZlcD12MV9naWZzX3NlYXJjaCZjdD1n/AVun92P6O8q2Y/giphy.gif", //miami vice 1
   "https://media.giphy.com/media/3o7aCWUAhxmvFc5VVm/giphy.gif?cid=790b76110ngg3licsssbvdd6q5f4vejoma37bppqs1368cqk&ep=v1_gifs_search&rid=giphy.gif&ct=g", // miami vice 2
+  "https://media.giphy.com/media/6voeQ0kSJo3aU/giphy.gif?cid=790b76112ecywrjhuterq8thrfr1uh8mmno8tty5krxzag7a&ep=v1_gifs_search&rid=giphy.gif&ct=g", // miami vice 3
+  "https://media.giphy.com/media/FCUsv5JXprSnNw5Rar/giphy.gif?cid=ecf05e47byh75l5n5udu709rfdplefkty21eb5r3krk02h8x&ep=v1_gifs_search&rid=giphy.gif&ct=g", // miami vice 4
   "https://media.giphy.com/media/J1XfZvlK4SJmQh6Ve1/giphy.gif?cid=ecf05e47g18dhb6eqxwo3ogm8wccenkyy5duq9qfps8w7zum&ep=v1_gifs_search&rid=giphy.gif&ct=g", // miami vice car
   "https://media.giphy.com/media/lg8ZgPzmxgxPi/giphy.gif?cid=790b7611qrrewp4ezvmky467lmh1yoo2medgnwdwzt75r2lz&ep=v1_gifs_search&rid=giphy.gif&ct=g", // family guy
   "https://media.giphy.com/media/fC1HPbYpydrqM/giphy.gif?cid=790b7611qrrewp4ezvmky467lmh1yoo2medgnwdwzt75r2lz&ep=v1_gifs_search&rid=giphy.gif&ct=g", //family guy 2
@@ -97,4 +99,7 @@ export const VISUALIZER_GIFS = [
   "https://media.giphy.com/media/bo5pJyxUr3R9C/giphy.gif?cid=ecf05e47tx0jpu4y0xus5dsmsjzr37l2vp53dh4fej7qlga3&ep=v1_gifs_search&rid=giphy.gif&ct=g", // drive movie 2
   "https://media.giphy.com/media/7FvaPVEKXuB3O/giphy.gif?cid=ecf05e47yaxd0tl4tm6rglo9y2r31c5ccnuirnyfpjpkfyjn&ep=v1_gifs_search&rid=giphy.gif&ct=g", // drive movie 3
   "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGJmbjB5MGp2b2Y2bGFpaGM0MGE4azg0dnU3NG5qMzJiNm5nbDJjaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/26AHKUzOZv1cSFWfu/giphy.gif", // katana zero
+  "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3NqMDBwZGJjZnI5M2xsY283Mng4N2RnYzMzZXdsbWx0a2xpNHlxdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ca0IqSiMoqOphimMmv/giphy.gif", // rollercoaster
+  "https://media.giphy.com/media/w0CJXS2M44xfW/giphy.gif?cid=790b7611ihg1dk3g2j24gdx69w082892s1v4j9evf9xqgi7x&ep=v1_gifs_search&rid=giphy.gif&ct=g", // pusheen
+  "https://media.giphy.com/media/y3ADSTHiLwhEs/giphy.gif?cid=ecf05e47xi7zps4ddl2j9cszykns9v7ug8o2a5evevzhw56p&ep=v1_gifs_search&rid=giphy.gif&ct=g", // ninja turtles
 ];

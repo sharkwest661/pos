@@ -63,4 +63,12 @@ export const PLAYLIST_DATA = [
     active: false,
     file: "/assets/music/fantasy_jessie_frye.mp3",
   },
+  {
+    id: 9,
+    title: "Track 9",
+    artist: "Unknown Artist",
+    duration: "4:28",
+    active: false,
+    file: "/assets/music/plastic_love.mp3",
+  },
 ];

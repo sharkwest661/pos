@@ -34,7 +34,7 @@ export const PROJECTS_DATA = [
     description: "Freelance project - Website with exam functionality",
     technologies: ["React", "Chakra UI", "Zustand", "Recharts"],
     thumbnail: "",
-    date: "01-08-2024",
+    date: "10-04-2025",
     projectType: "web",
     links: {
       live: "https://edumetrics-demo.netlify.app/",

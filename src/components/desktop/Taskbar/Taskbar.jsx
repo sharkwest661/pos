@@ -101,6 +101,7 @@ const Taskbar = () => {
         <div className={styles.startMenu} ref={startMenuRef}>
           <div className={styles.startMenuHeader}>
             <h2 className={styles.startMenuTitle}>VAPORWAVE OS</h2>
+            <p className={styles.japaneseTitle}>ベイパーウェイブ OS</p>
             <p className={styles.startMenuVersion}>
               Version {SYSTEM_INFO.VERSION}
             </p>
@@ -121,7 +122,10 @@ const Taskbar = () => {
                 <div className={styles.systemInfoItem}>
                   <span className={styles.systemInfoLabel}>BUILD:</span>
                   <span className={styles.systemInfoValue}>
-                    {SYSTEM_INFO.CODENAME}
+                    {SYSTEM_INFO.CODENAME}{" "}
+                    <span className={styles.japaneseText}>
+                      {SYSTEM_INFO.JAPANESE_CODENAME}
+                    </span>
                   </span>
                 </div>
 
