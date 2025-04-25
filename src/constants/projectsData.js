@@ -38,7 +38,7 @@ export const PROJECTS_DATA = [
     projectType: "web",
     links: {
       live: "https://edumetrics-demo.netlify.app/",
-      // github: "",
+      github: "https://github.com/ccavad/edumetrics",
     },
     features: [
       "Exam Management",
