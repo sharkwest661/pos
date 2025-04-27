@@ -102,7 +102,10 @@ const useTerminalStore = create((set, get) => ({
   clearTerminal: () =>
     set((state) => {
       const clearedHistory = [
-        { text: "ＶＡＰＯＲＷＡＶＥ  ＯＳ  [Version 1.0.0]", type: "system" },
+        {
+          text: `ＶＡＰＯＲＷＡＶＥ  ＯＳ  [Version ${SYSTEM_INFO.VERSION}]`,
+          type: "system",
+        },
         {
           text: "(c) 2025 Vaporwave Corp. All rights reserved.",
           type: "system",
