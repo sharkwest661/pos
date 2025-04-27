@@ -12,6 +12,7 @@ const saveStateTosessionStorage = (state) => {
         commandHistory: state.commandHistory,
         currentDir: state.currentDir,
         inGameMode: state.inGameMode,
+        gameType: state.gameType,
       })
     );
   } catch (error) {
@@ -55,6 +56,9 @@ const useTerminalStore = create((set, get) => ({
 
   // Game mode state
   inGameMode: savedState?.inGameMode || false,
+
+  // Game type (puzzle, adventure, etc.)
+  gameType: savedState?.gameType || null,
 
   // Add a line to the terminal history
   addToHistory: (line) =>
@@ -160,6 +164,14 @@ const useTerminalStore = create((set, get) => ({
   setInGameMode: (mode) =>
     set((state) => {
       const newState = { inGameMode: mode };
+      saveStateTosessionStorage({ ...state, ...newState });
+      return newState;
+    }),
+
+  // Set game type (puzzle, adventure, etc.)
+  setGameType: (gameType) =>
+    set((state) => {
+      const newState = { gameType };
       saveStateTosessionStorage({ ...state, ...newState });
       return newState;
     }),

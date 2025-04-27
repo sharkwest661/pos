@@ -3,7 +3,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { Scanlines } from "../../effects/Scanlines";
 import { useThemeStore, useTerminalStore } from "../../../store";
 import AestheticPuzzle from "./AestheticPuzzle";
+import VaporAdventure from "./VaporAdventure";
 import styles from "./Terminal.module.scss";
+import { SYSTEM_INFO, getRandomMessage } from "../../../constants/systemInfo";
 
 const Terminal = () => {
   // Get theme configuration
@@ -15,6 +17,7 @@ const Terminal = () => {
   const commandHistory = useTerminalStore((state) => state.commandHistory);
   const historyIndex = useTerminalStore((state) => state.historyIndex);
   const inGameMode = useTerminalStore((state) => state.inGameMode);
+  const gameType = useTerminalStore((state) => state.gameType);
 
   // Get terminal actions from store
   const addCommandToHistory = useTerminalStore(
@@ -29,6 +32,7 @@ const Terminal = () => {
     (state) => state.getCurrentCommandFromHistory
   );
   const setInGameMode = useTerminalStore((state) => state.setInGameMode);
+  const setGameType = useTerminalStore((state) => state.setGameType);
 
   // Local input state
   const [input, setInput] = useState("");
@@ -82,6 +86,7 @@ const Terminal = () => {
           "  dir         - List files in current directory",
           "  cd          - Change directory",
           "  enigma      - Play ENIGMA_PUZZLE game",
+          "  adventure   - Play VAPORNET text adventure game",
           "  time        - Display current time",
           "  vaporwave   - Convert text to vaporwave style",
           "  exit        - Exit terminal",
@@ -109,7 +114,11 @@ const Terminal = () => {
         break;
 
       case "enigma":
-        startGame();
+        startGame("puzzle");
+        break;
+
+      case "adventure":
+        startAdventure();
         break;
 
       case "time":
@@ -233,37 +242,68 @@ const Terminal = () => {
     addOutput([`The system cannot find the path specified: ${dir}`]);
   };
 
-  // Start the AESTHETIC_PUZZLE game
-  const startGame = () => {
-    addOutput([
-      "Starting ENIGMA_PUZZLE...",
-      "----------------------------------------",
-      "Welcome to ENIGMA_PUZZLE - a vaporwave Mastermind game",
-      "Try to guess the sequence of symbols",
-      "----------------------------------------",
-    ]);
+  // Start the AESTHETIC_PUZZLE game or other games
+  const startGame = (type = "puzzle") => {
+    if (type === "puzzle") {
+      addOutput([
+        "Starting ENIGMA_PUZZLE...",
+        "----------------------------------------",
+        "Welcome to ENIGMA_PUZZLE - a vaporwave Mastermind game",
+        "Try to guess the sequence of symbols",
+        "----------------------------------------",
+      ]);
+    }
 
     // Start game after a small delay
     setTimeout(() => {
       setInGameMode(true);
+      setGameType(type);
+    }, 1000);
+  };
+
+  // Start the Vaporwave Adventure game
+  const startAdventure = () => {
+    addOutput([
+      "Starting VAPORNET ADVENTURE...",
+      "----------------------------------------",
+      "Welcome to ESCAPE FROM VAPORNET - a text adventure",
+      "Navigate through the digital landscape to find your way out",
+      "----------------------------------------",
+    ]);
+
+    // Start adventure after a small delay
+    setTimeout(() => {
+      setInGameMode(true);
+      setGameType("adventure");
     }, 1000);
   };
 
   // Exit the game
   const exitGame = (wasSuccessful) => {
+    const currentGameType = useTerminalStore.getState().gameType;
     setInGameMode(false);
+    setGameType(null);
 
-    if (wasSuccessful) {
+    if (currentGameType === "puzzle") {
+      if (wasSuccessful) {
+        addOutput([
+          "----------------------------------------",
+          "Congratulations! You've solved the puzzle!",
+          "ENIGMA level: ＭＡＸＩＭＵＭ",
+          "----------------------------------------",
+        ]);
+      } else {
+        addOutput([
+          "----------------------------------------",
+          "Game over! Try again by typing 'enigma'",
+          "----------------------------------------",
+        ]);
+      }
+    } else if (currentGameType === "adventure") {
       addOutput([
         "----------------------------------------",
-        "Congratulations! You've solved the puzzle!",
-        "ENIGMA level: ＭＡＸＩＭＵＭ",
-        "----------------------------------------",
-      ]);
-    } else {
-      addOutput([
-        "----------------------------------------",
-        "Game over! Try again by typing 'enigma'",
+        "You have exited the VAPORNET ADVENTURE",
+        "Type 'adventure' to play again",
         "----------------------------------------",
       ]);
     }
@@ -345,7 +385,11 @@ const Terminal = () => {
       </div>
 
       {inGameMode ? (
-        <AestheticPuzzle onExit={exitGame} />
+        gameType === "puzzle" ? (
+          <AestheticPuzzle onExit={exitGame} />
+        ) : gameType === "adventure" ? (
+          <VaporAdventure onExit={exitGame} />
+        ) : null
       ) : (
         <>
           <div className={styles.terminalContent} ref={terminalRef}>
