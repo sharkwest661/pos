@@ -1,5 +1,11 @@
 // components/apps/musicPlayer/MusicPlayer.jsx
-import React, { useState, useEffect, useMemo } from "react";
+import React, {
+  useState,
+  useEffect,
+  useMemo,
+  useRef,
+  useCallback,
+} from "react";
 import {
   Play,
   Pause,
@@ -46,12 +52,23 @@ const MusicPlayer = () => {
   const [isInitialized, setIsInitialized] = useState(false);
   const [lastUpdateTime, setLastUpdateTime] = useState(0);
 
+  const progressChangeTimeoutRef = useRef(null);
+
   // For styling the progress input
   const progressStyle = {
     "--progress-percent": `${progress}%`,
   };
 
   // Initialize audio player when component mounts
+
+  useEffect(() => {
+    return () => {
+      if (progressChangeTimeoutRef.current) {
+        clearTimeout(progressChangeTimeoutRef.current);
+      }
+    };
+  }, []);
+
   useEffect(() => {
     // Initialize audio element
     initAudio();
@@ -91,20 +108,20 @@ const MusicPlayer = () => {
     }
   };
 
-  // Update progress when currentTime or duration changes
+  // Update progress only when currentTime changes significantly
   useEffect(() => {
-    // Throttle updates to once every 250ms
-    const now = Date.now();
-    if (now - lastUpdateTime > 250) {
-      if (duration > 0) {
-        const calculatedProgress = (currentTime / duration) * 100;
-        setProgress(isNaN(calculatedProgress) ? 0 : calculatedProgress);
-        setLastUpdateTime(now);
-      } else {
-        setProgress(0);
+    if (duration > 0) {
+      const calculatedProgress = (currentTime / duration) * 100;
+      const newProgress = isNaN(calculatedProgress) ? 0 : calculatedProgress;
+
+      // Only update if the change is significant (> 0.5%)
+      if (Math.abs(newProgress - progress) > 0.5) {
+        setProgress(newProgress);
       }
+    } else if (progress !== 0) {
+      setProgress(0);
     }
-  }, [currentTime, duration, lastUpdateTime]);
+  }, [currentTime, duration]);
 
   const handleNext = () => {
     const nextIndex = (currentTrackIndex + 1) % playlist.length;
@@ -120,13 +137,24 @@ const MusicPlayer = () => {
   const handleVolumeChange = (e) => {
     setVolume(parseInt(e.target.value));
   };
+  const handleProgressChange = useCallback(
+    (e) => {
+      const newProgress = parseFloat(e.target.value);
+      setProgress(newProgress);
 
-  const handleProgressChange = (e) => {
-    const newProgress = parseFloat(e.target.value);
-    setProgress(newProgress);
-    const newTime = (newProgress / 100) * duration;
-    seekTo(newTime);
-  };
+      // Clear existing timeout
+      if (progressChangeTimeoutRef.current) {
+        clearTimeout(progressChangeTimeoutRef.current);
+      }
+
+      // Debounce the actual seek
+      progressChangeTimeoutRef.current = setTimeout(() => {
+        const newTime = (newProgress / 100) * duration;
+        seekTo(newTime);
+      }, 50);
+    },
+    [duration, seekTo]
+  );
 
   const selectTrack = (index) => {
     changeTrack(index);
