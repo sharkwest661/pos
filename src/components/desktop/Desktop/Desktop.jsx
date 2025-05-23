@@ -115,7 +115,7 @@ const Desktop = () => {
   const [showPalm, setShowPalm] = useState(false);
   const [showStatue, setShowStatue] = useState(false);
 
-  // Effect to track window changes and pause music if music player is closed
+  // Effect to track window changes and cleanup music player
   useEffect(() => {
     // Check if music player window was closed
     const musicPlayerWasOpen = previousWindows.some(
@@ -126,14 +126,16 @@ const Desktop = () => {
       (window) => window.appType === APP_TYPES.MUSIC_PLAYER
     );
 
-    // If music player was open but is no longer open and music is playing, pause it
-    if (musicPlayerWasOpen && !musicPlayerIsOpen && isPlaying) {
-      togglePlay();
+    // If music player was open but is no longer open, do full cleanup
+    if (musicPlayerWasOpen && !musicPlayerIsOpen) {
+      // Get audio store and perform full cleanup
+      const audioStore = useAudioStore.getState();
+      audioStore.cleanup();
     }
 
     // Update previous windows
     setPreviousWindows(allWindows);
-  }, [allWindows, previousWindows, isPlaying, togglePlay]);
+  }, [allWindows, previousWindows]);
 
   // Handle single click on icon (select)
   const handleIconClick = (appId) => {

@@ -23,6 +23,12 @@ const useAudioStore = create((set, get) => ({
   // Playlist data
   playlist: [],
 
+  // Animation frame reference for cleanup
+  animationFrameId: null,
+
+  // Last update time to throttle updates
+  lastUpdateTime: 0,
+
   // Initialize audio (this will be called once from App.jsx)
   initAudio: () => {
     // Create audio element if it doesn't exist
@@ -32,18 +38,18 @@ const useAudioStore = create((set, get) => ({
       // Set initial volume
       audio.volume = get().volume / 100;
 
-      // Store references to event handlers so they can be properly removed
+      // Throttled time update handler
       const timeUpdateHandler = () => {
-        // Use requestAnimationFrame to optimize UI updates
-        if (!get().isUpdatingUI) {
-          set({ isUpdatingUI: true });
-          requestAnimationFrame(() => {
-            set({
-              currentTime: audio.currentTime,
-              isUpdatingUI: false,
-            });
-          });
-        }
+        const now = Date.now();
+        const lastUpdate = get().lastUpdateTime;
+
+        // Throttle updates to once every 250ms
+        if (now - lastUpdate < 250) return;
+
+        set({
+          currentTime: audio.currentTime,
+          lastUpdateTime: now,
+        });
       };
 
       const durationChangeHandler = () => {
@@ -56,24 +62,19 @@ const useAudioStore = create((set, get) => ({
         get().changeTrack(nextIndex);
       };
 
-      // Store event handlers for proper cleanup later
+      // Add event listeners
+      audio.addEventListener("timeupdate", timeUpdateHandler);
+      audio.addEventListener("durationchange", durationChangeHandler);
+      audio.addEventListener("ended", endedHandler);
+
+      // Store references for cleanup
       set({
+        audioElement: audio,
         audioEventHandlers: {
           timeUpdate: timeUpdateHandler,
           durationChange: durationChangeHandler,
           ended: endedHandler,
         },
-      });
-
-      // Add event listeners with stored handlers
-      audio.addEventListener("timeupdate", timeUpdateHandler);
-      audio.addEventListener("durationchange", durationChangeHandler);
-      audio.addEventListener("ended", endedHandler);
-
-      // Store in state
-      set({
-        audioElement: audio,
-        isUpdatingUI: false,
       });
 
       // Load initial playlist if empty
@@ -91,45 +92,6 @@ const useAudioStore = create((set, get) => ({
     }
   },
 
-  initWebAudio: async (audioUrl) => {
-    try {
-      // Create audio context if it doesn't exist
-      let audioContext = get().audioContext;
-      if (!audioContext) {
-        audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        set({ audioContext });
-      }
-
-      // Fetch audio data
-      const response = await fetch(audioUrl);
-      const arrayBuffer = await response.arrayBuffer();
-
-      // Decode audio data
-      const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-
-      // Clean up previous source if exists
-      if (get().audioSource) {
-        get().audioSource.disconnect();
-      }
-
-      // Create new source
-      const source = audioContext.createBufferSource();
-      source.buffer = audioBuffer;
-      source.connect(audioContext.destination);
-
-      // Store references
-      set({
-        audioBuffer,
-        audioSource: source,
-      });
-
-      return source;
-    } catch (error) {
-      console.error("Error initializing Web Audio:", error);
-      return null;
-    }
-  },
-
   // Set playlist
   setPlaylist: (playlist) => {
     set({ playlist });
@@ -137,7 +99,6 @@ const useAudioStore = create((set, get) => ({
     // Load first track if nothing is loaded
     const audioElement = get().audioElement;
     if (audioElement && playlist.length > 0) {
-      // Always load the first track when setting playlist
       audioElement.src = playlist[0].file;
       audioElement.load();
     }
@@ -186,6 +147,10 @@ const useAudioStore = create((set, get) => ({
       audioElement.pause();
     }
 
+    // Clear any buffered data
+    audioElement.src = "";
+    audioElement.load();
+
     // Update track
     audioElement.src = playlist[index].file;
     audioElement.load();
@@ -215,7 +180,11 @@ const useAudioStore = create((set, get) => ({
   seekTo: (time) => {
     if (get().audioElement) {
       get().audioElement.currentTime = time;
-      set({ currentTime: time });
+      // Update time and reset the throttle timer
+      set({
+        currentTime: time,
+        lastUpdateTime: Date.now(),
+      });
     }
   },
 
@@ -225,17 +194,12 @@ const useAudioStore = create((set, get) => ({
     let updatedFavorites;
 
     if (favorites.includes(trackId)) {
-      // Remove from favorites
       updatedFavorites = favorites.filter((id) => id !== trackId);
     } else {
-      // Add to favorites
       updatedFavorites = [...favorites, trackId];
     }
 
-    // Update state only (no sessionStorage)
     set({ favorites: updatedFavorites });
-
-    // Return the new favorite status
     return !favorites.includes(trackId);
   },
 
@@ -246,12 +210,19 @@ const useAudioStore = create((set, get) => ({
 
   // Clean up
   cleanup: () => {
-    const { audioElement, audioEventHandlers } = get();
-    if (audioElement) {
-      audioElement.pause();
-      audioElement.src = "";
+    const { audioElement, audioEventHandlers, animationFrameId } = get();
 
-      // Properly remove event listeners using stored handlers
+    // Cancel any pending animation frames
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+    }
+
+    if (audioElement) {
+      // Pause and reset
+      audioElement.pause();
+      audioElement.currentTime = 0;
+
+      // Remove event listeners
       if (audioEventHandlers) {
         audioElement.removeEventListener(
           "timeupdate",
@@ -263,9 +234,19 @@ const useAudioStore = create((set, get) => ({
         );
         audioElement.removeEventListener("ended", audioEventHandlers.ended);
       }
+
+      // Clear source to release memory
+      audioElement.src = "";
+      audioElement.load();
     }
 
-    // Reset all state to initial values
+    // Clean up audio context if it exists
+    const audioContext = get().audioContext;
+    if (audioContext && audioContext.state !== "closed") {
+      audioContext.close();
+    }
+
+    // Reset all state
     set({
       audioElement: null,
       audioEventHandlers: null,
@@ -274,7 +255,11 @@ const useAudioStore = create((set, get) => ({
       currentTime: 0,
       duration: 0,
       favorites: [],
-      isUpdatingUI: false,
+      audioContext: null,
+      audioSource: null,
+      audioBuffer: null,
+      animationFrameId: null,
+      lastUpdateTime: 0,
     });
   },
 }));
