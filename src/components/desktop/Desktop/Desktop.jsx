@@ -218,7 +218,7 @@ const Desktop = () => {
       </div>
 
       {/* Scanlines effect if enabled */}
-      {effectsEnabled?.scanlines && <Scanlines opacity={0.1} />}
+      {effectsEnabled?.scanlines && <Scanlines opacity={0.2} />}
 
       {/* CRT effect if enabled */}
       {effectsEnabled?.crt && <CRTEffect opacity={0.2} />}

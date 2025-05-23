@@ -3,9 +3,9 @@
 
 export const SYSTEM_INFO = {
   // Version information
-  VERSION: "1.0.3",
+  VERSION: "1.0.4",
   CODENAME: "AESTHETIC",
-  BUILD_DATE: "04/27/2025",
+  BUILD_DATE: "05/23/2025",
 
   // System specs (fictitious retro values)
   MEMORY: {

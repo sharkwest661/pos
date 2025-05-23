@@ -11,6 +11,14 @@ export const resumeData = {
     {
       id: 1,
       role: "Frontend Developer",
+      company: "Nanolink MMC",
+      period: "May 2025 - Current",
+      // description: "",
+      highlights: [],
+    },
+    {
+      id: 2,
+      role: "Frontend Developer",
       company: "Agile Solutions Azerbaijan",
       period: "August 2023 - February 2025",
       // description: "",
@@ -21,7 +29,7 @@ export const resumeData = {
       ],
     },
     {
-      id: 2,
+      id: 3,
       role: "Intern Frontend Developer",
       company: "Proton.az MMC",
       period: "September 2022 - November 2022",

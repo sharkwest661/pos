@@ -188,7 +188,7 @@ const Resume = () => {
       </div>
 
       {/* Scanlines effect if enabled */}
-      {effectsEnabled?.scanlines && <Scanlines opacity={0.1} />}
+      {effectsEnabled?.scanlines && <Scanlines opacity={0.05} />}
     </div>
   );
 };
