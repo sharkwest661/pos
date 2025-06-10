@@ -29,20 +29,28 @@ import Notes from "../../apps/notes";
 import TextViewer from "../../apps/textViewer";
 import styles from "./Desktop.module.scss";
 
+// Memoized app components for performance
 const MemoizedMusicPlayer = memo(MusicPlayer);
+const MemoizedNotepad = memo(Notepad);
 const MemoizedTerminal = memo(TerminalApp);
+const MemoizedMyProfile = memo(MyProfile);
+const MemoizedResume = memo(Resume);
+const MemoizedContact = memo(Contact);
+const MemoizedProjects = memo(Projects);
+const MemoizedNotes = memo(Notes);
+const MemoizedTextViewer = memo(TextViewer);
 
-// Map of app types to components
+// Map of app types to memoized components
 const APP_COMPONENTS = {
   [APP_TYPES.MUSIC_PLAYER]: MemoizedMusicPlayer,
-  [APP_TYPES.NOTEPAD]: memo(Notepad),
+  [APP_TYPES.NOTEPAD]: MemoizedNotepad,
   [APP_TYPES.TERMINAL_APP]: MemoizedTerminal,
-  [APP_TYPES.TEXT_VIEWER]: TextViewer,
-  [APP_TYPES.MY_PROFILE]: MyProfile,
-  [APP_TYPES.RESUME]: Resume,
-  [APP_TYPES.CONTACT]: Contact,
-  [APP_TYPES.PROJECTS]: Projects,
-  [APP_TYPES.NOTES]: Notes,
+  [APP_TYPES.TEXT_VIEWER]: MemoizedTextViewer,
+  [APP_TYPES.MY_PROFILE]: MemoizedMyProfile,
+  [APP_TYPES.RESUME]: MemoizedResume,
+  [APP_TYPES.CONTACT]: MemoizedContact,
+  [APP_TYPES.PROJECTS]: MemoizedProjects,
+  [APP_TYPES.NOTES]: MemoizedNotes,
 };
 
 // Desktop app definitions

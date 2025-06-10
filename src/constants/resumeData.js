@@ -14,7 +14,9 @@ export const resumeData = {
       company: "Nanolink MMC",
       period: "May 2025 - Current",
       // description: "",
-      highlights: [],
+      highlights: [
+        "Developed and maintained a React application integrated with Sigma.js for graph visualization",
+      ],
     },
     {
       id: 2,
@@ -58,13 +60,14 @@ export const resumeData = {
     "Express js",
     "MongoDB",
     "PostgreSQL",
-    "Git/GitHub",
-    "React Query",
+    "Tanstack Query",
     "Zustand",
     "Redux",
+    "Git/GitHub",
     "Chakra UI",
     "Responsive Design",
     "HTML/CSS",
     "Tailwind CSS",
+    "Sigma.js",
   ],
 };

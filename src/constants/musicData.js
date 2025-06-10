@@ -71,4 +71,12 @@ export const PLAYLIST_DATA = [
     active: false,
     file: "/assets/music/plastic_love.mp3",
   },
+  {
+    id: 10,
+    title: "Track 10",
+    artist: "Unknown Artist",
+    duration: "3:22",
+    active: false,
+    file: "/assets/music/grimes_genesis.mp3",
+  },
 ];

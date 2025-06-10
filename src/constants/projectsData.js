@@ -61,7 +61,7 @@ export const PROJECTS_DATA = [
       "Personal portfolio styled as a retro vaporwave-themed operating system interface",
     technologies: ["React", "Zustand", "SCSS", "CSS Modules", "React-RND"],
     thumbnail: "",
-    date: "05-03-2025",
+    date: "06-10-2025",
     projectType: "web",
     links: {
       live: "https://ccavad-portfolio.netlify.app/",
