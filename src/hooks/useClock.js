@@ -10,7 +10,9 @@ export const useClock = () => {
   );
 
   useEffect(() => {
-    const updateTime = () => {
+    let intervalId;
+
+    const update = () => {
       setTime(
         new Date().toLocaleTimeString([], {
           hour: "2-digit",
@@ -18,19 +20,24 @@ export const useClock = () => {
           hour12: false,
         })
       );
-
-      const now = new Date();
-      const secondsUntilNextMinute = 60 - now.getSeconds();
-
-      setTimeout(() => {
-        updateTime();
-        setInterval(updateTime, 60000); // Update every 60 seconds
-      }, secondsUntilNextMinute * 1000);
     };
 
-    updateTime();
+    // Set up a timeout to align with the start of the next minute
+    const now = new Date();
+    const secondsUntilNextMinute = 60 - now.getSeconds();
+    const timeoutId = setTimeout(() => {
+      update(); // Update once immediately at the minute change
+      // Then, set an interval to update every 60 seconds
+      intervalId = setInterval(update, 60000);
+    }, secondsUntilNextMinute * 1000);
 
-    return () => clearInterval(updateTime); // Cleanup
+    // The cleanup function
+    return () => {
+      clearTimeout(timeoutId); // Clear the initial timeout
+      if (intervalId) {
+        clearInterval(intervalId); // Clear the interval
+      }
+    };
   }, []);
 
   return time;
